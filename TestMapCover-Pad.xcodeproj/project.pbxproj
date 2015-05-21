@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FB91B0DEFCE0070A30F /* main.m */; };
+		EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */; };
+		EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBF1B0DEFCE0070A30F /* MasterViewController.m */; };
+		EEEF4FC31B0DEFCE0070A30F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FC21B0DEFCE0070A30F /* DetailViewController.m */; };
+		EEEF4FC61B0DEFCE0070A30F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FC41B0DEFCE0070A30F /* Main.storyboard */; };
+		EEEF4FC81B0DEFCE0070A30F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FC71B0DEFCE0070A30F /* Images.xcassets */; };
+		EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FC91B0DEFCE0070A30F /* LaunchScreen.xib */; };
+		EEEF4FD71B0DEFCE0070A30F /* TestMapCover_PadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FD61B0DEFCE0070A30F /* TestMapCover_PadTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EEEF4FD11B0DEFCE0070A30F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEEF4FAC1B0DEFCE0070A30F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEEF4FB31B0DEFCE0070A30F;
+			remoteInfo = "TestMapCover-Pad";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EEEF4FB41B0DEFCE0070A30F /* TestMapCover-Pad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestMapCover-Pad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEEF4FB81B0DEFCE0070A30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEEF4FB91B0DEFCE0070A30F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EEEF4FBB1B0DEFCE0070A30F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EEEF4FBE1B0DEFCE0070A30F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		EEEF4FBF1B0DEFCE0070A30F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		EEEF4FC11B0DEFCE0070A30F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		EEEF4FC21B0DEFCE0070A30F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		EEEF4FC51B0DEFCE0070A30F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EEEF4FC71B0DEFCE0070A30F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EEEF4FCA1B0DEFCE0070A30F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EEEF4FD01B0DEFCE0070A30F /* TestMapCover-PadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TestMapCover-PadTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEEF4FD51B0DEFCE0070A30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEEF4FD61B0DEFCE0070A30F /* TestMapCover_PadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestMapCover_PadTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EEEF4FB11B0DEFCE0070A30F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEF4FCD1B0DEFCE0070A30F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EEEF4FAB1B0DEFCE0070A30F = {
+			isa = PBXGroup;
+			children = (
+				EEEF4FB61B0DEFCE0070A30F /* TestMapCover-Pad */,
+				EEEF4FD31B0DEFCE0070A30F /* TestMapCover-PadTests */,
+				EEEF4FB51B0DEFCE0070A30F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EEEF4FB51B0DEFCE0070A30F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF4FB41B0DEFCE0070A30F /* TestMapCover-Pad.app */,
+				EEEF4FD01B0DEFCE0070A30F /* TestMapCover-PadTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEEF4FB61B0DEFCE0070A30F /* TestMapCover-Pad */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF4FBB1B0DEFCE0070A30F /* AppDelegate.h */,
+				EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */,
+				EEEF4FBE1B0DEFCE0070A30F /* MasterViewController.h */,
+				EEEF4FBF1B0DEFCE0070A30F /* MasterViewController.m */,
+				EEEF4FC11B0DEFCE0070A30F /* DetailViewController.h */,
+				EEEF4FC21B0DEFCE0070A30F /* DetailViewController.m */,
+				EEEF4FC41B0DEFCE0070A30F /* Main.storyboard */,
+				EEEF4FC71B0DEFCE0070A30F /* Images.xcassets */,
+				EEEF4FC91B0DEFCE0070A30F /* LaunchScreen.xib */,
+				EEEF4FB71B0DEFCE0070A30F /* Supporting Files */,
+			);
+			path = "TestMapCover-Pad";
+			sourceTree = "<group>";
+		};
+		EEEF4FB71B0DEFCE0070A30F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF4FB81B0DEFCE0070A30F /* Info.plist */,
+				EEEF4FB91B0DEFCE0070A30F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEEF4FD31B0DEFCE0070A30F /* TestMapCover-PadTests */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF4FD61B0DEFCE0070A30F /* TestMapCover_PadTests.m */,
+				EEEF4FD41B0DEFCE0070A30F /* Supporting Files */,
+			);
+			path = "TestMapCover-PadTests";
+			sourceTree = "<group>";
+		};
+		EEEF4FD41B0DEFCE0070A30F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF4FD51B0DEFCE0070A30F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EEEF4FB31B0DEFCE0070A30F /* TestMapCover-Pad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEEF4FDA1B0DEFCE0070A30F /* Build configuration list for PBXNativeTarget "TestMapCover-Pad" */;
+			buildPhases = (
+				EEEF4FB01B0DEFCE0070A30F /* Sources */,
+				EEEF4FB11B0DEFCE0070A30F /* Frameworks */,
+				EEEF4FB21B0DEFCE0070A30F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TestMapCover-Pad";
+			productName = "TestMapCover-Pad";
+			productReference = EEEF4FB41B0DEFCE0070A30F /* TestMapCover-Pad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EEEF4FCF1B0DEFCE0070A30F /* TestMapCover-PadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEEF4FDD1B0DEFCE0070A30F /* Build configuration list for PBXNativeTarget "TestMapCover-PadTests" */;
+			buildPhases = (
+				EEEF4FCC1B0DEFCE0070A30F /* Sources */,
+				EEEF4FCD1B0DEFCE0070A30F /* Frameworks */,
+				EEEF4FCE1B0DEFCE0070A30F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEEF4FD21B0DEFCE0070A30F /* PBXTargetDependency */,
+			);
+			name = "TestMapCover-PadTests";
+			productName = "TestMapCover-PadTests";
+			productReference = EEEF4FD01B0DEFCE0070A30F /* TestMapCover-PadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEEF4FAC1B0DEFCE0070A30F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = weather;
+				TargetAttributes = {
+					EEEF4FB31B0DEFCE0070A30F = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					EEEF4FCF1B0DEFCE0070A30F = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = EEEF4FB31B0DEFCE0070A30F;
+					};
+				};
+			};
+			buildConfigurationList = EEEF4FAF1B0DEFCE0070A30F /* Build configuration list for PBXProject "TestMapCover-Pad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EEEF4FAB1B0DEFCE0070A30F;
+			productRefGroup = EEEF4FB51B0DEFCE0070A30F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EEEF4FB31B0DEFCE0070A30F /* TestMapCover-Pad */,
+				EEEF4FCF1B0DEFCE0070A30F /* TestMapCover-PadTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EEEF4FB21B0DEFCE0070A30F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEF4FC61B0DEFCE0070A30F /* Main.storyboard in Resources */,
+				EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */,
+				EEEF4FC81B0DEFCE0070A30F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEF4FCE1B0DEFCE0070A30F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EEEF4FB01B0DEFCE0070A30F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */,
+				EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */,
+				EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */,
+				EEEF4FC31B0DEFCE0070A30F /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEF4FCC1B0DEFCE0070A30F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEF4FD71B0DEFCE0070A30F /* TestMapCover_PadTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EEEF4FD21B0DEFCE0070A30F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEEF4FB31B0DEFCE0070A30F /* TestMapCover-Pad */;
+			targetProxy = EEEF4FD11B0DEFCE0070A30F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EEEF4FC41B0DEFCE0070A30F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EEEF4FC51B0DEFCE0070A30F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EEEF4FC91B0DEFCE0070A30F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EEEF4FCA1B0DEFCE0070A30F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EEEF4FD81B0DEFCE0070A30F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EEEF4FD91B0DEFCE0070A30F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EEEF4FDB1B0DEFCE0070A30F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "TestMapCover-Pad/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EEEF4FDC1B0DEFCE0070A30F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "TestMapCover-Pad/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EEEF4FDE1B0DEFCE0070A30F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TestMapCover-PadTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestMapCover-Pad.app/TestMapCover-Pad";
+			};
+			name = Debug;
+		};
+		EEEF4FDF1B0DEFCE0070A30F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TestMapCover-PadTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestMapCover-Pad.app/TestMapCover-Pad";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EEEF4FAF1B0DEFCE0070A30F /* Build configuration list for PBXProject "TestMapCover-Pad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEEF4FD81B0DEFCE0070A30F /* Debug */,
+				EEEF4FD91B0DEFCE0070A30F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEEF4FDA1B0DEFCE0070A30F /* Build configuration list for PBXNativeTarget "TestMapCover-Pad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEEF4FDB1B0DEFCE0070A30F /* Debug */,
+				EEEF4FDC1B0DEFCE0070A30F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EEEF4FDD1B0DEFCE0070A30F /* Build configuration list for PBXNativeTarget "TestMapCover-PadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEEF4FDE1B0DEFCE0070A30F /* Debug */,
+				EEEF4FDF1B0DEFCE0070A30F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEEF4FAC1B0DEFCE0070A30F /* Project object */;
+}

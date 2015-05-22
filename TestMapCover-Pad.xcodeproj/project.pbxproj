@@ -15,6 +15,46 @@
 		EEEF4FC81B0DEFCE0070A30F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FC71B0DEFCE0070A30F /* Images.xcassets */; };
 		EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FC91B0DEFCE0070A30F /* LaunchScreen.xib */; };
 		EEEF4FD71B0DEFCE0070A30F /* TestMapCover_PadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FD61B0DEFCE0070A30F /* TestMapCover_PadTests.m */; };
+		EEEF4FF01B0DEFF60070A30F /* 24小时变温实况 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE11B0DEFF60070A30F /* 24小时变温实况 */; };
+		EEEF4FF11B0DEFF60070A30F /* 全国地质灾害气象预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE21B0DEFF60070A30F /* 全国地质灾害气象预报 */; };
+		EEEF4FF21B0DEFF60070A30F /* 全国大雾落区预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE31B0DEFF60070A30F /* 全国大雾落区预报 */; };
+		EEEF4FF31B0DEFF60070A30F /* 全国大风降温预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE41B0DEFF60070A30F /* 全国大风降温预报 */; };
+		EEEF4FF51B0DEFF60070A30F /* 全国强对流落区预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE61B0DEFF60070A30F /* 全国强对流落区预报 */; };
+		EEEF4FF61B0DEFF60070A30F /* 全国强降雪落区预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE71B0DEFF60070A30F /* 全国强降雪落区预报 */; };
+		EEEF4FF71B0DEFF60070A30F /* 全国最高气温预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE81B0DEFF60070A30F /* 全国最高气温预报 */; };
+		EEEF4FF81B0DEFF60070A30F /* 全国沙尘落区预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FE91B0DEFF60070A30F /* 全国沙尘落区预报 */; };
+		EEEF4FF91B0DEFF60070A30F /* 全国烟花爆竹燃放气象指数预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FEA1B0DEFF60070A30F /* 全国烟花爆竹燃放气象指数预报 */; };
+		EEEF4FFA1B0DEFF60070A30F /* 全国空气污染气象预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FEB1B0DEFF60070A30F /* 全国空气污染气象预报 */; };
+		EEEF4FFB1B0DEFF60070A30F /* 全国降水量预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FEC1B0DEFF60070A30F /* 全国降水量预报 */; };
+		EEEF4FFC1B0DEFF60070A30F /* 全国高温区域预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FED1B0DEFF60070A30F /* 全国高温区域预报 */; };
+		EEEF4FFD1B0DEFF60070A30F /* 渍涝气象风险预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FEE1B0DEFF60070A30F /* 渍涝气象风险预报 */; };
+		EEEF4FFE1B0DEFF60070A30F /* 逐小时极大风速 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FEF1B0DEFF60070A30F /* 逐小时极大风速 */; };
+		EEEF50001B0DF03C0070A30F /* MapDatas.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEEF4FFF1B0DF03C0070A30F /* MapDatas.plist */; };
+		EEEF50191B0DF13B0070A30F /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50031B0DF13B0070A30F /* MASCompositeConstraint.m */; };
+		EEEF501A1B0DF13B0070A30F /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50061B0DF13B0070A30F /* MASConstraint.m */; };
+		EEEF501B1B0DF13B0070A30F /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50081B0DF13B0070A30F /* MASConstraintMaker.m */; };
+		EEEF501C1B0DF13B0070A30F /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF500A1B0DF13B0070A30F /* MASLayoutConstraint.m */; };
+		EEEF501D1B0DF13B0070A30F /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF500E1B0DF13B0070A30F /* MASViewAttribute.m */; };
+		EEEF501E1B0DF13B0070A30F /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50101B0DF13B0070A30F /* MASViewConstraint.m */; };
+		EEEF501F1B0DF13B0070A30F /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50121B0DF13B0070A30F /* NSArray+MASAdditions.m */; };
+		EEEF50201B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50151B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		EEEF50211B0DF13B0070A30F /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50171B0DF13B0070A30F /* View+MASAdditions.m */; };
+		EEEF50271B0DF1D70070A30F /* CWMyOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50241B0DF1D70070A30F /* CWMyOverlayView.m */; };
+		EEEF50281B0DF1D70070A30F /* CWMyPolyLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50261B0DF1D70070A30F /* CWMyPolyLineRenderer.m */; };
+		EEEF502B1B0DF2120070A30F /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF502A1B0DF2120070A30F /* Util.m */; };
+		EEEF503C1B0ED36D0070A30F /* 全国降水量预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF502D1B0ED36D0070A30F /* 全国降水量预报.json */; };
+		EEEF503D1B0ED36D0070A30F /* 全国强降雪落区预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF502E1B0ED36D0070A30F /* 全国强降雪落区预报.json */; };
+		EEEF503E1B0ED36D0070A30F /* 全国大风降温预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF502F1B0ED36D0070A30F /* 全国大风降温预报.json */; };
+		EEEF503F1B0ED36D0070A30F /* 全国大雾落区预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50301B0ED36D0070A30F /* 全国大雾落区预报.json */; };
+		EEEF50401B0ED36D0070A30F /* 全国地质灾害气象预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50311B0ED36D0070A30F /* 全国地质灾害气象预报.json */; };
+		EEEF50411B0ED36D0070A30F /* 全国高温区域预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50321B0ED36D0070A30F /* 全国高温区域预报.json */; };
+		EEEF50421B0ED36D0070A30F /* 全国空气污染气象预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50331B0ED36D0070A30F /* 全国空气污染气象预报.json */; };
+		EEEF50431B0ED36D0070A30F /* 全国霾区预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50341B0ED36D0070A30F /* 全国霾区预报.json */; };
+		EEEF50441B0ED36D0070A30F /* 全国强对流落区预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50351B0ED36D0070A30F /* 全国强对流落区预报.json */; };
+		EEEF50451B0ED36D0070A30F /* 全国沙尘落区预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50361B0ED36D0070A30F /* 全国沙尘落区预报.json */; };
+		EEEF50461B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50371B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json */; };
+		EEEF50481B0ED36D0070A30F /* 渍涝气象风险预报.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF50391B0ED36D0070A30F /* 渍涝气象风险预报.json */; };
+		EEEF504B1B0F032C0070A30F /* 全国霾区预报 in Resources */ = {isa = PBXBuildFile; fileRef = EEEF504A1B0F032C0070A30F /* 全国霾区预报 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +83,63 @@
 		EEEF4FD01B0DEFCE0070A30F /* TestMapCover-PadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TestMapCover-PadTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEF4FD51B0DEFCE0070A30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEEF4FD61B0DEFCE0070A30F /* TestMapCover_PadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestMapCover_PadTests.m; sourceTree = "<group>"; };
+		EEEF4FE11B0DEFF60070A30F /* 24小时变温实况 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "24小时变温实况"; sourceTree = "<group>"; };
+		EEEF4FE21B0DEFF60070A30F /* 全国地质灾害气象预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国地质灾害气象预报"; sourceTree = "<group>"; };
+		EEEF4FE31B0DEFF60070A30F /* 全国大雾落区预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国大雾落区预报"; sourceTree = "<group>"; };
+		EEEF4FE41B0DEFF60070A30F /* 全国大风降温预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国大风降温预报"; sourceTree = "<group>"; };
+		EEEF4FE61B0DEFF60070A30F /* 全国强对流落区预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国强对流落区预报"; sourceTree = "<group>"; };
+		EEEF4FE71B0DEFF60070A30F /* 全国强降雪落区预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国强降雪落区预报"; sourceTree = "<group>"; };
+		EEEF4FE81B0DEFF60070A30F /* 全国最高气温预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国最高气温预报"; sourceTree = "<group>"; };
+		EEEF4FE91B0DEFF60070A30F /* 全国沙尘落区预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国沙尘落区预报"; sourceTree = "<group>"; };
+		EEEF4FEA1B0DEFF60070A30F /* 全国烟花爆竹燃放气象指数预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国烟花爆竹燃放气象指数预报"; sourceTree = "<group>"; };
+		EEEF4FEB1B0DEFF60070A30F /* 全国空气污染气象预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国空气污染气象预报"; sourceTree = "<group>"; };
+		EEEF4FEC1B0DEFF60070A30F /* 全国降水量预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国降水量预报"; sourceTree = "<group>"; };
+		EEEF4FED1B0DEFF60070A30F /* 全国高温区域预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国高温区域预报"; sourceTree = "<group>"; };
+		EEEF4FEE1B0DEFF60070A30F /* 渍涝气象风险预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "渍涝气象风险预报"; sourceTree = "<group>"; };
+		EEEF4FEF1B0DEFF60070A30F /* 逐小时极大风速 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "逐小时极大风速"; sourceTree = "<group>"; };
+		EEEF4FFF1B0DF03C0070A30F /* MapDatas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MapDatas.plist; sourceTree = "<group>"; };
+		EEEF50021B0DF13B0070A30F /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		EEEF50031B0DF13B0070A30F /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		EEEF50041B0DF13B0070A30F /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		EEEF50051B0DF13B0070A30F /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		EEEF50061B0DF13B0070A30F /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		EEEF50071B0DF13B0070A30F /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		EEEF50081B0DF13B0070A30F /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		EEEF50091B0DF13B0070A30F /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		EEEF500A1B0DF13B0070A30F /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		EEEF500B1B0DF13B0070A30F /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		EEEF500C1B0DF13B0070A30F /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		EEEF500D1B0DF13B0070A30F /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		EEEF500E1B0DF13B0070A30F /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		EEEF500F1B0DF13B0070A30F /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		EEEF50101B0DF13B0070A30F /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		EEEF50111B0DF13B0070A30F /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		EEEF50121B0DF13B0070A30F /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		EEEF50131B0DF13B0070A30F /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		EEEF50141B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		EEEF50151B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		EEEF50161B0DF13B0070A30F /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		EEEF50171B0DF13B0070A30F /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		EEEF50181B0DF13B0070A30F /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		EEEF50231B0DF1D70070A30F /* CWMyOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMyOverlayView.h; sourceTree = "<group>"; };
+		EEEF50241B0DF1D70070A30F /* CWMyOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMyOverlayView.m; sourceTree = "<group>"; };
+		EEEF50251B0DF1D70070A30F /* CWMyPolyLineRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMyPolyLineRenderer.h; sourceTree = "<group>"; };
+		EEEF50261B0DF1D70070A30F /* CWMyPolyLineRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMyPolyLineRenderer.m; sourceTree = "<group>"; };
+		EEEF50291B0DF2120070A30F /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		EEEF502A1B0DF2120070A30F /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		EEEF502D1B0ED36D0070A30F /* 全国降水量预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国降水量预报.json"; sourceTree = "<group>"; };
+		EEEF502E1B0ED36D0070A30F /* 全国强降雪落区预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国强降雪落区预报.json"; sourceTree = "<group>"; };
+		EEEF502F1B0ED36D0070A30F /* 全国大风降温预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国大风降温预报.json"; sourceTree = "<group>"; };
+		EEEF50301B0ED36D0070A30F /* 全国大雾落区预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国大雾落区预报.json"; sourceTree = "<group>"; };
+		EEEF50311B0ED36D0070A30F /* 全国地质灾害气象预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国地质灾害气象预报.json"; sourceTree = "<group>"; };
+		EEEF50321B0ED36D0070A30F /* 全国高温区域预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国高温区域预报.json"; sourceTree = "<group>"; };
+		EEEF50331B0ED36D0070A30F /* 全国空气污染气象预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国空气污染气象预报.json"; sourceTree = "<group>"; };
+		EEEF50341B0ED36D0070A30F /* 全国霾区预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国霾区预报.json"; sourceTree = "<group>"; };
+		EEEF50351B0ED36D0070A30F /* 全国强对流落区预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国强对流落区预报.json"; sourceTree = "<group>"; };
+		EEEF50361B0ED36D0070A30F /* 全国沙尘落区预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国沙尘落区预报.json"; sourceTree = "<group>"; };
+		EEEF50371B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "全国烟花爆竹燃放气象指数预报.json"; sourceTree = "<group>"; };
+		EEEF50391B0ED36D0070A30F /* 渍涝气象风险预报.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "渍涝气象风险预报.json"; sourceTree = "<group>"; };
+		EEEF504A1B0F032C0070A30F /* 全国霾区预报 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "全国霾区预报"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +163,9 @@
 		EEEF4FAB1B0DEFCE0070A30F = {
 			isa = PBXGroup;
 			children = (
+				EEEF50011B0DF13B0070A30F /* Masonry */,
+				EEEF4FFF1B0DF03C0070A30F /* MapDatas.plist */,
+				EEEF4FE01B0DEFF60070A30F /* 图形样例数据数据 */,
 				EEEF4FB61B0DEFCE0070A30F /* TestMapCover-Pad */,
 				EEEF4FD31B0DEFCE0070A30F /* TestMapCover-PadTests */,
 				EEEF4FB51B0DEFCE0070A30F /* Products */,
@@ -84,6 +184,7 @@
 		EEEF4FB61B0DEFCE0070A30F /* TestMapCover-Pad */ = {
 			isa = PBXGroup;
 			children = (
+				EEEF50221B0DF1680070A30F /* MapExt */,
 				EEEF4FBB1B0DEFCE0070A30F /* AppDelegate.h */,
 				EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */,
 				EEEF4FBE1B0DEFCE0070A30F /* MasterViewController.h */,
@@ -122,6 +223,83 @@
 				EEEF4FD51B0DEFCE0070A30F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEEF4FE01B0DEFF60070A30F /* 图形样例数据数据 */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF502D1B0ED36D0070A30F /* 全国降水量预报.json */,
+				EEEF502E1B0ED36D0070A30F /* 全国强降雪落区预报.json */,
+				EEEF502F1B0ED36D0070A30F /* 全国大风降温预报.json */,
+				EEEF50301B0ED36D0070A30F /* 全国大雾落区预报.json */,
+				EEEF50311B0ED36D0070A30F /* 全国地质灾害气象预报.json */,
+				EEEF50321B0ED36D0070A30F /* 全国高温区域预报.json */,
+				EEEF50331B0ED36D0070A30F /* 全国空气污染气象预报.json */,
+				EEEF50341B0ED36D0070A30F /* 全国霾区预报.json */,
+				EEEF50351B0ED36D0070A30F /* 全国强对流落区预报.json */,
+				EEEF50361B0ED36D0070A30F /* 全国沙尘落区预报.json */,
+				EEEF50371B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json */,
+				EEEF50391B0ED36D0070A30F /* 渍涝气象风险预报.json */,
+				EEEF4FE11B0DEFF60070A30F /* 24小时变温实况 */,
+				EEEF4FE21B0DEFF60070A30F /* 全国地质灾害气象预报 */,
+				EEEF4FE31B0DEFF60070A30F /* 全国大雾落区预报 */,
+				EEEF4FE41B0DEFF60070A30F /* 全国大风降温预报 */,
+				EEEF4FE61B0DEFF60070A30F /* 全国强对流落区预报 */,
+				EEEF4FE71B0DEFF60070A30F /* 全国强降雪落区预报 */,
+				EEEF4FE81B0DEFF60070A30F /* 全国最高气温预报 */,
+				EEEF4FE91B0DEFF60070A30F /* 全国沙尘落区预报 */,
+				EEEF4FEA1B0DEFF60070A30F /* 全国烟花爆竹燃放气象指数预报 */,
+				EEEF4FEB1B0DEFF60070A30F /* 全国空气污染气象预报 */,
+				EEEF4FEC1B0DEFF60070A30F /* 全国降水量预报 */,
+				EEEF4FED1B0DEFF60070A30F /* 全国高温区域预报 */,
+				EEEF4FEE1B0DEFF60070A30F /* 渍涝气象风险预报 */,
+				EEEF4FEF1B0DEFF60070A30F /* 逐小时极大风速 */,
+				EEEF504A1B0F032C0070A30F /* 全国霾区预报 */,
+			);
+			path = "图形样例数据数据";
+			sourceTree = "<group>";
+		};
+		EEEF50011B0DF13B0070A30F /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF50021B0DF13B0070A30F /* MASCompositeConstraint.h */,
+				EEEF50031B0DF13B0070A30F /* MASCompositeConstraint.m */,
+				EEEF50041B0DF13B0070A30F /* MASConstraint+Private.h */,
+				EEEF50051B0DF13B0070A30F /* MASConstraint.h */,
+				EEEF50061B0DF13B0070A30F /* MASConstraint.m */,
+				EEEF50071B0DF13B0070A30F /* MASConstraintMaker.h */,
+				EEEF50081B0DF13B0070A30F /* MASConstraintMaker.m */,
+				EEEF50091B0DF13B0070A30F /* MASLayoutConstraint.h */,
+				EEEF500A1B0DF13B0070A30F /* MASLayoutConstraint.m */,
+				EEEF500B1B0DF13B0070A30F /* Masonry.h */,
+				EEEF500C1B0DF13B0070A30F /* MASUtilities.h */,
+				EEEF500D1B0DF13B0070A30F /* MASViewAttribute.h */,
+				EEEF500E1B0DF13B0070A30F /* MASViewAttribute.m */,
+				EEEF500F1B0DF13B0070A30F /* MASViewConstraint.h */,
+				EEEF50101B0DF13B0070A30F /* MASViewConstraint.m */,
+				EEEF50111B0DF13B0070A30F /* NSArray+MASAdditions.h */,
+				EEEF50121B0DF13B0070A30F /* NSArray+MASAdditions.m */,
+				EEEF50131B0DF13B0070A30F /* NSArray+MASShorthandAdditions.h */,
+				EEEF50141B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.h */,
+				EEEF50151B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.m */,
+				EEEF50161B0DF13B0070A30F /* View+MASAdditions.h */,
+				EEEF50171B0DF13B0070A30F /* View+MASAdditions.m */,
+				EEEF50181B0DF13B0070A30F /* View+MASShorthandAdditions.h */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		EEEF50221B0DF1680070A30F /* MapExt */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF50291B0DF2120070A30F /* Util.h */,
+				EEEF502A1B0DF2120070A30F /* Util.m */,
+				EEEF50231B0DF1D70070A30F /* CWMyOverlayView.h */,
+				EEEF50241B0DF1D70070A30F /* CWMyOverlayView.m */,
+				EEEF50251B0DF1D70070A30F /* CWMyPolyLineRenderer.h */,
+				EEEF50261B0DF1D70070A30F /* CWMyPolyLineRenderer.m */,
+			);
+			name = MapExt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,9 +382,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEF4FFC1B0DEFF60070A30F /* 全国高温区域预报 in Resources */,
+				EEEF503C1B0ED36D0070A30F /* 全国降水量预报.json in Resources */,
+				EEEF4FF71B0DEFF60070A30F /* 全国最高气温预报 in Resources */,
+				EEEF4FF81B0DEFF60070A30F /* 全国沙尘落区预报 in Resources */,
+				EEEF50001B0DF03C0070A30F /* MapDatas.plist in Resources */,
+				EEEF50401B0ED36D0070A30F /* 全国地质灾害气象预报.json in Resources */,
+				EEEF4FF91B0DEFF60070A30F /* 全国烟花爆竹燃放气象指数预报 in Resources */,
 				EEEF4FC61B0DEFCE0070A30F /* Main.storyboard in Resources */,
 				EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */,
+				EEEF4FFD1B0DEFF60070A30F /* 渍涝气象风险预报 in Resources */,
+				EEEF4FF61B0DEFF60070A30F /* 全国强降雪落区预报 in Resources */,
+				EEEF4FFE1B0DEFF60070A30F /* 逐小时极大风速 in Resources */,
+				EEEF4FFA1B0DEFF60070A30F /* 全国空气污染气象预报 in Resources */,
+				EEEF4FF21B0DEFF60070A30F /* 全国大雾落区预报 in Resources */,
+				EEEF503E1B0ED36D0070A30F /* 全国大风降温预报.json in Resources */,
+				EEEF4FF31B0DEFF60070A30F /* 全国大风降温预报 in Resources */,
+				EEEF50481B0ED36D0070A30F /* 渍涝气象风险预报.json in Resources */,
+				EEEF503F1B0ED36D0070A30F /* 全国大雾落区预报.json in Resources */,
+				EEEF50431B0ED36D0070A30F /* 全国霾区预报.json in Resources */,
+				EEEF50461B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json in Resources */,
 				EEEF4FC81B0DEFCE0070A30F /* Images.xcassets in Resources */,
+				EEEF4FF11B0DEFF60070A30F /* 全国地质灾害气象预报 in Resources */,
+				EEEF50451B0ED36D0070A30F /* 全国沙尘落区预报.json in Resources */,
+				EEEF50411B0ED36D0070A30F /* 全国高温区域预报.json in Resources */,
+				EEEF503D1B0ED36D0070A30F /* 全国强降雪落区预报.json in Resources */,
+				EEEF50421B0ED36D0070A30F /* 全国空气污染气象预报.json in Resources */,
+				EEEF4FFB1B0DEFF60070A30F /* 全国降水量预报 in Resources */,
+				EEEF4FF01B0DEFF60070A30F /* 24小时变温实况 in Resources */,
+				EEEF50441B0ED36D0070A30F /* 全国强对流落区预报.json in Resources */,
+				EEEF4FF51B0DEFF60070A30F /* 全国强对流落区预报 in Resources */,
+				EEEF504B1B0F032C0070A30F /* 全国霾区预报 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,10 +430,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEF501B1B0DF13B0070A30F /* MASConstraintMaker.m in Sources */,
 				EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */,
+				EEEF50281B0DF1D70070A30F /* CWMyPolyLineRenderer.m in Sources */,
 				EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */,
+				EEEF501A1B0DF13B0070A30F /* MASConstraint.m in Sources */,
+				EEEF501C1B0DF13B0070A30F /* MASLayoutConstraint.m in Sources */,
+				EEEF501F1B0DF13B0070A30F /* NSArray+MASAdditions.m in Sources */,
+				EEEF501E1B0DF13B0070A30F /* MASViewConstraint.m in Sources */,
+				EEEF501D1B0DF13B0070A30F /* MASViewAttribute.m in Sources */,
+				EEEF50211B0DF13B0070A30F /* View+MASAdditions.m in Sources */,
+				EEEF50271B0DF1D70070A30F /* CWMyOverlayView.m in Sources */,
 				EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */,
 				EEEF4FC31B0DEFCE0070A30F /* DetailViewController.m in Sources */,
+				EEEF50191B0DF13B0070A30F /* MASCompositeConstraint.m in Sources */,
+				EEEF50201B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				EEEF502B1B0DF2120070A30F /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -343,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -355,9 +573,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = "TestMapCover-Pad/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2876ed41-82e6-4c3c-948f-d6c0265c3128";
 			};
 			name = Debug;
 		};
@@ -365,9 +585,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = "TestMapCover-Pad/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2876ed41-82e6-4c3c-948f-d6c0265c3128";
 			};
 			name = Release;
 		};

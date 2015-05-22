@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>mapRequest</key>
+	<array>
+		<string>全国云图</string>
+		<string>全国雷达</string>
+		<string>台风路径</string>
+		<string>等风来</string>
+		<string>实景天气</string>
+		<string>全国预报</string>
+	</array>
+	<key>mapImage</key>
+	<array>
+		<string>全球温度预报</string>
+	</array>
+	<key>mapJson</key>
+	<array>
+		<string>24小时变温实况</string>
+		<string>全国大风降温预报</string>
+		<string>全国大雾落区预报</string>
+		<string>全国地质灾害气象预报</string>
+		<string>全国高温区域预报</string>
+		<string>全国降水量预报</string>
+		<string>全国空气污染气象预报</string>
+		<string>全国强对流落区预报</string>
+		<string>全国强降雪落区预报</string>
+		<string>全国沙尘落区预报</string>
+		<string>全国烟花爆竹燃放气象指数预报</string>
+		<string>全国最高气温预报</string>
+		<string>逐小时极大风速</string>
+		<string>渍涝气象风险预报</string>
+		<string>全国霾区预报</string>
+	</array>
+</dict>
+</plist>

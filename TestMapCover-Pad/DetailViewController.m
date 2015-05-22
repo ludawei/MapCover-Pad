@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 
 #import "Masonry.h"
-#import "CWMyOverlayView.h"
+#import "CWMyOverlayRenderer.h"
 #import "CWMyPolyLineRenderer.h"
 #import "Util.h"
 
@@ -350,14 +350,14 @@
     
     if ([overlay isKindOfClass:[MKPolygon class]]) {
         CWMyOverlayRenderer *routineView = [[CWMyOverlayRenderer alloc] initWithPolygon:overlay];
-        routineView.fillColor = [[Util colorFromRGBString:[overlay title]] colorWithAlphaComponent:0.7];
+        routineView.fillColor = [[Util colorFromRGBString:[overlay title]] colorWithAlphaComponent:1.0];
         
         renderer = routineView;
     }
     
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         CWMyPolyLineRenderer * routineView = [[CWMyPolyLineRenderer alloc] initWithPolyline:overlay];
-        routineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];//[[self colorFromRGBString:[overlay subtitle]] colorWithAlphaComponent:0.7];
+        routineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:1.0];//[[self colorFromRGBString:[overlay subtitle]] colorWithAlphaComponent:0.7];
         routineView.lineWidth = 1.5;
         renderer = routineView;
     }

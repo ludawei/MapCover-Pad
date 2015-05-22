@@ -10,6 +10,12 @@
 #import "DetailViewController.h"
 #import <MapKit/MapKit.h>
 
+#import "DetailViewController1.h"
+#import "CWEyeMapController.h"
+#import "CWWindMapController.h"
+#import "MapAnimController.h"
+#import "OtherMapController.h"
+
 @interface MasterViewController ()
 
 @property NSDictionary *datas;
@@ -117,17 +123,55 @@
     NSString *key = [self.dataSections objectAtIndex:indexPath.section];
     NSString *text = [[self.datas objectForKey:key] objectAtIndex:indexPath.row];
     
+    UIViewController *vc = nil;
     if ([key isEqualToString:@"mapJson"]) {
         DetailViewController *controller = [DetailViewController new];
         [controller setDetailItem:text];
         [self clearMapView];
         controller.mapView = self.mapView;
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
         
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+        vc = controller;
+    }
+    else if ([text isEqualToString:@"全球温度预报"]) {
+        DetailViewController1 *controller = [DetailViewController1 new];
+        controller.detailItem = text;
+        [self clearMapView];
+        controller.mapView = self.mapView;
+        
+        vc = controller;
+    }
+    else if ([text isEqualToString:@"全国雷达"]) {
+        MapAnimController *next = [MapAnimController new];
+        next.type = 0;
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"全国云图"]) {
+        MapAnimController *next = [MapAnimController new];
+        next.type = 1;
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"等风来"]) {
+        CWWindMapController *next = [CWWindMapController new];
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"实景天气"]) {
+        CWEyeMapController *next = [CWEyeMapController new];
+        next.title = text;
+        
+        vc = next;
+    }
+    
+    if (vc) {
+        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        vc.navigationItem.leftItemsSupplementBackButton = YES;
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         [self showDetailViewController:nav sender:nil];
     }
+    
 }
 
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

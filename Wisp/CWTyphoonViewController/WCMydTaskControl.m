@@ -22,6 +22,7 @@
 
 - (void)dealloc
 {
+    [self.mydTask setListener:nil];
     [super dealloc];
 }
 

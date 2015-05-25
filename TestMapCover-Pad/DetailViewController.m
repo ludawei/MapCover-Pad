@@ -61,7 +61,7 @@
             make.top.mas_equalTo(20);
         }];
         
-        UIImage *indexImage = [UIImage imageNamed:@"index1"];
+        UIImage *indexImage = [UIImage imageNamed:(NSString *)self.detailItem];
         
         UIImageView *imgView = [UIImageView new];
         imgView.image = indexImage;

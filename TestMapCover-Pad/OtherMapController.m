@@ -168,7 +168,7 @@
 {
     if ([annotation isKindOfClass:[MKPointAnnotation class]])
     {
-        static NSString *navigationCellIdentifier = @"pointIdentifier";
+        static NSString *navigationCellIdentifier = @"pointIdentifier-other";
         
         CustomAnnotationView *poiAnnotationView = (CustomAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:navigationCellIdentifier];
         if (!poiAnnotationView)

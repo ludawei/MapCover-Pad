@@ -12,10 +12,6 @@
 
 - (void)onPostExecute:(id)result
 {
-    if (!result) {
-        return;
-    }
-    
     if (_listener) {
         [_listener onTriggered:result];
     }

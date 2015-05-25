@@ -75,7 +75,7 @@
 
 -(void)showWithStationId:(NSString *)stationid
 {
-    self.stationId = stationid;
+    self.stationId = [[stationid componentsSeparatedByString:@"-"] firstObject];
     NSString *statId = [[stationid componentsSeparatedByString:@"-"] firstObject];
     NSString *areaId = [[stationid componentsSeparatedByString:@"-"] lastObject];
     

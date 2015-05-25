@@ -247,6 +247,21 @@
 		EEEF56B31B12BAD10070A30F /* yellow_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF565D1B12BAD10070A30F /* yellow_dot.png */; };
 		EEEF56B51B12BAE70070A30F /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */; };
 		EEEF56B81B1312090070A30F /* MapStatistTempView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56B71B1312090070A30F /* MapStatistTempView.m */; };
+		EEEF56C81B1330770070A30F /* 24小时变温实况.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56BA1B1330770070A30F /* 24小时变温实况.png */; };
+		EEEF56C91B1330770070A30F /* 全国降水量预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56BB1B1330770070A30F /* 全国降水量预报.png */; };
+		EEEF56CB1B1330770070A30F /* 全国地质灾害气象预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56BD1B1330770070A30F /* 全国地质灾害气象预报.png */; };
+		EEEF56CC1B1330770070A30F /* 全国大雾落区预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56BE1B1330770070A30F /* 全国大雾落区预报.png */; };
+		EEEF56CD1B1330770070A30F /* 全国大风降温预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56BF1B1330770070A30F /* 全国大风降温预报.png */; };
+		EEEF56CE1B1330770070A30F /* 全国强对流落区预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C01B1330770070A30F /* 全国强对流落区预报.png */; };
+		EEEF56CF1B1330770070A30F /* 全国强降雪落区预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C11B1330770070A30F /* 全国强降雪落区预报.png */; };
+		EEEF56D01B1330770070A30F /* 全国沙尘落区预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C21B1330770070A30F /* 全国沙尘落区预报.png */; };
+		EEEF56D11B1330770070A30F /* 渍涝气象风险预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C31B1330770070A30F /* 渍涝气象风险预报.png */; };
+		EEEF56D21B1330770070A30F /* 全国烟花爆竹燃放气象指数预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C41B1330770070A30F /* 全国烟花爆竹燃放气象指数预报.png */; };
+		EEEF56D31B1330770070A30F /* 全国空气污染气象预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C51B1330770070A30F /* 全国空气污染气象预报.png */; };
+		EEEF56D41B1330770070A30F /* 逐小时极大风速.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C61B1330770070A30F /* 逐小时极大风速.png */; };
+		EEEF56D51B1330770070A30F /* 全国高温区域预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56C71B1330770070A30F /* 全国高温区域预报.png */; };
+		EEEF56D71B13324D0070A30F /* 全国最高气温预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56D61B13324D0070A30F /* 全国最高气温预报.png */; };
+		EEEF56D91B1332680070A30F /* 全国霾区预报.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56D81B1332680070A30F /* 全国霾区预报.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -729,6 +744,21 @@
 		EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		EEEF56B61B1312090070A30F /* MapStatistTempView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStatistTempView.h; sourceTree = "<group>"; };
 		EEEF56B71B1312090070A30F /* MapStatistTempView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStatistTempView.m; sourceTree = "<group>"; };
+		EEEF56BA1B1330770070A30F /* 24小时变温实况.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "24小时变温实况.png"; sourceTree = "<group>"; };
+		EEEF56BB1B1330770070A30F /* 全国降水量预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国降水量预报.png"; sourceTree = "<group>"; };
+		EEEF56BD1B1330770070A30F /* 全国地质灾害气象预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国地质灾害气象预报.png"; sourceTree = "<group>"; };
+		EEEF56BE1B1330770070A30F /* 全国大雾落区预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国大雾落区预报.png"; sourceTree = "<group>"; };
+		EEEF56BF1B1330770070A30F /* 全国大风降温预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国大风降温预报.png"; sourceTree = "<group>"; };
+		EEEF56C01B1330770070A30F /* 全国强对流落区预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国强对流落区预报.png"; sourceTree = "<group>"; };
+		EEEF56C11B1330770070A30F /* 全国强降雪落区预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国强降雪落区预报.png"; sourceTree = "<group>"; };
+		EEEF56C21B1330770070A30F /* 全国沙尘落区预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国沙尘落区预报.png"; sourceTree = "<group>"; };
+		EEEF56C31B1330770070A30F /* 渍涝气象风险预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "渍涝气象风险预报.png"; sourceTree = "<group>"; };
+		EEEF56C41B1330770070A30F /* 全国烟花爆竹燃放气象指数预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国烟花爆竹燃放气象指数预报.png"; sourceTree = "<group>"; };
+		EEEF56C51B1330770070A30F /* 全国空气污染气象预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国空气污染气象预报.png"; sourceTree = "<group>"; };
+		EEEF56C61B1330770070A30F /* 逐小时极大风速.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "逐小时极大风速.png"; sourceTree = "<group>"; };
+		EEEF56C71B1330770070A30F /* 全国高温区域预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国高温区域预报.png"; sourceTree = "<group>"; };
+		EEEF56D61B13324D0070A30F /* 全国最高气温预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国最高气温预报.png"; sourceTree = "<group>"; };
+		EEEF56D81B1332680070A30F /* 全国霾区预报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全国霾区预报.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -774,6 +804,7 @@
 				EEEF54161B0F2CDA0070A30F /* 全球预报要素图像 */,
 				EEEF50011B0DF13B0070A30F /* Masonry */,
 				EEEF4FFF1B0DF03C0070A30F /* MapDatas.plist */,
+				EEEF56B91B1330770070A30F /* 图例 */,
 				EEEF4FE01B0DEFF60070A30F /* 图形样例数据数据 */,
 				EEEF4FB61B0DEFCE0070A30F /* TestMapCover-Pad */,
 				EEEF4FD31B0DEFCE0070A30F /* TestMapCover-PadTests */,
@@ -1527,6 +1558,28 @@
 			path = wispImage;
 			sourceTree = "<group>";
 		};
+		EEEF56B91B1330770070A30F /* 图例 */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF56D81B1332680070A30F /* 全国霾区预报.png */,
+				EEEF56D61B13324D0070A30F /* 全国最高气温预报.png */,
+				EEEF56BA1B1330770070A30F /* 24小时变温实况.png */,
+				EEEF56BB1B1330770070A30F /* 全国降水量预报.png */,
+				EEEF56BD1B1330770070A30F /* 全国地质灾害气象预报.png */,
+				EEEF56BE1B1330770070A30F /* 全国大雾落区预报.png */,
+				EEEF56BF1B1330770070A30F /* 全国大风降温预报.png */,
+				EEEF56C01B1330770070A30F /* 全国强对流落区预报.png */,
+				EEEF56C11B1330770070A30F /* 全国强降雪落区预报.png */,
+				EEEF56C21B1330770070A30F /* 全国沙尘落区预报.png */,
+				EEEF56C31B1330770070A30F /* 渍涝气象风险预报.png */,
+				EEEF56C41B1330770070A30F /* 全国烟花爆竹燃放气象指数预报.png */,
+				EEEF56C51B1330770070A30F /* 全国空气污染气象预报.png */,
+				EEEF56C61B1330770070A30F /* 逐小时极大风速.png */,
+				EEEF56C71B1330770070A30F /* 全国高温区域预报.png */,
+			);
+			path = "图例";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1608,8 +1661,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEEF4FFC1B0DEFF60070A30F /* 全国高温区域预报 in Resources */,
+				EEEF56D51B1330770070A30F /* 全国高温区域预报.png in Resources */,
 				EEEF568D1B12BAD10070A30F /* templates_dsjcbg.png in Resources */,
 				EEEF56941B12BAD10070A30F /* templates_dsqxfw.png in Resources */,
+				EEEF56CE1B1330770070A30F /* 全国强对流落区预报.png in Resources */,
 				EEEF503C1B0ED36D0070A30F /* 全国降水量预报.json in Resources */,
 				EEEF54241B0F2CDA0070A30F /* 15032008.006_range.json in Resources */,
 				EEEF56A71B12BAD10070A30F /* arrow_right_24.png in Resources */,
@@ -1627,18 +1682,22 @@
 				EEEF56871B12BAD10070A30F /* templates_ds.css in Resources */,
 				EEEF4FC61B0DEFCE0070A30F /* Main.storyboard in Resources */,
 				EEEF56B21B12BAD10070A30F /* red_dot.png in Resources */,
+				EEEF56D11B1330770070A30F /* 渍涝气象风险预报.png in Resources */,
+				EEEF56CB1B1330770070A30F /* 全国地质灾害气象预报.png in Resources */,
 				EEEF56641B12BAD10070A30F /* CityMapView.xib in Resources */,
 				EEEF56951B12BAD10070A30F /* templates_dsqxjd.png in Resources */,
 				EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */,
 				EEEF56891B12BAD10070A30F /* templates_dsContent.js in Resources */,
 				EEEF4FFD1B0DEFF60070A30F /* 渍涝气象风险预报 in Resources */,
 				EEEF54251B0F2CDA0070A30F /* 14122008.000.png in Resources */,
+				EEEF56D41B1330770070A30F /* 逐小时极大风速.png in Resources */,
 				EEEF54261B0F2CDA0070A30F /* 14122008.000_range.json in Resources */,
 				EEEF56B11B12BAD10070A30F /* purple_dot.png in Resources */,
 				EEEF568E1B12BAD10070A30F /* templates_dsjhhq.jpg in Resources */,
 				EEEF56861B12BAD10070A30F /* templates_Climate_main.html in Resources */,
 				EEEF56911B12BAD10070A30F /* templates_dsLoading.gif in Resources */,
 				EEEF566C1B12BAD10070A30F /* TyphoonMapView.xib in Resources */,
+				EEEF56CC1B1330770070A30F /* 全国大雾落区预报.png in Resources */,
 				EEEF56971B12BAD10070A30F /* templates_dsTab.html in Resources */,
 				EEEF56931B12BAD10070A30F /* templates_dsqsyb.png in Resources */,
 				EEEF4FF61B0DEFF60070A30F /* 全国强降雪落区预报 in Resources */,
@@ -1650,11 +1709,15 @@
 				EEEF56AD1B12BAD10070A30F /* map_orange.png in Resources */,
 				EEEF56901B12BAD10070A30F /* templates_dsJSAlarmbg.png in Resources */,
 				EEEF56691B12BAD10070A30F /* RadarMapView.xib in Resources */,
+				EEEF56D21B1330770070A30F /* 全国烟花爆竹燃放气象指数预报.png in Resources */,
 				EEEF4FFA1B0DEFF60070A30F /* 全国空气污染气象预报 in Resources */,
 				EEEF565E1B12BAD10070A30F /* CustomMapView.xib in Resources */,
+				EEEF56C81B1330770070A30F /* 24小时变温实况.png in Resources */,
 				EEEF4FF21B0DEFF60070A30F /* 全国大雾落区预报 in Resources */,
 				EEEF56A81B12BAD10070A30F /* green_dot.png in Resources */,
 				EEEF54271B0F2CDA0070A30F /* 14122008.0001.png in Resources */,
+				EEEF56D31B1330770070A30F /* 全国空气污染气象预报.png in Resources */,
+				EEEF56C91B1330770070A30F /* 全国降水量预报.png in Resources */,
 				EEEF56A41B12BAD10070A30F /* templates_WeatherFlot.js in Resources */,
 				EEEF568C1B12BAD10070A30F /* templates_dsIndex_new.gif in Resources */,
 				EEEF503E1B0ED36D0070A30F /* 全国大风降温预报.json in Resources */,
@@ -1671,8 +1734,12 @@
 				EEEF503F1B0ED36D0070A30F /* 全国大雾落区预报.json in Resources */,
 				EEEF56A31B12BAD10070A30F /* templates_WeatherFlot.css in Resources */,
 				EEEF56B31B12BAD10070A30F /* yellow_dot.png in Resources */,
+				EEEF56D01B1330770070A30F /* 全国沙尘落区预报.png in Resources */,
+				EEEF56D91B1332680070A30F /* 全国霾区预报.png in Resources */,
 				EEEF50431B0ED36D0070A30F /* 全国霾区预报.json in Resources */,
 				EEEF50461B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json in Resources */,
+				EEEF56CD1B1330770070A30F /* 全国大风降温预报.png in Resources */,
+				EEEF56CF1B1330770070A30F /* 全国强降雪落区预报.png in Resources */,
 				EEEF569A1B12BAD10070A30F /* templates_dsyoujiao.png in Resources */,
 				EEEF542A1B0F2CDA0070A30F /* 14122208.000_range.json in Resources */,
 				EEEF54281B0F2CDA0070A30F /* 14122008.0001_range.json in Resources */,
@@ -1691,6 +1758,7 @@
 				EEEF56A11B12BAD10070A30F /* templates_NewsList_main.html in Resources */,
 				EEEF50421B0ED36D0070A30F /* 全国空气污染气象预报.json in Resources */,
 				EEEF54231B0F2CDA0070A30F /* 15032008.006.png in Resources */,
+				EEEF56D71B13324D0070A30F /* 全国最高气温预报.png in Resources */,
 				EEEF54C61B0F34C40070A30F /* LICENSE in Resources */,
 				EEEF56991B12BAD10070A30F /* templates_dsyahq.jpg in Resources */,
 				EEEF4FFB1B0DEFF60070A30F /* 全国降水量预报 in Resources */,

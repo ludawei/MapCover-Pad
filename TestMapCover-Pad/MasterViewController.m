@@ -232,7 +232,7 @@
         vc = viewController;
 
     }
-    else if ([text isEqualToString:@"全国温度预报"])
+    else if ([text isEqualToString:@"全国温度实况"])
     {
         OtherMapController *next = [OtherMapController new];
         next.title = text;

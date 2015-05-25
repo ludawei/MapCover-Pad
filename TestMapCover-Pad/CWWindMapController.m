@@ -271,8 +271,8 @@
 //        cityName = [cityInfo objectForKey:@"c7"];
 //    }
     
-    NSString *c13 = [CWUserManager sharedInstance].lon;
-    NSString *c14 = [CWUserManager sharedInstance].lat;
+    NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
+    NSString *c14 = @"39.9289";
     
     CLLocationCoordinate2D coor;
     if (c13 && c14) {

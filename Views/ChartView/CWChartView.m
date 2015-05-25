@@ -362,6 +362,18 @@
         CGContextFillEllipseInRect(ctx, circleRect);
            // CGContextFillRect(ctx, circleRect);
         
+        if(plot.pointLabels && i < plot.pointLabels.count)
+        {
+            NSString *pointLabel = plot.pointLabels[i];
+            CGRect labelFrame = CGRectMake(x - 50 / 2, y - 20, 50, 20); // CWChartPlotPointLabelPositionUp
+            if(plot.pointLabelPosition == CWChartPlotPointLabelPositionDown)
+            {
+                labelFrame.origin.y = y + 5;
+            }
+            
+            [pointLabel drawInRect:labelFrame withFont:plot.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+        }
+        
         lastX = x;
         lastY = y;
         

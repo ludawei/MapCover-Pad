@@ -159,6 +159,94 @@
 		EEEF55D91B0F3A690070A30F /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55CA1B0F3A690070A30F /* UIImageView+WebCache.m */; };
 		EEEF55DA1B0F3A690070A30F /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55CC1B0F3A690070A30F /* UIView+WebCacheOperation.m */; };
 		EEEF55DC1B0F402A0070A30F /* windMapIndex.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF55DB1B0F402A0070A30F /* windMapIndex.png */; };
+		EEEF565E1B12BAD10070A30F /* CustomMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF55DF1B12BAD10070A30F /* CustomMapView.xib */; };
+		EEEF565F1B12BAD10070A30F /* CustomMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55E11B12BAD10070A30F /* CustomMapViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56601B12BAD10070A30F /* CustomWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF55E21B12BAD10070A30F /* CustomWebView.xib */; };
+		EEEF56611B12BAD10070A30F /* CustomWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55E41B12BAD10070A30F /* CustomWebViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56621B12BAD10070A30F /* WCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55E61B12BAD10070A30F /* WCTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56631B12BAD10070A30F /* WispControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55E81B12BAD10070A30F /* WispControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56641B12BAD10070A30F /* CityMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF55EA1B12BAD10070A30F /* CityMapView.xib */; };
+		EEEF56651B12BAD10070A30F /* CityMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55EC1B12BAD10070A30F /* CityMapViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56661B12BAD10070A30F /* WCCityLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55EE1B12BAD10070A30F /* WCCityLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56671B12BAD10070A30F /* WeatherAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55F01B12BAD10070A30F /* WeatherAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56681B12BAD10070A30F /* WeatherAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55F21B12BAD10070A30F /* WeatherAnnotationView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56691B12BAD10070A30F /* RadarMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF55F41B12BAD10070A30F /* RadarMapView.xib */; };
+		EEEF566A1B12BAD10070A30F /* RadarMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55F61B12BAD10070A30F /* RadarMapViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF566B1B12BAD10070A30F /* RadarPolygonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55F81B12BAD10070A30F /* RadarPolygonView.m */; };
+		EEEF566C1B12BAD10070A30F /* TyphoonMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEEF55FB1B12BAD10070A30F /* TyphoonMapView.xib */; };
+		EEEF566D1B12BAD10070A30F /* TyphoonMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55FD1B12BAD10070A30F /* TyphoonMapViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF566E1B12BAD10070A30F /* TyphoonSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55FF1B12BAD10070A30F /* TyphoonSpotAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF566F1B12BAD10070A30F /* TyphoonSpotAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56011B12BAD10070A30F /* TyphoonSpotAnnotationView.m */; };
+		EEEF56701B12BAD10070A30F /* WCMydAsyncTask.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56031B12BAD10070A30F /* WCMydAsyncTask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56711B12BAD10070A30F /* WCMydTaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56051B12BAD10070A30F /* WCMydTaskControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56721B12BAD10070A30F /* CWWispControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56071B12BAD10070A30F /* CWWispControllerManager.m */; };
+		EEEF56731B12BAD10070A30F /* AsyncTask.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF560A1B12BAD10070A30F /* AsyncTask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56741B12BAD10070A30F /* HTTPAsyncTask.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF560C1B12BAD10070A30F /* HTTPAsyncTask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56751B12BAD10070A30F /* HTTPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF560E1B12BAD10070A30F /* HTTPHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56761B12BAD10070A30F /* HTTPHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56101B12BAD10070A30F /* HTTPHosts.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56771B12BAD10070A30F /* HTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56121B12BAD10070A30F /* HTTPManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56781B12BAD10070A30F /* MBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56141B12BAD10070A30F /* MBundle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56791B12BAD10070A30F /* MFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56161B12BAD10070A30F /* MFrame.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF567A1B12BAD10070A30F /* MHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56181B12BAD10070A30F /* MHeader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF567B1B12BAD10070A30F /* MImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF561A1B12BAD10070A30F /* MImage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF567C1B12BAD10070A30F /* MLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF561C1B12BAD10070A30F /* MLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF567D1B12BAD10070A30F /* MLineString.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF561E1B12BAD10070A30F /* MLineString.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF567E1B12BAD10070A30F /* MLineStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56201B12BAD10070A30F /* MLineStyle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF567F1B12BAD10070A30F /* MPointString.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56221B12BAD10070A30F /* MPointString.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56801B12BAD10070A30F /* MPointText.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56241B12BAD10070A30F /* MPointText.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56811B12BAD10070A30F /* MSolidFillStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56261B12BAD10070A30F /* MSolidFillStyle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56821B12BAD10070A30F /* MTag.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56281B12BAD10070A30F /* MTag.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56831B12BAD10070A30F /* MText.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF562A1B12BAD10070A30F /* MText.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56841B12BAD10070A30F /* MydAsyncTask.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF562C1B12BAD10070A30F /* MydAsyncTask.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EEEF56851B12BAD10070A30F /* templates_Climate.css in Resources */ = {isa = PBXBuildFile; fileRef = EEEF562E1B12BAD10070A30F /* templates_Climate.css */; };
+		EEEF56861B12BAD10070A30F /* templates_Climate_main.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF562F1B12BAD10070A30F /* templates_Climate_main.html */; };
+		EEEF56871B12BAD10070A30F /* templates_ds.css in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56301B12BAD10070A30F /* templates_ds.css */; };
+		EEEF56881B12BAD10070A30F /* templates_dsContent.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56311B12BAD10070A30F /* templates_dsContent.html */; };
+		EEEF56891B12BAD10070A30F /* templates_dsContent.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56321B12BAD10070A30F /* templates_dsContent.js */; };
+		EEEF568A1B12BAD10070A30F /* templates_dsgyct.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56331B12BAD10070A30F /* templates_dsgyct.png */; };
+		EEEF568B1B12BAD10070A30F /* templates_dsIndex_main.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56341B12BAD10070A30F /* templates_dsIndex_main.html */; };
+		EEEF568C1B12BAD10070A30F /* templates_dsIndex_new.gif in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56351B12BAD10070A30F /* templates_dsIndex_new.gif */; };
+		EEEF568D1B12BAD10070A30F /* templates_dsjcbg.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56361B12BAD10070A30F /* templates_dsjcbg.png */; };
+		EEEF568E1B12BAD10070A30F /* templates_dsjhhq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56371B12BAD10070A30F /* templates_dsjhhq.jpg */; };
+		EEEF568F1B12BAD10070A30F /* templates_dsjrck.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56381B12BAD10070A30F /* templates_dsjrck.png */; };
+		EEEF56901B12BAD10070A30F /* templates_dsJSAlarmbg.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56391B12BAD10070A30F /* templates_dsJSAlarmbg.png */; };
+		EEEF56911B12BAD10070A30F /* templates_dsLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = EEEF563A1B12BAD10070A30F /* templates_dsLoading.gif */; };
+		EEEF56921B12BAD10070A30F /* templates_dsMetroList.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF563B1B12BAD10070A30F /* templates_dsMetroList.html */; };
+		EEEF56931B12BAD10070A30F /* templates_dsqsyb.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF563C1B12BAD10070A30F /* templates_dsqsyb.png */; };
+		EEEF56941B12BAD10070A30F /* templates_dsqxfw.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF563D1B12BAD10070A30F /* templates_dsqxfw.png */; };
+		EEEF56951B12BAD10070A30F /* templates_dsqxjd.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF563E1B12BAD10070A30F /* templates_dsqxjd.png */; };
+		EEEF56961B12BAD10070A30F /* templates_dsrdqx.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF563F1B12BAD10070A30F /* templates_dsrdqx.png */; };
+		EEEF56971B12BAD10070A30F /* templates_dsTab.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56401B12BAD10070A30F /* templates_dsTab.html */; };
+		EEEF56981B12BAD10070A30F /* templates_dsTab.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56411B12BAD10070A30F /* templates_dsTab.js */; };
+		EEEF56991B12BAD10070A30F /* templates_dsyahq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56421B12BAD10070A30F /* templates_dsyahq.jpg */; };
+		EEEF569A1B12BAD10070A30F /* templates_dsyoujiao.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56431B12BAD10070A30F /* templates_dsyoujiao.png */; };
+		EEEF569B1B12BAD10070A30F /* templates_Flot.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56441B12BAD10070A30F /* templates_Flot.js */; };
+		EEEF569C1B12BAD10070A30F /* templates_ImgPlay.css in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56451B12BAD10070A30F /* templates_ImgPlay.css */; };
+		EEEF569D1B12BAD10070A30F /* templates_ImgPlay.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56461B12BAD10070A30F /* templates_ImgPlay.js */; };
+		EEEF569E1B12BAD10070A30F /* templates_ImgPlay_main.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56471B12BAD10070A30F /* templates_ImgPlay_main.html */; };
+		EEEF569F1B12BAD10070A30F /* templates_NewsList.css in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56481B12BAD10070A30F /* templates_NewsList.css */; };
+		EEEF56A01B12BAD10070A30F /* templates_NewsList.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56491B12BAD10070A30F /* templates_NewsList.js */; };
+		EEEF56A11B12BAD10070A30F /* templates_NewsList_main.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF564A1B12BAD10070A30F /* templates_NewsList_main.html */; };
+		EEEF56A21B12BAD10070A30F /* templates_Public.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF564B1B12BAD10070A30F /* templates_Public.js */; };
+		EEEF56A31B12BAD10070A30F /* templates_WeatherFlot.css in Resources */ = {isa = PBXBuildFile; fileRef = EEEF564C1B12BAD10070A30F /* templates_WeatherFlot.css */; };
+		EEEF56A41B12BAD10070A30F /* templates_WeatherFlot.js in Resources */ = {isa = PBXBuildFile; fileRef = EEEF564D1B12BAD10070A30F /* templates_WeatherFlot.js */; };
+		EEEF56A51B12BAD10070A30F /* templates_WeatherFlot_main.html in Resources */ = {isa = PBXBuildFile; fileRef = EEEF564E1B12BAD10070A30F /* templates_WeatherFlot_main.html */; };
+		EEEF56A61B12BAD10070A30F /* arrow_left_24.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56501B12BAD10070A30F /* arrow_left_24.png */; };
+		EEEF56A71B12BAD10070A30F /* arrow_right_24.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56511B12BAD10070A30F /* arrow_right_24.png */; };
+		EEEF56A81B12BAD10070A30F /* green_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56521B12BAD10070A30F /* green_dot.png */; };
+		EEEF56A91B12BAD10070A30F /* map_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56531B12BAD10070A30F /* map_blue.png */; };
+		EEEF56AA1B12BAD10070A30F /* map_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56541B12BAD10070A30F /* map_blue@2x.png */; };
+		EEEF56AB1B12BAD10070A30F /* map_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56551B12BAD10070A30F /* map_green.png */; };
+		EEEF56AC1B12BAD10070A30F /* map_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56561B12BAD10070A30F /* map_green@2x.png */; };
+		EEEF56AD1B12BAD10070A30F /* map_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56571B12BAD10070A30F /* map_orange.png */; };
+		EEEF56AE1B12BAD10070A30F /* map_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56581B12BAD10070A30F /* map_orange@2x.png */; };
+		EEEF56AF1B12BAD10070A30F /* orange_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF56591B12BAD10070A30F /* orange_dot.png */; };
+		EEEF56B01B12BAD10070A30F /* pink_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF565A1B12BAD10070A30F /* pink_dot.png */; };
+		EEEF56B11B12BAD10070A30F /* purple_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF565B1B12BAD10070A30F /* purple_dot.png */; };
+		EEEF56B21B12BAD10070A30F /* red_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF565C1B12BAD10070A30F /* red_dot.png */; };
+		EEEF56B31B12BAD10070A30F /* yellow_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF565D1B12BAD10070A30F /* yellow_dot.png */; };
+		EEEF56B51B12BAE70070A30F /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */; };
+		EEEF56B81B1312090070A30F /* MapStatistTempView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF56B71B1312090070A30F /* MapStatistTempView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -517,6 +605,130 @@
 		EEEF55CB1B0F3A690070A30F /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		EEEF55CC1B0F3A690070A30F /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		EEEF55DB1B0F402A0070A30F /* windMapIndex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windMapIndex.png; sourceTree = "<group>"; };
+		EEEF55DF1B12BAD10070A30F /* CustomMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMapView.xib; sourceTree = "<group>"; };
+		EEEF55E01B12BAD10070A30F /* CustomMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMapViewController.h; sourceTree = "<group>"; };
+		EEEF55E11B12BAD10070A30F /* CustomMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMapViewController.m; sourceTree = "<group>"; };
+		EEEF55E21B12BAD10070A30F /* CustomWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomWebView.xib; sourceTree = "<group>"; };
+		EEEF55E31B12BAD10070A30F /* CustomWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewController.h; sourceTree = "<group>"; };
+		EEEF55E41B12BAD10070A30F /* CustomWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewController.m; sourceTree = "<group>"; };
+		EEEF55E51B12BAD10070A30F /* WCTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCTools.h; sourceTree = "<group>"; };
+		EEEF55E61B12BAD10070A30F /* WCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCTools.m; sourceTree = "<group>"; };
+		EEEF55E71B12BAD10070A30F /* WispControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WispControl.h; sourceTree = "<group>"; };
+		EEEF55E81B12BAD10070A30F /* WispControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WispControl.m; sourceTree = "<group>"; };
+		EEEF55EA1B12BAD10070A30F /* CityMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityMapView.xib; sourceTree = "<group>"; };
+		EEEF55EB1B12BAD10070A30F /* CityMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityMapViewController.h; sourceTree = "<group>"; };
+		EEEF55EC1B12BAD10070A30F /* CityMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityMapViewController.m; sourceTree = "<group>"; };
+		EEEF55ED1B12BAD10070A30F /* WCCityLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCCityLocations.h; sourceTree = "<group>"; };
+		EEEF55EE1B12BAD10070A30F /* WCCityLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCCityLocations.m; sourceTree = "<group>"; };
+		EEEF55EF1B12BAD10070A30F /* WeatherAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAnnotation.h; sourceTree = "<group>"; };
+		EEEF55F01B12BAD10070A30F /* WeatherAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAnnotation.m; sourceTree = "<group>"; };
+		EEEF55F11B12BAD10070A30F /* WeatherAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAnnotationView.h; sourceTree = "<group>"; };
+		EEEF55F21B12BAD10070A30F /* WeatherAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAnnotationView.m; sourceTree = "<group>"; };
+		EEEF55F41B12BAD10070A30F /* RadarMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarMapView.xib; sourceTree = "<group>"; };
+		EEEF55F51B12BAD10070A30F /* RadarMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarMapViewController.h; sourceTree = "<group>"; };
+		EEEF55F61B12BAD10070A30F /* RadarMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarMapViewController.m; sourceTree = "<group>"; };
+		EEEF55F71B12BAD10070A30F /* RadarPolygonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarPolygonView.h; sourceTree = "<group>"; };
+		EEEF55F81B12BAD10070A30F /* RadarPolygonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarPolygonView.m; sourceTree = "<group>"; };
+		EEEF55FA1B12BAD10070A30F /* TaskListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListener.h; sourceTree = "<group>"; };
+		EEEF55FB1B12BAD10070A30F /* TyphoonMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TyphoonMapView.xib; sourceTree = "<group>"; };
+		EEEF55FC1B12BAD10070A30F /* TyphoonMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonMapViewController.h; sourceTree = "<group>"; };
+		EEEF55FD1B12BAD10070A30F /* TyphoonMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonMapViewController.m; sourceTree = "<group>"; };
+		EEEF55FE1B12BAD10070A30F /* TyphoonSpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonSpotAnnotation.h; sourceTree = "<group>"; };
+		EEEF55FF1B12BAD10070A30F /* TyphoonSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonSpotAnnotation.m; sourceTree = "<group>"; };
+		EEEF56001B12BAD10070A30F /* TyphoonSpotAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonSpotAnnotationView.h; sourceTree = "<group>"; };
+		EEEF56011B12BAD10070A30F /* TyphoonSpotAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonSpotAnnotationView.m; sourceTree = "<group>"; };
+		EEEF56021B12BAD10070A30F /* WCMydAsyncTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMydAsyncTask.h; sourceTree = "<group>"; };
+		EEEF56031B12BAD10070A30F /* WCMydAsyncTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCMydAsyncTask.m; sourceTree = "<group>"; };
+		EEEF56041B12BAD10070A30F /* WCMydTaskControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMydTaskControl.h; sourceTree = "<group>"; };
+		EEEF56051B12BAD10070A30F /* WCMydTaskControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCMydTaskControl.m; sourceTree = "<group>"; };
+		EEEF56061B12BAD10070A30F /* CWWispControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWWispControllerManager.h; sourceTree = "<group>"; };
+		EEEF56071B12BAD10070A30F /* CWWispControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWWispControllerManager.m; sourceTree = "<group>"; };
+		EEEF56091B12BAD10070A30F /* AsyncTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTask.h; sourceTree = "<group>"; };
+		EEEF560A1B12BAD10070A30F /* AsyncTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncTask.m; sourceTree = "<group>"; };
+		EEEF560B1B12BAD10070A30F /* HTTPAsyncTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAsyncTask.h; sourceTree = "<group>"; };
+		EEEF560C1B12BAD10070A30F /* HTTPAsyncTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAsyncTask.m; sourceTree = "<group>"; };
+		EEEF560D1B12BAD10070A30F /* HTTPHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPHandler.h; sourceTree = "<group>"; };
+		EEEF560E1B12BAD10070A30F /* HTTPHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPHandler.m; sourceTree = "<group>"; };
+		EEEF560F1B12BAD10070A30F /* HTTPHosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPHosts.h; sourceTree = "<group>"; };
+		EEEF56101B12BAD10070A30F /* HTTPHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPHosts.m; sourceTree = "<group>"; };
+		EEEF56111B12BAD10070A30F /* HTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPManager.h; sourceTree = "<group>"; };
+		EEEF56121B12BAD10070A30F /* HTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPManager.m; sourceTree = "<group>"; };
+		EEEF56131B12BAD10070A30F /* MBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBundle.h; sourceTree = "<group>"; };
+		EEEF56141B12BAD10070A30F /* MBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBundle.m; sourceTree = "<group>"; };
+		EEEF56151B12BAD10070A30F /* MFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFrame.h; sourceTree = "<group>"; };
+		EEEF56161B12BAD10070A30F /* MFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFrame.m; sourceTree = "<group>"; };
+		EEEF56171B12BAD10070A30F /* MHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHeader.h; sourceTree = "<group>"; };
+		EEEF56181B12BAD10070A30F /* MHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHeader.m; sourceTree = "<group>"; };
+		EEEF56191B12BAD10070A30F /* MImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MImage.h; sourceTree = "<group>"; };
+		EEEF561A1B12BAD10070A30F /* MImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MImage.m; sourceTree = "<group>"; };
+		EEEF561B1B12BAD10070A30F /* MLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLayer.h; sourceTree = "<group>"; };
+		EEEF561C1B12BAD10070A30F /* MLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLayer.m; sourceTree = "<group>"; };
+		EEEF561D1B12BAD10070A30F /* MLineString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLineString.h; sourceTree = "<group>"; };
+		EEEF561E1B12BAD10070A30F /* MLineString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLineString.m; sourceTree = "<group>"; };
+		EEEF561F1B12BAD10070A30F /* MLineStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLineStyle.h; sourceTree = "<group>"; };
+		EEEF56201B12BAD10070A30F /* MLineStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLineStyle.m; sourceTree = "<group>"; };
+		EEEF56211B12BAD10070A30F /* MPointString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPointString.h; sourceTree = "<group>"; };
+		EEEF56221B12BAD10070A30F /* MPointString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPointString.m; sourceTree = "<group>"; };
+		EEEF56231B12BAD10070A30F /* MPointText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPointText.h; sourceTree = "<group>"; };
+		EEEF56241B12BAD10070A30F /* MPointText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPointText.m; sourceTree = "<group>"; };
+		EEEF56251B12BAD10070A30F /* MSolidFillStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSolidFillStyle.h; sourceTree = "<group>"; };
+		EEEF56261B12BAD10070A30F /* MSolidFillStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSolidFillStyle.m; sourceTree = "<group>"; };
+		EEEF56271B12BAD10070A30F /* MTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTag.h; sourceTree = "<group>"; };
+		EEEF56281B12BAD10070A30F /* MTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTag.m; sourceTree = "<group>"; };
+		EEEF56291B12BAD10070A30F /* MText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MText.h; sourceTree = "<group>"; };
+		EEEF562A1B12BAD10070A30F /* MText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MText.m; sourceTree = "<group>"; };
+		EEEF562B1B12BAD10070A30F /* MydAsyncTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MydAsyncTask.h; sourceTree = "<group>"; };
+		EEEF562C1B12BAD10070A30F /* MydAsyncTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MydAsyncTask.m; sourceTree = "<group>"; };
+		EEEF562E1B12BAD10070A30F /* templates_Climate.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = templates_Climate.css; sourceTree = "<group>"; };
+		EEEF562F1B12BAD10070A30F /* templates_Climate_main.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_Climate_main.html; sourceTree = "<group>"; };
+		EEEF56301B12BAD10070A30F /* templates_ds.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = templates_ds.css; sourceTree = "<group>"; };
+		EEEF56311B12BAD10070A30F /* templates_dsContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_dsContent.html; sourceTree = "<group>"; };
+		EEEF56321B12BAD10070A30F /* templates_dsContent.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_dsContent.js; sourceTree = "<group>"; };
+		EEEF56331B12BAD10070A30F /* templates_dsgyct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsgyct.png; sourceTree = "<group>"; };
+		EEEF56341B12BAD10070A30F /* templates_dsIndex_main.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_dsIndex_main.html; sourceTree = "<group>"; };
+		EEEF56351B12BAD10070A30F /* templates_dsIndex_new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = templates_dsIndex_new.gif; sourceTree = "<group>"; };
+		EEEF56361B12BAD10070A30F /* templates_dsjcbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsjcbg.png; sourceTree = "<group>"; };
+		EEEF56371B12BAD10070A30F /* templates_dsjhhq.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = templates_dsjhhq.jpg; sourceTree = "<group>"; };
+		EEEF56381B12BAD10070A30F /* templates_dsjrck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsjrck.png; sourceTree = "<group>"; };
+		EEEF56391B12BAD10070A30F /* templates_dsJSAlarmbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsJSAlarmbg.png; sourceTree = "<group>"; };
+		EEEF563A1B12BAD10070A30F /* templates_dsLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = templates_dsLoading.gif; sourceTree = "<group>"; };
+		EEEF563B1B12BAD10070A30F /* templates_dsMetroList.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_dsMetroList.html; sourceTree = "<group>"; };
+		EEEF563C1B12BAD10070A30F /* templates_dsqsyb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsqsyb.png; sourceTree = "<group>"; };
+		EEEF563D1B12BAD10070A30F /* templates_dsqxfw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsqxfw.png; sourceTree = "<group>"; };
+		EEEF563E1B12BAD10070A30F /* templates_dsqxjd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsqxjd.png; sourceTree = "<group>"; };
+		EEEF563F1B12BAD10070A30F /* templates_dsrdqx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsrdqx.png; sourceTree = "<group>"; };
+		EEEF56401B12BAD10070A30F /* templates_dsTab.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_dsTab.html; sourceTree = "<group>"; };
+		EEEF56411B12BAD10070A30F /* templates_dsTab.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_dsTab.js; sourceTree = "<group>"; };
+		EEEF56421B12BAD10070A30F /* templates_dsyahq.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = templates_dsyahq.jpg; sourceTree = "<group>"; };
+		EEEF56431B12BAD10070A30F /* templates_dsyoujiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templates_dsyoujiao.png; sourceTree = "<group>"; };
+		EEEF56441B12BAD10070A30F /* templates_Flot.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_Flot.js; sourceTree = "<group>"; };
+		EEEF56451B12BAD10070A30F /* templates_ImgPlay.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = templates_ImgPlay.css; sourceTree = "<group>"; };
+		EEEF56461B12BAD10070A30F /* templates_ImgPlay.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_ImgPlay.js; sourceTree = "<group>"; };
+		EEEF56471B12BAD10070A30F /* templates_ImgPlay_main.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_ImgPlay_main.html; sourceTree = "<group>"; };
+		EEEF56481B12BAD10070A30F /* templates_NewsList.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = templates_NewsList.css; sourceTree = "<group>"; };
+		EEEF56491B12BAD10070A30F /* templates_NewsList.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_NewsList.js; sourceTree = "<group>"; };
+		EEEF564A1B12BAD10070A30F /* templates_NewsList_main.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_NewsList_main.html; sourceTree = "<group>"; };
+		EEEF564B1B12BAD10070A30F /* templates_Public.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_Public.js; sourceTree = "<group>"; };
+		EEEF564C1B12BAD10070A30F /* templates_WeatherFlot.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = templates_WeatherFlot.css; sourceTree = "<group>"; };
+		EEEF564D1B12BAD10070A30F /* templates_WeatherFlot.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = templates_WeatherFlot.js; sourceTree = "<group>"; };
+		EEEF564E1B12BAD10070A30F /* templates_WeatherFlot_main.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templates_WeatherFlot_main.html; sourceTree = "<group>"; };
+		EEEF56501B12BAD10070A30F /* arrow_left_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left_24.png; sourceTree = "<group>"; };
+		EEEF56511B12BAD10070A30F /* arrow_right_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_24.png; sourceTree = "<group>"; };
+		EEEF56521B12BAD10070A30F /* green_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_dot.png; sourceTree = "<group>"; };
+		EEEF56531B12BAD10070A30F /* map_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_blue.png; sourceTree = "<group>"; };
+		EEEF56541B12BAD10070A30F /* map_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_blue@2x.png"; sourceTree = "<group>"; };
+		EEEF56551B12BAD10070A30F /* map_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_green.png; sourceTree = "<group>"; };
+		EEEF56561B12BAD10070A30F /* map_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_green@2x.png"; sourceTree = "<group>"; };
+		EEEF56571B12BAD10070A30F /* map_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_orange.png; sourceTree = "<group>"; };
+		EEEF56581B12BAD10070A30F /* map_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_orange@2x.png"; sourceTree = "<group>"; };
+		EEEF56591B12BAD10070A30F /* orange_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_dot.png; sourceTree = "<group>"; };
+		EEEF565A1B12BAD10070A30F /* pink_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink_dot.png; sourceTree = "<group>"; };
+		EEEF565B1B12BAD10070A30F /* purple_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_dot.png; sourceTree = "<group>"; };
+		EEEF565C1B12BAD10070A30F /* red_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_dot.png; sourceTree = "<group>"; };
+		EEEF565D1B12BAD10070A30F /* yellow_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_dot.png; sourceTree = "<group>"; };
+		EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		EEEF56B61B1312090070A30F /* MapStatistTempView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStatistTempView.h; sourceTree = "<group>"; };
+		EEEF56B71B1312090070A30F /* MapStatistTempView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStatistTempView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +736,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEF56B51B12BAE70070A30F /* libstdc++.6.0.9.dylib in Frameworks */,
 				EEEF558D1B0F36E90070A30F /* libz.dylib in Frameworks */,
 				EEEF558B1B0F36D70070A30F /* Foundation.framework in Frameworks */,
 				EEEF55881B0F353D0070A30F /* libssl.a in Frameworks */,
@@ -544,6 +757,8 @@
 		EEEF4FAB1B0DEFCE0070A30F = {
 			isa = PBXGroup;
 			children = (
+				EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */,
+				EEEF55DD1B12BAD10070A30F /* Wisp */,
 				EEEF55AF1B0F3A690070A30F /* SDWebImage */,
 				EEEF55A81B0F39D70070A30F /* NJKWebViewProgress */,
 				EEEF559E1B0F38450070A30F /* MBProgressHUD */,
@@ -774,6 +989,8 @@
 				EEEF54671B0F33940070A30F /* NewMapCoverView.m */,
 				EEEF546A1B0F33940070A30F /* TJPieView.h */,
 				EEEF546B1B0F33940070A30F /* TJPieView.m */,
+				EEEF56B61B1312090070A30F /* MapStatistTempView.h */,
+				EEEF56B71B1312090070A30F /* MapStatistTempView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1126,6 +1343,190 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		EEEF55DD1B12BAD10070A30F /* Wisp */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF55DE1B12BAD10070A30F /* CustomWebViewController */,
+				EEEF55E91B12BAD10070A30F /* CWCityMapController */,
+				EEEF55F31B12BAD10070A30F /* CWRadarController */,
+				EEEF55F91B12BAD10070A30F /* CWTyphoonViewController */,
+				EEEF56061B12BAD10070A30F /* CWWispControllerManager.h */,
+				EEEF56071B12BAD10070A30F /* CWWispControllerManager.m */,
+				EEEF56081B12BAD10070A30F /* MydKit */,
+				EEEF562D1B12BAD10070A30F /* templates */,
+				EEEF564F1B12BAD10070A30F /* wispImage */,
+			);
+			path = Wisp;
+			sourceTree = "<group>";
+		};
+		EEEF55DE1B12BAD10070A30F /* CustomWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF55DF1B12BAD10070A30F /* CustomMapView.xib */,
+				EEEF55E01B12BAD10070A30F /* CustomMapViewController.h */,
+				EEEF55E11B12BAD10070A30F /* CustomMapViewController.m */,
+				EEEF55E21B12BAD10070A30F /* CustomWebView.xib */,
+				EEEF55E31B12BAD10070A30F /* CustomWebViewController.h */,
+				EEEF55E41B12BAD10070A30F /* CustomWebViewController.m */,
+				EEEF55E51B12BAD10070A30F /* WCTools.h */,
+				EEEF55E61B12BAD10070A30F /* WCTools.m */,
+				EEEF55E71B12BAD10070A30F /* WispControl.h */,
+				EEEF55E81B12BAD10070A30F /* WispControl.m */,
+			);
+			path = CustomWebViewController;
+			sourceTree = "<group>";
+		};
+		EEEF55E91B12BAD10070A30F /* CWCityMapController */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF55EA1B12BAD10070A30F /* CityMapView.xib */,
+				EEEF55EB1B12BAD10070A30F /* CityMapViewController.h */,
+				EEEF55EC1B12BAD10070A30F /* CityMapViewController.m */,
+				EEEF55ED1B12BAD10070A30F /* WCCityLocations.h */,
+				EEEF55EE1B12BAD10070A30F /* WCCityLocations.m */,
+				EEEF55EF1B12BAD10070A30F /* WeatherAnnotation.h */,
+				EEEF55F01B12BAD10070A30F /* WeatherAnnotation.m */,
+				EEEF55F11B12BAD10070A30F /* WeatherAnnotationView.h */,
+				EEEF55F21B12BAD10070A30F /* WeatherAnnotationView.m */,
+			);
+			path = CWCityMapController;
+			sourceTree = "<group>";
+		};
+		EEEF55F31B12BAD10070A30F /* CWRadarController */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF55F41B12BAD10070A30F /* RadarMapView.xib */,
+				EEEF55F51B12BAD10070A30F /* RadarMapViewController.h */,
+				EEEF55F61B12BAD10070A30F /* RadarMapViewController.m */,
+				EEEF55F71B12BAD10070A30F /* RadarPolygonView.h */,
+				EEEF55F81B12BAD10070A30F /* RadarPolygonView.m */,
+			);
+			path = CWRadarController;
+			sourceTree = "<group>";
+		};
+		EEEF55F91B12BAD10070A30F /* CWTyphoonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF55FA1B12BAD10070A30F /* TaskListener.h */,
+				EEEF55FB1B12BAD10070A30F /* TyphoonMapView.xib */,
+				EEEF55FC1B12BAD10070A30F /* TyphoonMapViewController.h */,
+				EEEF55FD1B12BAD10070A30F /* TyphoonMapViewController.m */,
+				EEEF55FE1B12BAD10070A30F /* TyphoonSpotAnnotation.h */,
+				EEEF55FF1B12BAD10070A30F /* TyphoonSpotAnnotation.m */,
+				EEEF56001B12BAD10070A30F /* TyphoonSpotAnnotationView.h */,
+				EEEF56011B12BAD10070A30F /* TyphoonSpotAnnotationView.m */,
+				EEEF56021B12BAD10070A30F /* WCMydAsyncTask.h */,
+				EEEF56031B12BAD10070A30F /* WCMydAsyncTask.m */,
+				EEEF56041B12BAD10070A30F /* WCMydTaskControl.h */,
+				EEEF56051B12BAD10070A30F /* WCMydTaskControl.m */,
+			);
+			path = CWTyphoonViewController;
+			sourceTree = "<group>";
+		};
+		EEEF56081B12BAD10070A30F /* MydKit */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF56091B12BAD10070A30F /* AsyncTask.h */,
+				EEEF560A1B12BAD10070A30F /* AsyncTask.m */,
+				EEEF560B1B12BAD10070A30F /* HTTPAsyncTask.h */,
+				EEEF560C1B12BAD10070A30F /* HTTPAsyncTask.m */,
+				EEEF560D1B12BAD10070A30F /* HTTPHandler.h */,
+				EEEF560E1B12BAD10070A30F /* HTTPHandler.m */,
+				EEEF560F1B12BAD10070A30F /* HTTPHosts.h */,
+				EEEF56101B12BAD10070A30F /* HTTPHosts.m */,
+				EEEF56111B12BAD10070A30F /* HTTPManager.h */,
+				EEEF56121B12BAD10070A30F /* HTTPManager.m */,
+				EEEF56131B12BAD10070A30F /* MBundle.h */,
+				EEEF56141B12BAD10070A30F /* MBundle.m */,
+				EEEF56151B12BAD10070A30F /* MFrame.h */,
+				EEEF56161B12BAD10070A30F /* MFrame.m */,
+				EEEF56171B12BAD10070A30F /* MHeader.h */,
+				EEEF56181B12BAD10070A30F /* MHeader.m */,
+				EEEF56191B12BAD10070A30F /* MImage.h */,
+				EEEF561A1B12BAD10070A30F /* MImage.m */,
+				EEEF561B1B12BAD10070A30F /* MLayer.h */,
+				EEEF561C1B12BAD10070A30F /* MLayer.m */,
+				EEEF561D1B12BAD10070A30F /* MLineString.h */,
+				EEEF561E1B12BAD10070A30F /* MLineString.m */,
+				EEEF561F1B12BAD10070A30F /* MLineStyle.h */,
+				EEEF56201B12BAD10070A30F /* MLineStyle.m */,
+				EEEF56211B12BAD10070A30F /* MPointString.h */,
+				EEEF56221B12BAD10070A30F /* MPointString.m */,
+				EEEF56231B12BAD10070A30F /* MPointText.h */,
+				EEEF56241B12BAD10070A30F /* MPointText.m */,
+				EEEF56251B12BAD10070A30F /* MSolidFillStyle.h */,
+				EEEF56261B12BAD10070A30F /* MSolidFillStyle.m */,
+				EEEF56271B12BAD10070A30F /* MTag.h */,
+				EEEF56281B12BAD10070A30F /* MTag.m */,
+				EEEF56291B12BAD10070A30F /* MText.h */,
+				EEEF562A1B12BAD10070A30F /* MText.m */,
+				EEEF562B1B12BAD10070A30F /* MydAsyncTask.h */,
+				EEEF562C1B12BAD10070A30F /* MydAsyncTask.m */,
+			);
+			path = MydKit;
+			sourceTree = "<group>";
+		};
+		EEEF562D1B12BAD10070A30F /* templates */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF562E1B12BAD10070A30F /* templates_Climate.css */,
+				EEEF562F1B12BAD10070A30F /* templates_Climate_main.html */,
+				EEEF56301B12BAD10070A30F /* templates_ds.css */,
+				EEEF56311B12BAD10070A30F /* templates_dsContent.html */,
+				EEEF56321B12BAD10070A30F /* templates_dsContent.js */,
+				EEEF56331B12BAD10070A30F /* templates_dsgyct.png */,
+				EEEF56341B12BAD10070A30F /* templates_dsIndex_main.html */,
+				EEEF56351B12BAD10070A30F /* templates_dsIndex_new.gif */,
+				EEEF56361B12BAD10070A30F /* templates_dsjcbg.png */,
+				EEEF56371B12BAD10070A30F /* templates_dsjhhq.jpg */,
+				EEEF56381B12BAD10070A30F /* templates_dsjrck.png */,
+				EEEF56391B12BAD10070A30F /* templates_dsJSAlarmbg.png */,
+				EEEF563A1B12BAD10070A30F /* templates_dsLoading.gif */,
+				EEEF563B1B12BAD10070A30F /* templates_dsMetroList.html */,
+				EEEF563C1B12BAD10070A30F /* templates_dsqsyb.png */,
+				EEEF563D1B12BAD10070A30F /* templates_dsqxfw.png */,
+				EEEF563E1B12BAD10070A30F /* templates_dsqxjd.png */,
+				EEEF563F1B12BAD10070A30F /* templates_dsrdqx.png */,
+				EEEF56401B12BAD10070A30F /* templates_dsTab.html */,
+				EEEF56411B12BAD10070A30F /* templates_dsTab.js */,
+				EEEF56421B12BAD10070A30F /* templates_dsyahq.jpg */,
+				EEEF56431B12BAD10070A30F /* templates_dsyoujiao.png */,
+				EEEF56441B12BAD10070A30F /* templates_Flot.js */,
+				EEEF56451B12BAD10070A30F /* templates_ImgPlay.css */,
+				EEEF56461B12BAD10070A30F /* templates_ImgPlay.js */,
+				EEEF56471B12BAD10070A30F /* templates_ImgPlay_main.html */,
+				EEEF56481B12BAD10070A30F /* templates_NewsList.css */,
+				EEEF56491B12BAD10070A30F /* templates_NewsList.js */,
+				EEEF564A1B12BAD10070A30F /* templates_NewsList_main.html */,
+				EEEF564B1B12BAD10070A30F /* templates_Public.js */,
+				EEEF564C1B12BAD10070A30F /* templates_WeatherFlot.css */,
+				EEEF564D1B12BAD10070A30F /* templates_WeatherFlot.js */,
+				EEEF564E1B12BAD10070A30F /* templates_WeatherFlot_main.html */,
+			);
+			path = templates;
+			sourceTree = "<group>";
+		};
+		EEEF564F1B12BAD10070A30F /* wispImage */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF56501B12BAD10070A30F /* arrow_left_24.png */,
+				EEEF56511B12BAD10070A30F /* arrow_right_24.png */,
+				EEEF56521B12BAD10070A30F /* green_dot.png */,
+				EEEF56531B12BAD10070A30F /* map_blue.png */,
+				EEEF56541B12BAD10070A30F /* map_blue@2x.png */,
+				EEEF56551B12BAD10070A30F /* map_green.png */,
+				EEEF56561B12BAD10070A30F /* map_green@2x.png */,
+				EEEF56571B12BAD10070A30F /* map_orange.png */,
+				EEEF56581B12BAD10070A30F /* map_orange@2x.png */,
+				EEEF56591B12BAD10070A30F /* orange_dot.png */,
+				EEEF565A1B12BAD10070A30F /* pink_dot.png */,
+				EEEF565B1B12BAD10070A30F /* purple_dot.png */,
+				EEEF565C1B12BAD10070A30F /* red_dot.png */,
+				EEEF565D1B12BAD10070A30F /* yellow_dot.png */,
+			);
+			path = wispImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1207,44 +1608,96 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEEF4FFC1B0DEFF60070A30F /* 全国高温区域预报 in Resources */,
+				EEEF568D1B12BAD10070A30F /* templates_dsjcbg.png in Resources */,
+				EEEF56941B12BAD10070A30F /* templates_dsqxfw.png in Resources */,
 				EEEF503C1B0ED36D0070A30F /* 全国降水量预报.json in Resources */,
 				EEEF54241B0F2CDA0070A30F /* 15032008.006_range.json in Resources */,
+				EEEF56A71B12BAD10070A30F /* arrow_right_24.png in Resources */,
+				EEEF568A1B12BAD10070A30F /* templates_dsgyct.png in Resources */,
+				EEEF56AE1B12BAD10070A30F /* map_orange@2x.png in Resources */,
 				EEEF4FF71B0DEFF60070A30F /* 全国最高气温预报 in Resources */,
 				EEEF4FF81B0DEFF60070A30F /* 全国沙尘落区预报 in Resources */,
 				EEEF50001B0DF03C0070A30F /* MapDatas.plist in Resources */,
 				EEEF50401B0ED36D0070A30F /* 全国地质灾害气象预报.json in Resources */,
 				EEEF4FF91B0DEFF60070A30F /* 全国烟花爆竹燃放气象指数预报 in Resources */,
+				EEEF569C1B12BAD10070A30F /* templates_ImgPlay.css in Resources */,
+				EEEF56961B12BAD10070A30F /* templates_dsrdqx.png in Resources */,
+				EEEF56601B12BAD10070A30F /* CustomWebView.xib in Resources */,
+				EEEF56A61B12BAD10070A30F /* arrow_left_24.png in Resources */,
+				EEEF56871B12BAD10070A30F /* templates_ds.css in Resources */,
 				EEEF4FC61B0DEFCE0070A30F /* Main.storyboard in Resources */,
+				EEEF56B21B12BAD10070A30F /* red_dot.png in Resources */,
+				EEEF56641B12BAD10070A30F /* CityMapView.xib in Resources */,
+				EEEF56951B12BAD10070A30F /* templates_dsqxjd.png in Resources */,
 				EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */,
+				EEEF56891B12BAD10070A30F /* templates_dsContent.js in Resources */,
 				EEEF4FFD1B0DEFF60070A30F /* 渍涝气象风险预报 in Resources */,
 				EEEF54251B0F2CDA0070A30F /* 14122008.000.png in Resources */,
 				EEEF54261B0F2CDA0070A30F /* 14122008.000_range.json in Resources */,
+				EEEF56B11B12BAD10070A30F /* purple_dot.png in Resources */,
+				EEEF568E1B12BAD10070A30F /* templates_dsjhhq.jpg in Resources */,
+				EEEF56861B12BAD10070A30F /* templates_Climate_main.html in Resources */,
+				EEEF56911B12BAD10070A30F /* templates_dsLoading.gif in Resources */,
+				EEEF566C1B12BAD10070A30F /* TyphoonMapView.xib in Resources */,
+				EEEF56971B12BAD10070A30F /* templates_dsTab.html in Resources */,
+				EEEF56931B12BAD10070A30F /* templates_dsqsyb.png in Resources */,
 				EEEF4FF61B0DEFF60070A30F /* 全国强降雪落区预报 in Resources */,
 				EEEF4FFE1B0DEFF60070A30F /* 逐小时极大风速 in Resources */,
+				EEEF56A21B12BAD10070A30F /* templates_Public.js in Resources */,
+				EEEF56921B12BAD10070A30F /* templates_dsMetroList.html in Resources */,
+				EEEF569B1B12BAD10070A30F /* templates_Flot.js in Resources */,
+				EEEF56A91B12BAD10070A30F /* map_blue.png in Resources */,
+				EEEF56AD1B12BAD10070A30F /* map_orange.png in Resources */,
+				EEEF56901B12BAD10070A30F /* templates_dsJSAlarmbg.png in Resources */,
+				EEEF56691B12BAD10070A30F /* RadarMapView.xib in Resources */,
 				EEEF4FFA1B0DEFF60070A30F /* 全国空气污染气象预报 in Resources */,
+				EEEF565E1B12BAD10070A30F /* CustomMapView.xib in Resources */,
 				EEEF4FF21B0DEFF60070A30F /* 全国大雾落区预报 in Resources */,
+				EEEF56A81B12BAD10070A30F /* green_dot.png in Resources */,
 				EEEF54271B0F2CDA0070A30F /* 14122008.0001.png in Resources */,
+				EEEF56A41B12BAD10070A30F /* templates_WeatherFlot.js in Resources */,
+				EEEF568C1B12BAD10070A30F /* templates_dsIndex_new.gif in Resources */,
 				EEEF503E1B0ED36D0070A30F /* 全国大风降温预报.json in Resources */,
 				EEEF4FF31B0DEFF60070A30F /* 全国大风降温预报 in Resources */,
+				EEEF56A51B12BAD10070A30F /* templates_WeatherFlot_main.html in Resources */,
+				EEEF56851B12BAD10070A30F /* templates_Climate.css in Resources */,
+				EEEF569E1B12BAD10070A30F /* templates_ImgPlay_main.html in Resources */,
+				EEEF56B01B12BAD10070A30F /* pink_dot.png in Resources */,
 				EEEF55DC1B0F402A0070A30F /* windMapIndex.png in Resources */,
 				EEEF50481B0ED36D0070A30F /* 渍涝气象风险预报.json in Resources */,
+				EEEF569D1B12BAD10070A30F /* templates_ImgPlay.js in Resources */,
+				EEEF568F1B12BAD10070A30F /* templates_dsjrck.png in Resources */,
+				EEEF56AF1B12BAD10070A30F /* orange_dot.png in Resources */,
 				EEEF503F1B0ED36D0070A30F /* 全国大雾落区预报.json in Resources */,
+				EEEF56A31B12BAD10070A30F /* templates_WeatherFlot.css in Resources */,
+				EEEF56B31B12BAD10070A30F /* yellow_dot.png in Resources */,
 				EEEF50431B0ED36D0070A30F /* 全国霾区预报.json in Resources */,
 				EEEF50461B0ED36D0070A30F /* 全国烟花爆竹燃放气象指数预报.json in Resources */,
+				EEEF569A1B12BAD10070A30F /* templates_dsyoujiao.png in Resources */,
 				EEEF542A1B0F2CDA0070A30F /* 14122208.000_range.json in Resources */,
 				EEEF54281B0F2CDA0070A30F /* 14122008.0001_range.json in Resources */,
+				EEEF569F1B12BAD10070A30F /* templates_NewsList.css in Resources */,
+				EEEF56AB1B12BAD10070A30F /* map_green.png in Resources */,
+				EEEF568B1B12BAD10070A30F /* templates_dsIndex_main.html in Resources */,
 				EEEF54291B0F2CDA0070A30F /* 14122208.000.png in Resources */,
+				EEEF56AA1B12BAD10070A30F /* map_blue@2x.png in Resources */,
 				EEEF4FC81B0DEFCE0070A30F /* Images.xcassets in Resources */,
 				EEEF4FF11B0DEFF60070A30F /* 全国地质灾害气象预报 in Resources */,
+				EEEF56A01B12BAD10070A30F /* templates_NewsList.js in Resources */,
 				EEEF50451B0ED36D0070A30F /* 全国沙尘落区预报.json in Resources */,
 				EEEF50411B0ED36D0070A30F /* 全国高温区域预报.json in Resources */,
 				EEEF503D1B0ED36D0070A30F /* 全国强降雪落区预报.json in Resources */,
+				EEEF56AC1B12BAD10070A30F /* map_green@2x.png in Resources */,
+				EEEF56A11B12BAD10070A30F /* templates_NewsList_main.html in Resources */,
 				EEEF50421B0ED36D0070A30F /* 全国空气污染气象预报.json in Resources */,
 				EEEF54231B0F2CDA0070A30F /* 15032008.006.png in Resources */,
 				EEEF54C61B0F34C40070A30F /* LICENSE in Resources */,
+				EEEF56991B12BAD10070A30F /* templates_dsyahq.jpg in Resources */,
 				EEEF4FFB1B0DEFF60070A30F /* 全国降水量预报 in Resources */,
+				EEEF56881B12BAD10070A30F /* templates_dsContent.html in Resources */,
 				EEEF4FF01B0DEFF60070A30F /* 24小时变温实况 in Resources */,
 				EEEF50441B0ED36D0070A30F /* 全国强对流落区预报.json in Resources */,
+				EEEF56981B12BAD10070A30F /* templates_dsTab.js in Resources */,
 				EEEF4FF51B0DEFF60070A30F /* 全国强对流落区预报 in Resources */,
 				EEEF504B1B0F032C0070A30F /* 全国霾区预报 in Resources */,
 			);
@@ -1264,59 +1717,78 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEF565F1B12BAD10070A30F /* CustomMapViewController.m in Sources */,
 				EEEF55D71B0F3A690070A30F /* UIImage+MultiFormat.m in Sources */,
 				EEEF55361B0F35250070A30F /* Util.m in Sources */,
 				EEEF55D51B0F3A690070A30F /* UIButton+WebCache.m in Sources */,
 				EEEF55991B0F38190070A30F /* WeatherData.m in Sources */,
 				EEEF54CA1B0F34C40070A30F /* UIAlertView+AFNetworking.m in Sources */,
+				EEEF567B1B12BAD10070A30F /* MImage.m in Sources */,
 				EEEF55061B0F34EC0070A30F /* CWEncode.m in Sources */,
 				EEEF54FC1B0F34EC0070A30F /* CWHttpCmdMicapspeed.m in Sources */,
 				EEEF55081B0F34EC0070A30F /* encode.c in Sources */,
 				EEEF54BD1B0F34C40070A30F /* AFHTTPRequestOperation.m in Sources */,
 				EEEF55321B0F35250070A30F /* NSObject+Log.m in Sources */,
 				EEEF55D01B0F3A690070A30F /* SDWebImageDecoder.m in Sources */,
+				EEEF56631B12BAD10070A30F /* WispControl.m in Sources */,
 				EEEF54C01B0F34C40070A30F /* AFNetworkReachabilityManager.m in Sources */,
 				EEEF54BF1B0F34C40070A30F /* AFHTTPSessionManager.m in Sources */,
+				EEEF56741B12BAD10070A30F /* HTTPAsyncTask.m in Sources */,
 				EEEF55031B0F34EC0070A30F /* PLHttpCmd.m in Sources */,
+				EEEF566A1B12BAD10070A30F /* RadarMapViewController.m in Sources */,
 				EEEF55051B0F34EC0070A30F /* Base64.m in Sources */,
 				EEEF547B1B0F33940070A30F /* MapStatisticsBottomView.m in Sources */,
+				EEEF56681B12BAD10070A30F /* WeatherAnnotationView.m in Sources */,
+				EEEF56761B12BAD10070A30F /* HTTPHosts.m in Sources */,
 				EEEF54821B0F33940070A30F /* TJPieView.m in Sources */,
 				EEEF55CE1B0F3A690070A30F /* SDImageCache.m in Sources */,
+				EEEF567F1B12BAD10070A30F /* MPointString.m in Sources */,
+				EEEF56831B12BAD10070A30F /* MText.m in Sources */,
 				EEEF54751B0F33940070A30F /* CWMyMotionStreakView.m in Sources */,
 				EEEF55D31B0F3A690070A30F /* SDWebImageManager.m in Sources */,
+				EEEF56701B12BAD10070A30F /* WCMydAsyncTask.m in Sources */,
 				EEEF55041B0F34EC0070A30F /* AuthorizeUtil.m in Sources */,
 				EEEF54801B0F33940070A30F /* NewMapCoverView.m in Sources */,
 				EEEF542D1B0F2E0A0070A30F /* MyOverlayImageRenderer.m in Sources */,
+				EEEF56721B12BAD10070A30F /* CWWispControllerManager.m in Sources */,
 				EEEF54701B0F33940070A30F /* CWChartPlot.m in Sources */,
 				EEEF54C41B0F34C40070A30F /* AFURLResponseSerialization.m in Sources */,
 				EEEF54CC1B0F34C40070A30F /* UIImageView+AFNetworking.m in Sources */,
+				EEEF566B1B12BAD10070A30F /* RadarPolygonView.m in Sources */,
 				EEEF55D41B0F3A690070A30F /* SDWebImagePrefetcher.m in Sources */,
 				EEEF55311B0F35250070A30F /* NSDate+Utilities.m in Sources */,
 				EEEF55AE1B0F39D70070A30F /* NJKWebViewProgressView.m in Sources */,
+				EEEF56651B12BAD10070A30F /* CityMapViewController.m in Sources */,
 				EEEF552A1B0F35250070A30F /* AlertViewBlocks.m in Sources */,
 				EEEF559D1B0F38370070A30F /* MBProgressHUD+Extra.m in Sources */,
 				EEEF559A1B0F38190070A30F /* WindParticle.m in Sources */,
 				EEEF54301B0F2FBE0070A30F /* DetailViewController1.m in Sources */,
 				EEEF55D81B0F3A690070A30F /* UIImageView+HighlightedWebCache.m in Sources */,
+				EEEF56671B12BAD10070A30F /* WeatherAnnotation.m in Sources */,
+				EEEF56711B12BAD10070A30F /* WCMydTaskControl.m in Sources */,
 				EEEF54381B0F335F0070A30F /* CWWindMapController.m in Sources */,
 				EEEF54C81B0F34C40070A30F /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EEEF567E1B12BAD10070A30F /* MLineStyle.m in Sources */,
 				EEEF501B1B0DF13B0070A30F /* MASConstraintMaker.m in Sources */,
 				EEEF55D61B0F3A690070A30F /* UIImage+GIF.m in Sources */,
 				EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */,
 				EEEF55D21B0F3A690070A30F /* SDWebImageDownloaderOperation.m in Sources */,
 				EEEF54FF1B0F34EC0070A30F /* CWHttpCmdUserId.m in Sources */,
+				EEEF56621B12BAD10070A30F /* WCTools.m in Sources */,
 				EEEF50281B0DF1D70070A30F /* CWMyPolyLineRenderer.m in Sources */,
 				EEEF54931B0F34590070A30F /* PLHttpManager.m in Sources */,
 				EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */,
 				EEEF55301B0F35250070A30F /* MyOverlay.m in Sources */,
 				EEEF55001B0F34EC0070A30F /* CWHttpCmdVersionUpdate.m in Sources */,
 				EEEF543F1B0F337D0070A30F /* OtherMapController.m in Sources */,
+				EEEF567C1B12BAD10070A30F /* MLayer.m in Sources */,
 				EEEF55CD1B0F3A690070A30F /* NSData+ImageContentType.m in Sources */,
 				EEEF552F1B0F35250070A30F /* MKMapView+ZoomLevel.m in Sources */,
 				EEEF55A71B0F39B70070A30F /* WebController.m in Sources */,
 				EEEF501A1B0DF13B0070A30F /* MASConstraint.m in Sources */,
 				EEEF54F91B0F34EC0070A30F /* CWHttpCmdHotCitys.m in Sources */,
 				EEEF550A1B0F34EC0070A30F /* ZipStr.m in Sources */,
+				EEEF56B81B1312090070A30F /* MapStatistTempView.m in Sources */,
 				EEEF55971B0F38190070A30F /* MyVector.m in Sources */,
 				EEEF501C1B0DF13B0070A30F /* MASLayoutConstraint.m in Sources */,
 				EEEF54C21B0F34C40070A30F /* AFURLConnectionOperation.m in Sources */,
@@ -1325,35 +1797,47 @@
 				EEEF552D1B0F35250070A30F /* DeviceUtil.m in Sources */,
 				EEEF55AD1B0F39D70070A30F /* NJKWebViewProgress.m in Sources */,
 				EEEF54FA1B0F34EC0070A30F /* CWHttpCmdLogin.m in Sources */,
+				EEEF567D1B12BAD10070A30F /* MLineString.m in Sources */,
 				EEEF54CD1B0F34C40070A30F /* UIProgressView+AFNetworking.m in Sources */,
+				EEEF56781B12BAD10070A30F /* MBundle.m in Sources */,
 				EEEF501F1B0DF13B0070A30F /* NSArray+MASAdditions.m in Sources */,
 				EEEF552C1B0F35250070A30F /* CommonUtil.m in Sources */,
 				EEEF55021B0F34EC0070A30F /* NavListHttpCmd.m in Sources */,
+				EEEF56811B12BAD10070A30F /* MSolidFillStyle.m in Sources */,
 				EEEF543E1B0F337D0070A30F /* CWEyeMapController.m in Sources */,
 				EEEF548F1B0F34590070A30F /* CWDataManager.m in Sources */,
+				EEEF56751B12BAD10070A30F /* HTTPHandler.m in Sources */,
 				EEEF54781B0F33940070A30F /* CWWindMapBottomView.m in Sources */,
 				EEEF501E1B0DF13B0070A30F /* MASViewConstraint.m in Sources */,
 				EEEF54FD1B0F34EC0070A30F /* CWHttpCmdNewGeoArea.m in Sources */,
+				EEEF56841B12BAD10070A30F /* MydAsyncTask.m in Sources */,
+				EEEF566E1B12BAD10070A30F /* TyphoonSpotAnnotation.m in Sources */,
 				EEEF501D1B0DF13B0070A30F /* MASViewAttribute.m in Sources */,
+				EEEF56661B12BAD10070A30F /* WCCityLocations.m in Sources */,
 				EEEF50211B0DF13B0070A30F /* View+MASAdditions.m in Sources */,
 				EEEF54F81B0F34EC0070A30F /* CWHttpCmdFeedback.m in Sources */,
 				EEEF54CF1B0F34C40070A30F /* UIWebView+AFNetworking.m in Sources */,
+				EEEF566D1B12BAD10070A30F /* TyphoonMapViewController.m in Sources */,
 				EEEF546F1B0F33940070A30F /* CWChartAxis.m in Sources */,
 				EEEF55981B0F38190070A30F /* PLBaseObject.m in Sources */,
+				EEEF56801B12BAD10070A30F /* MPointText.m in Sources */,
 				EEEF55A41B0F38730070A30F /* CWUserManager.m in Sources */,
 				EEEF50271B0DF1D70070A30F /* CWMyOverlayRenderer.m in Sources */,
 				EEEF54FE1B0F34EC0070A30F /* CWHttpCmdSearchCity.m in Sources */,
+				EEEF56821B12BAD10070A30F /* MTag.m in Sources */,
 				EEEF54C91B0F34C40070A30F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */,
 				EEEF55CF1B0F3A690070A30F /* SDWebImageCompat.m in Sources */,
 				EEEF55A11B0F38450070A30F /* MBProgressHUD.m in Sources */,
 				EEEF55341B0F35250070A30F /* UIView+Extra.m in Sources */,
 				EEEF54921B0F34590070A30F /* MapImagesManager.m in Sources */,
+				EEEF56771B12BAD10070A30F /* HTTPManager.m in Sources */,
 				EEEF55011B0F34EC0070A30F /* CWHttpCmdWeather.m in Sources */,
 				EEEF55351B0F35250070A30F /* UIView+ModifyFrame.m in Sources */,
 				EEEF54FB1B0F34EC0070A30F /* CWHttpCmdMicapsdata.m in Sources */,
 				EEEF55DA1B0F3A690070A30F /* UIView+WebCacheOperation.m in Sources */,
 				EEEF54C31B0F34C40070A30F /* AFURLRequestSerialization.m in Sources */,
+				EEEF56791B12BAD10070A30F /* MFrame.m in Sources */,
 				EEEF55091B0F34EC0070A30F /* UtilConstants.m in Sources */,
 				EEEF4FC31B0DEFCE0070A30F /* DetailViewController.m in Sources */,
 				EEEF54BE1B0F34C40070A30F /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1362,7 +1846,11 @@
 				EEEF54711B0F33940070A30F /* CWChartView.m in Sources */,
 				EEEF55D91B0F3A690070A30F /* UIImageView+WebCache.m in Sources */,
 				EEEF54C11B0F34C40070A30F /* AFSecurityPolicy.m in Sources */,
+				EEEF566F1B12BAD10070A30F /* TyphoonSpotAnnotationView.m in Sources */,
 				EEEF54CE1B0F34C40070A30F /* UIRefreshControl+AFNetworking.m in Sources */,
+				EEEF567A1B12BAD10070A30F /* MHeader.m in Sources */,
+				EEEF56611B12BAD10070A30F /* CustomWebViewController.m in Sources */,
+				EEEF56731B12BAD10070A30F /* AsyncTask.m in Sources */,
 				EEEF54CB1B0F34C40070A30F /* UIButton+AFNetworking.m in Sources */,
 				EEEF55071B0F34EC0070A30F /* DecStr.m in Sources */,
 				EEEF50201B0DF13B0070A30F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

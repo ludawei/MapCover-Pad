@@ -53,92 +53,37 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    if (!self.mapView) {
-        self.mapView = [[MKMapView alloc] init];
-    }
-    
-    self.mapView.delegate = self;
-    [self.view addSubview:self.mapView];
-    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.and.bottom.mas_equalTo(self.view);
-        make.top.mas_equalTo(20);
-    }];
-    
-//    UIButton *button = [UIButton new];
-//    [button setTitle:@"×" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//    button.titleLabel.font = [UIFont systemFontOfSize:40];
-//    [button addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:button];
-//    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(10);
-//        make.left.mas_equalTo(0);
-//        make.size.mas_equalTo(CGSizeMake(50, 50));
-//    }];
-    
-#if 0
-    UIImage *indexImage = [UIImage imageNamed:@"index"];
-    CGFloat imgWidth = MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)*0.5;
-    
-    UIImageView *imgView = [UIImageView new];
-    imgView.image = indexImage;
-    [self.view addSubview:imgView];
-    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.bottom.mas_equalTo(-10);
-        make.width.mas_equalTo(imgWidth);
-        make.height.mas_equalTo(imgWidth*indexImage.size.height/indexImage.size.width);
-    }];
-#else
-    UIImage *indexImage = [UIImage imageNamed:@"index1"];
-    
-    UIImageView *imgView = [UIImageView new];
-    imgView.image = indexImage;
-    [self.view addSubview:imgView];
-    self.indexView = imgView;
-    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
-        make.width.mas_equalTo(self.view);
-    }];
-#endif
-    
-    
-//    [self initDataInfo];
-//    [self initData];
-}
-
--(void)clickRightButton
-{
-    BOOL showFull = [self.navigationItem.rightBarButtonItem.title isEqualToString:@"全屏"];
-    
-    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        if (showFull) {
-            self.splitViewController.preferredPrimaryColumnWidthFraction = 0;
-        }
-        else
-        {
-            self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
-        }
-    } completion:^(BOOL finished) {
-        [self.navigationItem.rightBarButtonItem setTitle:showFull?@"分屏":@"全屏"];
-    }];
-}
-
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    if (self.mapView) {
+        self.mapView.delegate = self;
+        [self.view addSubview:self.mapView];
+        [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.and.bottom.mas_equalTo(self.view);
+            make.top.mas_equalTo(20);
+        }];
+        
+        UIImage *indexImage = [UIImage imageNamed:@"index1"];
+        
+        UIImageView *imgView = [UIImageView new];
+        imgView.image = indexImage;
+        [self.view addSubview:imgView];
+        self.indexView = imgView;
+        [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(0);
+            make.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(self.view);
+        }];
     }
     else
     {
-        self.navigationItem.rightBarButtonItem = nil;
+        UILabel *lbl = [UILabel new];
+        lbl.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:lbl];
+        [lbl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.view);
+        }];
+        
+        lbl.text = @"点击左侧列表查看内容";
     }
-//    [self.indexView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(self.view.bounds.size.width*self.indexView.image.size.height/self.indexView.image.size.width);
-//    }];
 }
 
 -(void)addAreasToMap
@@ -156,11 +101,20 @@
         }
         
         MKPolygon *line = [MKPolygon polygonWithCoordinates:points count:items.count];
-        NSDictionary *data = [self dataFromDataInfoWithCode:[area objectForKey:@"code"] text:[[area objectForKey:@"symbols"] objectForKey:@"text"]];
-        
-        line.title = [data objectForKey:@"color"];
-        line.subtitle = [data objectForKey:@"is_stripe"];
         free(points);
+        
+        if ([area objectForKey:@"c"]) {
+            line.title = [area objectForKey:@"color"];
+            line.subtitle = [area objectForKey:@"is_stripe"];
+        }
+        else
+        {
+            NSDictionary *data = [self dataFromDataInfoWithCode:[area objectForKey:@"code"] text:[[area objectForKey:@"symbols"] objectForKey:@"text"]];
+            
+            line.title = [data objectForKey:@"color"];
+            line.subtitle = [data objectForKey:@"is_stripe"];
+        }
+        
         
         [self.mapView addOverlay:line];
     }
@@ -391,8 +345,4 @@
     return nil;
 }
 
--(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
-}
 @end

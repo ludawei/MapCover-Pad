@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+padding:0px;
+margin:0px;
+border:none;
+list-style:none;
+}
+body
+{
+	font-size:14px;
+background-size:auto;
+font-family:"微软雅黑";}
+#placeholder {
+text-align:center;
+margin:0 auto;
+background:#fff;
+overflow:visible;
+}
+h3.title
+{
+text-align:center;
+height:30px;
+text-shadow:1px 1px 1px #eee;
+line-height:30px;
+font-size:20px;
+font-weight:bold;
+margin:10px 0px;
+}
+p.ptime
+{
+text-align:right;
+font-size:12px;
+height:30px;
+line-height:30px;
+padding-right:5px;}
+div.that
+{
+padding:0px 5px;
+line-height:21px;
+font-size:16px;
+text-shadow:1px 1px 1px #eee;
+text-indent:2em;}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>预报</title>
+<link rel="stylesheet" href="templates_ds.css" />
+<script type="text/javascript" src="templates_Public.js"></script>
+<script id="IndexItem_7" type="text/html">
+	<div class="button up">
+		<p data-ptime="<%=d[0].ptime%>">
+			<A href="<%=d[0].url%>?title=<%=d[0].name%>"><%=d[0].name%><br /><img src="<%=d[0].img%>"/></A>
+			
+		</p>
+		<p style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #face55), color-stop(1, #e29d1c));" data-ptime="<%=d[1].ptime%>">
+			<A href="<%=d[1].url%>?title=<%=d[1].name%>"><%=d[1].name%><br /><img src="<%=d[1].img%>" /></A>
+		</p>
+	</div>
+	<div class="button mid">
+		<p  data-ptime="<%=d[2].ptime%>">
+			<A href="<%=d[2].url%>?title=<%=d[2].name%>"><%=d[2].name%><br /><img src="<%=d[2].img%>"/></A>
+		</p>
+		<p style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e8e594), color-stop(1, #face55));" data-ptime="<%=d[3].ptime%>">
+			<A href="<%=d[3].url%>?title=<%=d[3].name%>"><%=d[3].name%><br /><img src="<%=d[3].img%>"  /></A>
+		</p>
+		<p style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f997c3), color-stop(1, #d35288));" data-ptime="<%=d[4].ptime%>">
+			<A href="<%=d[4].url%>?title=<%=d[4].name%>"><%=d[4].name%><br /><img src="<%=d[4].img%>" /></A>
+		</p>
+	</div>
+	<div class="button up">
+		<p data-ptime="<%=d[5].ptime%>" style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c6df9d), color-stop(1, #8dc73f));">
+			<A href="<%=d[5].url%>?title=<%=d[5].name%>"><%=d[5].name%><br /><img src="<%=d[5].img%>"  /></A>
+		</p>
+		<p data-ptime="<%=d[6].ptime%>" style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d5bfe8), color-stop(1, #a778cf)); ">
+			<A href="<%=d[6].url%>?title=<%=d[6].name%>"><%=d[6].name%><br /><img src="<%=d[6].img%>"   /></A>
+		</p>
+	</div>
+</script>
+<script type="text/javascript">
+// 获取URL的参数
+function request(paras,url){ 
+    var url = url ? url: location.href;
+	var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");  
+	var paraObj = {}  
+	for (i=0; j=paraString[i]; i++){  
+		paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);  
+	}  
+	var returnValue = paraObj[paras.toLowerCase()];  
+	if(typeof(returnValue)=="undefined"){  
+		return "";  
+	}else{  
+		return returnValue; 
+	}
+}
+var tabData;
+
+
+var curDate="";
+var date= new Date();
+year= date.getFullYear().toString();
+month = date.getMonth()+1;
+day=date.getDate();
+if (day < 10) day="0"+ day;
+hour = date.getHours();
+if (hour < 10) hour="0"+ hour;
+hour = date.getHours();
+if (hour < 10) hour="0"+ hour;
+minutes = date.getMinutes();
+if (minutes < 10) minutes="0"+ minutes;
+seconds = date.getSeconds();
+if (seconds < 10) seconds="0"+ seconds;
+curDate =  year + month + day +hour + minutes+seconds;
+$(function(){
+	if (window.localStorage)
+	{
+		ls=window.localStorage;
+		
+		if (ls.getItem('jsjcbtabData') !="" && ls.getItem('jsjcbtabData') != 'null' && ls.getItem('jsjcbtabData') != null)
+		{
+			
+			try {
+			tabData=JSON.parse( ls.getItem('jsjcbtabData') );
+			html=template.render('IndexItem_7',{"d":tabData});
+				$(".box").html(html);
+			}catch(e){}
+		}
+	}
+
+
+
+	 $.ajax({
+		  url: request('dataFile'),
+		  cache: false,
+		  type : "GET",
+		  async :true,
+		  dataType  : "json",
+		  success: function(data){
+			 tabData=data;
+			 
+			 html=template.render('IndexItem_7',{"d":data});
+			 
+			 $(".box").html(html);
+			 if (window.localStorage)
+			 {
+				ls=window.localStorage;
+				
+				ls.setItem('jsjcbtabData',JSON.stringify(tabData));
+				$.each($(".box p"),function(){
+					key=$.trim($(this).text()) + $(this).find("img").attr("src");
+					lastCatTime=ls.getItem(key);
+					lastCatTime = lastCatTime == null?'00':lastCatTime;
+					
+					if (lastCatTime < $(this).attr("data-ptime"))
+					{
+						$("<img class='indexnew' src='templates_dsIndex_new.gif'/>").appendTo(this);
+					}
+				});
+				
+			}
+		  }
+	 });
+	 
+	
+	 
+	$(".button p a").live("tap click",function(){
+	  
+	    $index=$(".button p a").index(this);
+		
+		if (tabData == 'null' || tabData == "")
+		{
+			//alert("正在加载数据配置！请稍候...");
+			return false;
+		}
+		
+		$curData=tabData[$index];
+		
+		if (window.localStorage)
+		{
+			ls=window.localStorage;
+			key=$.trim($(this).text()) + $(this).find("img").attr("src");
+			ls.setItem(key,curDate);
+			ls.setItem("JSTabcurData",JSON.stringify($curData));
+		}
+		
+	});
+})
+</script>
+</head>
+<body style="background:#404040;">
+<div class="box" style="height:100%; width:100%;">
+	
+
+</div>
+</body>
+</html>

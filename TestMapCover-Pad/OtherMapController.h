@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface OtherMapController : UIViewController
+
+@property (nonatomic,strong) MKMapView *mapView;
+@property (nonatomic) BOOL isShowTemp;
 
 @end

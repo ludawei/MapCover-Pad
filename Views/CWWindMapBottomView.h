@@ -15,6 +15,8 @@
 -(void)setupWithData:(NSDictionary *)data;
 -(void)setAddrText:(NSString *)addr;
 
+@property (nonatomic) CGFloat initY;
+
 -(void)show;
 -(void)hide;
 @end

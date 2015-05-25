@@ -15,6 +15,7 @@
 
 #import "MyOverlay.h"
 #import "MyOverlayImageRenderer.h"
+#import "Masonry.h"
 
 #define MAP_CHINA_CENTER_LAT 33.2f
 #define MAP_CHINA_CENTER_LON 105.0f
@@ -26,7 +27,6 @@
 @interface MapAnimController ()<MKMapViewDelegate>
 
 @property (nonatomic,strong) UIView *backView;
-@property (nonatomic,strong) MKMapView *mapView;
 
 @property (nonatomic,strong) NSDictionary *allImages;
 @property (nonatomic,strong) NSArray *allUrls;
@@ -53,9 +53,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.backView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.backView = [[UIView alloc] init];
     self.backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.backView];
+    [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.topLayoutGuide);
+    }];
     
     self.mapImagesManager = [[MapImagesManager alloc] init];
     
@@ -65,14 +69,15 @@
 
 -(void)initMapView
 {
-    [self.mapView removeFromSuperview];
-    
-    self.mapView = [[MKMapView alloc] init];
-    self.mapView.frame = self.backView.bounds;
+//    [self.mapView removeFromSuperview];
+//    
     self.mapView.delegate = self;
-//    self.mapView.showsUserLocation = YES;
     [self.backView addSubview:self.mapView];
     [self.backView sendSubviewToBack:self.mapView];
+    
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.backView);
+    }];
     
     if ([CWUserManager sharedInstance].lat && [CWUserManager sharedInstance].lon) {
         self.coor = CLLocationCoordinate2DMake([[CWUserManager sharedInstance].lat doubleValue], [[CWUserManager sharedInstance].lon doubleValue]);
@@ -92,33 +97,41 @@
 - (void)initTopViews
 {
     CGFloat height = 50;
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.backView.width, height)];
-    UIView *backView = [[UIView alloc] initWithFrame:topView.bounds];
-    [topView addSubview:backView];
+    UIView *topView = [[UIView alloc] init];
+    [self.backView addSubview:topView];
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.width.mas_equalTo(self.backView);
+        make.top.mas_equalTo(64);
+        make.height.mas_equalTo(height);
+    }];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, height, height)];
-    [backButton setImage:[UIImage imageNamed:@"btn_nav_back"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:backButton];
+    UIView *backView = [[UIView alloc] init];
+    [topView addSubview:backView];
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(topView);
+    }];
     
     if (self.type == 0) {
         UIImage *indexImage = [UIImage imageNamed:@"tl_2"];
         UIImageView *imgView = [[UIImageView alloc] initWithImage:indexImage];
-        imgView.frame = CGRectMake(topView.width-indexImage.size.width-10, (height-indexImage.size.height)/2.0, indexImage.size.width, indexImage.size.height);
+//        imgView.frame = CGRectMake(topView.width-indexImage.size.width-10, (height-indexImage.size.height)/2.0, indexImage.size.width, indexImage.size.height);
         [topView addSubview:imgView];
+        [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(-10);
+            make.centerY.mas_equalTo(topView.mas_centerY);
+            make.size.mas_equalTo(indexImage.size);
+        }];
         
         backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
         
         [self showRainInfo:topView];
     }
-    
-    [self.backView addSubview:topView];
 }
 
 -(void)showRainInfo:(UIView *)topView
 {
-    NSString *c13 = [CWUserManager sharedInstance].lon;
-    NSString *c14 = [CWUserManager sharedInstance].lat;
+    NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
+    NSString *c14 = @"39.9289";//[CWUserManager sharedInstance].lat;
     [[PLHttpManager sharedInstance].manager GET:[NSString stringWithFormat:@"http://caiyunapp.com/fcgi-bin/v1/api.py?lonlat=%@,%@&format=json&product=minutes_prec&token=Q2hpbmVzZSBXZWF0aGVyTWFuICsgY2FpeXVuIHdlYXRoZXIgYXBp", c13, c14] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError* error = nil;
         id json;
@@ -146,6 +159,12 @@
                 UIView *msgBackView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), topView.width, textSize.height)];
                 msgBackView.clipsToBounds = YES;
                 [self.backView addSubview:msgBackView];
+//                [msgBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                    make.top.mas_equalTo(topView.mas_bottom);
+//                    make.left.mas_equalTo(0);
+//                    make.width.mas_equalTo(topView);
+//                    make.height.mas_equalTo(textSize.height);
+//                }];
                 
                 UILabel *rainFullMsgLabel = [[UILabel alloc] initWithFrame:CGRectMake(msgBackView.bounds.size.width, 0, MAX(textSize.width, msgBackView.bounds.size.width), textSize.height)];
                 rainFullMsgLabel.textColor = [UIColor blackColor];
@@ -163,6 +182,9 @@
                     CGRect frame = rainFullMsgLabel.frame;
                     frame.origin.x = -(rainFullMsgLabel.bounds.size.width);
                     rainFullMsgLabel.frame = frame;
+//                    [msgBackView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                        make.left.mas_equalTo(0);
+//                    }];
                     [UIView commitAnimations];
                 }
                 else
@@ -460,22 +482,34 @@
 -(void)initBottomViews
 {
     CGFloat height = 60;
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.backView.height-height, self.backView.width, height)];
+    UIView *bottomView = [[UIView alloc] init];
+    [self.backView addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.bottom.and.width.mas_equalTo(self.backView);
+        make.height.mas_equalTo(height);
+    }];
     
-    UIView *backView = [[UIView alloc] initWithFrame:bottomView.bounds];
+    UIView *backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
     [bottomView addSubview:backView];
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(bottomView);
+    }];
     
-    self.playButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, height, height)];
+    self.playButton = [[UIButton alloc] init];
     self.playButton.backgroundColor = [UIColor colorWithRed:0.153 green:0.525 blue:0.808 alpha:1];
     [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
     [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
     [self.playButton addTarget:self action:@selector(clickPlay) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:self.playButton];
+    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.top.and.bottom.mas_equalTo(bottomView);
+        make.width.mas_equalTo(height);
+    }];
     
     self.progressView = [[UISlider alloc] init];
     self.progressView.userInteractionEnabled = NO;
-    self.progressView.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame)+10, 5, bottomView.width-(CGRectGetMaxX(self.playButton.frame)+10) - 60, height-10);
+//    self.progressView.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame)+10, 5, bottomView.width-(CGRectGetMaxX(self.playButton.frame)+10) - 60, height-10);
     self.progressView.backgroundColor = [UIColor clearColor];
     self.progressView.minimumValue = 0;
     self.progressView.maximumValue = 90;
@@ -485,15 +519,25 @@
 //    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault]; // 设置显示的样式
     [self.progressView setThumbImage:[UIImage imageNamed:@"thumb"] forState:UIControlStateNormal];
     [bottomView addSubview:self.progressView];
+    [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(70);
+        make.top.mas_equalTo(5);
+        make.right.mas_equalTo(-60);
+        make.bottom.mas_equalTo(-5);
+    }];
     
-    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.progressView.frame), 5, 60, height-10)];
+    self.timeLabel = [[UILabel alloc] init];
     self.timeLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:0.118 green:0.663 blue:0.988 alpha:1];
     self.timeLabel.textAlignment = NSTextAlignmentCenter;
 //    self.timeLabel.text = @"tttttt";
     self.timeLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     [bottomView addSubview:self.timeLabel];
-    
-    [self.backView addSubview:bottomView];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(5);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(-5);
+        make.width.mas_equalTo(60);
+    }];
 }
 
 -(void)clickPlay

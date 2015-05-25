@@ -16,7 +16,6 @@
 #import "MBProgressHUD+Extra.h"
 
 #import "CWUserManager.h"
-#import <MapKit/MapKit.h>
 #import "MKMapView+ZoomLevel.h"
 
 @interface CWWindMapController ()<MKMapViewDelegate, UIGestureRecognizerDelegate>
@@ -26,7 +25,6 @@
 }
 
 @property (nonatomic,strong) NewMapCoverView *mainView;
-@property (nonatomic,strong) MKMapView *mapView;
 @property (nonatomic,strong) UISegmentedControl *buttons,*buttons1;
 @property (nonatomic,strong) CWWindMapBottomView *bottomView;
 @property (nonatomic,strong) UIView *indexView;
@@ -42,7 +40,6 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:1];
-    self.navigationController.navigationBarHidden = YES;
     
     [self initMapView];
     
@@ -78,47 +75,66 @@
     // 注册
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    
-    // 关闭按钮
-    UIButton *delButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
-    [delButton setImage:[UIImage imageNamed:@"btn_nav_back"] forState:UIControlStateNormal];
-    [delButton addTarget:self action:@selector(clickDelete) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:delButton];
-    
-    UILabel *titleLabel = [self createLabelWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 50)];
-    titleLabel.text = @"风场示意图";
-    titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [self.view addSubview:titleLabel];
-    
+}
+
+-(void)initIndexViews
+{
     CGFloat lblWidth = 20.0;
     UIImage *indexImage = [UIImage imageNamed:@"windMapIndex"];
     CGFloat radio = indexImage.size.width/(self.view.frame.size.width-lblWidth*2);
     
     UIView *indexView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-indexImage.size.height/radio, self.view.frame.size.width, indexImage.size.height/radio)];
+    indexView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth;
     indexView.backgroundColor = [UIColor colorWithRed:0.035 green:0.059 blue:0.169 alpha:1];
     [self.view addSubview:indexView];
     self.indexView = indexView;
     
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(lblWidth, 0, self.view.frame.size.width-lblWidth*2, indexImage.size.height/radio)];
+    iv.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     iv.image = indexImage;
     [indexView addSubview:iv];
     
     UILabel *leftTxt = [self createLabelWithFrame:CGRectMake(0, 0, lblWidth, CGRectGetHeight(indexView.frame))];
     leftTxt.font = [UIFont boldSystemFontOfSize:16];
+    leftTxt.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
     leftTxt.text = @"弱";
     [indexView addSubview:leftTxt];
     
     UILabel *rightTxt = [self createLabelWithFrame:CGRectMake(CGRectGetWidth(indexView.frame)-lblWidth, 0, lblWidth, CGRectGetHeight(indexView.frame))];
     rightTxt.font = [UIFont boldSystemFontOfSize:16];
+    rightTxt.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleLeftMargin;
     rightTxt.text = @"强";
     [indexView addSubview:rightTxt];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (self.indexView) {
+        [self.indexView removeFromSuperview];
+        self.indexView = nil;
+    }
+    
+    [self initIndexViews];
+    
+    CGFloat min = MIN(MIN(SCREEN_SIZE.width, SCREEN_SIZE.height), self.view.width);
+    
+    self.bottomView.hidden = YES;
+    if (self.bottomView.hidden) {
+        self.bottomView.frame = CGRectMake((self.view.width-min)/2, self.view.height, min, 250);
+        self.bottomView.initY = self.bottomView.y;
+    }
+    else
+    {
+        self.bottomView.frame = CGRectMake((self.view.width-min)/2, self.view.height-250, min, 250);
+        self.bottomView.initY = self.bottomView.y;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -139,12 +155,14 @@
 {
     self.mainView = [[NewMapCoverView alloc] initWithFrame:self.view.bounds];
     self.mainView.mapView = self.mapView;
+    self.mainView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mainView.particleType = 2;
     self.mainView.partNum = num;
     [self.mainView setupWithData:data];
     self.mainView.userInteractionEnabled = NO;
     
     CWMyMotionStreakView *motionView = [[CWMyMotionStreakView alloc] initWithFrame:self.view.bounds];
+    motionView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:motionView];
     self.mainView.motionView = motionView;
     
@@ -169,6 +187,7 @@
 -(void)initMapView
 {
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     self.mapView.mapType = MKMapTypeHybrid;
     self.mapView.zoomLevel = 4.0;
@@ -181,20 +200,27 @@
     [self.view addSubview:self.mapView];
     
     
-    UISegmentedControl *buttons = [[UISegmentedControl alloc] initWithItems:@[@"箭头", @"流线"]];
-    buttons.frame = CGRectMake(CGRectGetWidth(self.view.frame)-112, 10, 100, 32);
-    buttons.tintColor = [UIColor colorWithWhite:1 alpha:1.0];
-    [self.view addSubview:buttons];
-    
-    buttons.selectedSegmentIndex = 1;
-    [buttons addTarget:self action:@selector(clickButtons:) forControlEvents:UIControlEventValueChanged];
-    self.buttons = buttons;
+//    UISegmentedControl *buttons = [[UISegmentedControl alloc] initWithItems:@[@"箭头", @"流线"]];
+//    buttons.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
+//    buttons.frame = CGRectMake(CGRectGetWidth(self.view.frame)-112, 74, 100, 32);
+//    buttons.tintColor = [UIColor colorWithWhite:1 alpha:1.0];
+//    [self.view addSubview:buttons];
+//    
+//    buttons.selectedSegmentIndex = 1;
+//    [buttons addTarget:self action:@selector(clickButtons:) forControlEvents:UIControlEventValueChanged];
+//    self.buttons = buttons;
+    UIBarButtonItem *btn1 = [[UIBarButtonItem alloc] initWithTitle:@"箭头" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton1)];
+    UIBarButtonItem *btn2 = [[UIBarButtonItem alloc] initWithTitle:@"流线" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton2)];
+    self.navigationItem.rightBarButtonItems = @[btn2, btn1];
 }
 
 -(CWWindMapBottomView *)bottomView
 {
     if (!_bottomView) {
-        _bottomView = [[CWWindMapBottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, 250)];
+        CGFloat min = MIN(MIN(SCREEN_SIZE.width, SCREEN_SIZE.height), self.view.width);
+        
+        _bottomView = [[CWWindMapBottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, min, 250)];
+//        _bottomView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
         [self.view addSubview:_bottomView];
         
         __weak typeof(self) weakSelf = self;
@@ -416,6 +442,20 @@
     NSInteger index = seg.selectedSegmentIndex;
     if (self.mainView.particleType != (int)index + 1) {
         self.mainView.particleType = (int)index + 1;
+    }
+}
+
+-(void)clickRightButton1
+{
+    if (self.mainView.particleType != 1) {
+        self.mainView.particleType = 1;
+    }
+}
+
+-(void)clickRightButton2
+{
+    if (self.mainView.particleType != 2) {
+        self.mainView.particleType = 2;
     }
 }
 

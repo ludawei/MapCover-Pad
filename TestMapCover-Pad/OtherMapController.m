@@ -7,22 +7,23 @@
 //
 
 #import "OtherMapController.h"
-#import <MapKit/MapKit.h>
 #import "PLHttpManager.h"
 #import "MBProgressHUD.h"
 #import "Util.h"
 
 #import "CustomAnnotationView.h"
 #import "MapStatisticsBottomView.h"
+#import "MapStatistTempView.h"
 #import "MKMapView+ZoomLevel.h"
+#import "Masonry.h"
 
 @interface OtherMapController ()<MKMapViewDelegate>
 
 @property (nonatomic,strong) UIView *backView;
-@property (nonatomic,strong) MKMapView *mapView;
 @property (nonatomic,strong) NSDictionary *datas;
 @property (nonatomic)       NSInteger level;
 @property (nonatomic,strong) MapStatisticsBottomView *statisticsView;
+@property (nonatomic,strong) MapStatistTempView *statisticsTempView;
 
 @end
 
@@ -32,9 +33,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.backView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.backView = [[UIView alloc] init];
     self.backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.backView];
+    [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
     
     [self initMapView];
     
@@ -56,12 +60,18 @@
 
 -(void)initMapView
 {
-    self.mapView = [[MKMapView alloc] init];
-    self.mapView.frame = self.backView.bounds;
+//    self.mapView = [[MKMapView alloc] init];
     self.mapView.delegate = self;
-    //    self.mapView.showsUserLocation = YES;
     [self.backView addSubview:self.mapView];
+    
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.and.bottom.mas_equalTo(self.view);
+        make.top.mas_equalTo(20);
+    }];
+    
     [self.backView sendSubviewToBack:self.mapView];
+    
+    
 }
 
 -(NSArray *)annotationsWithServerDatas:(NSString *)level
@@ -75,7 +85,7 @@
         MKPointAnnotation *anno = [[MKPointAnnotation alloc] init];
         anno.coordinate = CLLocationCoordinate2DMake([dict[@"lat"] floatValue], [dict[@"lon"] floatValue]);
         anno.title      = dict[@"name"];
-        anno.subtitle   = dict[@"stationid"];
+        anno.subtitle   = [dict[@"stationid"] stringByAppendingFormat:@"-%@", dict[@"areaid"]];
         [annos addObject:anno];
     }
     
@@ -127,11 +137,30 @@
 -(MapStatisticsBottomView *)statisticsView
 {
     if (!_statisticsView) {
-        _statisticsView = [[MapStatisticsBottomView alloc] initWithFrame:CGRectMake(0, self.backView.height, self.backView.width, self.backView.height)];
+//        _statisticsView = [[MapStatisticsBottomView alloc] initWithFrame:CGRectMake(0, self.backView.height, self.backView.width, self.backView.height)];
+        _statisticsView = [MapStatisticsBottomView new];
         [self.backView addSubview:_statisticsView];
+        [_statisticsView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.and.bottom.mas_equalTo(self.view);
+            make.top.mas_equalTo(self.backView.mas_bottom);
+        }];
     }
     
     return _statisticsView;
+}
+
+-(MapStatistTempView *)statisticsTempView
+{
+    if (!_statisticsTempView) {
+        _statisticsTempView = [MapStatistTempView new];
+        [self.backView addSubview:_statisticsTempView];
+        [_statisticsTempView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.and.bottom.mas_equalTo(self.view);
+            make.top.mas_equalTo(self.backView.mas_bottom);
+        }];
+    }
+    
+    return _statisticsTempView;
 }
 
 #pragma mark -- MKMapViewDelegate
@@ -150,8 +179,10 @@
         
         poiAnnotationView.canShowCallout = NO;
 #if 1
-        poiAnnotationView.image = [UIImage imageNamed:@"circle39"];
-        [poiAnnotationView setLabelText:[annotation title]];
+        if ([poiAnnotationView isKindOfClass:[CustomAnnotationView class]]) {
+            poiAnnotationView.image = [UIImage imageNamed:@"circle39"];
+            [poiAnnotationView setLabelText:[annotation title]];
+        }
 #else
         poiAnnotationView.image = [UIImage imageNamed:@"tongji"];
 #endif
@@ -176,8 +207,15 @@
     NSString *areaid = [view.annotation subtitle];
     if (areaid && self.statisticsView.hidden) {
         
-        self.statisticsView.addr = [view.annotation title];
-        [self.statisticsView showWithStationId:areaid];
+        if (self.isShowTemp) {
+            self.statisticsTempView.addr = [view.annotation title];
+            [self.statisticsTempView showWithStationId:areaid];
+        }
+        else
+        {
+            self.statisticsView.addr = [view.annotation title];
+            [self.statisticsView showWithStationId:areaid];
+        }
     }
 }
 

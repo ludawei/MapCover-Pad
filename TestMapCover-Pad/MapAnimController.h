@@ -13,5 +13,6 @@
 
 @property (nonatomic) NSInteger type;
 @property (nonatomic) CLLocationCoordinate2D coor;
+@property (nonatomic,strong) MKMapView *mapView;
 
 @end

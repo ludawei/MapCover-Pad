@@ -9,7 +9,8 @@
 		<string>台风路径</string>
 		<string>等风来</string>
 		<string>实景天气</string>
-		<string>全国预报</string>
+		<string>全国温度实况</string>
+		<string>天气统计</string>
 	</array>
 	<key>mapImage</key>
 	<array>

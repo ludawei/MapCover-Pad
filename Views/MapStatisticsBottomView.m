@@ -13,6 +13,8 @@
 #import "NSDate+Utilities.h"
 #import "CWChartView.h"
 
+#import "Masonry.h"
+
 #define BOTTOM_HEIGHT 220
 //#define START_DATE    @"2015-01-01"
 
@@ -37,14 +39,22 @@
         self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height-BOTTOM_HEIGHT, frame.size.width, BOTTOM_HEIGHT)];
         self.contentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
         [self addSubview:self.contentView];
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.and.bottom.and.width.mas_equalTo(self);
+            make.height.mas_greaterThanOrEqualTo(BOTTOM_HEIGHT);
+        }];
         
         self.dateFormatter = [[NSDateFormatter alloc] init];
         [self.dateFormatter setDateFormat:@"yyyyMMdd"];
         
         self.actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        self.actView.center = self.contentView.center;
+//        self.actView.center = self.contentView.center;
         [self.actView startAnimating];
         [self addSubview:self.actView];
+        [self.actView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(self.contentView.mas_centerX);
+            make.centerY.mas_equalTo(self.contentView.mas_centerY);
+        }];
         
         self.hidden = YES;
         
@@ -69,12 +79,19 @@
 -(void)showWithStationId:(NSString *)stationid
 {
     self.stationId = stationid;
+    NSString *statId = [[stationid componentsSeparatedByString:@"-"] firstObject];
+    NSString *areaId = [[stationid componentsSeparatedByString:@"-"] lastObject];
 
     self.hidden = NO;
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+    }];
+    
+    
     [UIView animateWithDuration:0.4f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.y = 0;
+        [self setNeedsLayout];
     } completion:^(BOOL finished) {
-        NSString *url = [Util requestEncodeWithString:[NSString stringWithFormat:@"http://scapi.weather.com.cn/weather/historycount?areaid=%@&", stationid]
+        NSString *url = [Util requestEncodeWithString:[NSString stringWithFormat:@"http://scapi.weather.com.cn/weather/historycount?stationid=%@&areaid=%@&", statId, areaId]
                                                 appId:@"f63d329270a44900"
                                            privateKey:@"sanx_data_99"];
         [[PLHttpManager sharedInstance].manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -91,8 +108,11 @@
 
 -(void)hide
 {
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.height);
+    }];
     [UIView animateWithDuration:0.4f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.y = self.height;
+        [self setNeedsLayout];
     } completion:^(BOOL finished) {
         [self clearViews];
         self.hidden = YES;
@@ -101,14 +121,26 @@
 
 -(void)setupViewsWitnData:(NSDictionary *)data
 {
-    UILabel *titleLabel = [self createLabelWithFrame:CGRectMake(0, 10, self.contentView.width, 20)];
+    UILabel *titleLabel = [self createLabel];
     titleLabel.text = [NSString stringWithFormat:@"%@ %@", self.addr, self.stationId];
     [self.contentView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        WithFrame:CGRectMake(0, 10, self.contentView.width, 20)
+        make.left.and.width.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(10);
+        make.height.mas_equalTo(20);
+    }];
     
     if (!data || data.count == 0) {
-        UILabel *tipLabel = [self createLabelWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.contentView.width, 25)];
+        UILabel *tipLabel = [self createLabel];
         tipLabel.text = data?@"暂无数据":@"请求失败";
         [self.contentView addSubview:tipLabel];
+        [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            WithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), self.contentView.width, 25)
+            make.left.and.width.mas_equalTo(self.contentView);
+            make.top.mas_equalTo(titleLabel.mas_bottom);
+            make.height.mas_equalTo(25);
+        }];
     }
     else
     {
@@ -122,15 +154,22 @@
             NSInteger dictDays = [[dict objectForKey:@"value"] integerValue];
             
             TJPieView *pieView = [[TJPieView alloc] initRadiuses:@[dict, @{@"name":@"其它", @"value":@(days-dictDays)}] total:days];
-            pieView.frame = CGRectMake(margin + (pieWidth+margin)*i, CGRectGetMaxY(titleLabel.frame)+margin, pieWidth, pieWidth);
+//            pieView.frame = CGRectMake(margin + (pieWidth+margin)*i, CGRectGetMaxY(titleLabel.frame)+margin, pieWidth, pieWidth);
             [self.contentView addSubview:pieView];
+            [pieView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(margin+(pieWidth+margin)*i);
+                make.top.mas_equalTo(titleLabel.mas_bottom).offset(margin);
+                make.width.and.height.mas_equalTo(pieWidth);
+            }];
             
-            [pieView startAnim];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [pieView startAnim];
+            });
         }
         
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, pieWidth+10+CGRectGetMaxY(titleLabel.frame)+margin, self.contentView.width-40, self.contentView.height-(pieWidth+CGRectGetMaxY(titleLabel.frame)+margin+20))];
+        UILabel *lbl = [[UILabel alloc] init];
         lbl.numberOfLines = 0;
-
+        lbl.preferredMaxLayoutWidth = self.width;
         {
             NSString *htmlString = @"<div style='color:#FFFFFF; font-size:18px'>自%@至%@：<br />"
             "日最高气温<a style='color:#d87a80;'>%@</a>°C,日最低气温<a style='color:#d87a80;'>%@</a>°C,日最大风速<a style='color:#d87a80;'>%@</a>m/s，日最大降水量<a style='color:#d87a80;'>%@</a>mm，连续无降水日数<a style='color:#d87a80;'>%@</a>天，连续霾日数<a style='color:#d87a80;'>%@</a>天。</div>";
@@ -150,8 +189,17 @@
 //        lbl.backgroundColor = [UIColor lightGrayColor];
         [lbl sizeToFit];
         [self.contentView addSubview:lbl];
+        [lbl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(20);
+            make.right.mas_equalTo(-20);
+            make.top.mas_equalTo(titleLabel.mas_bottom).offset(margin*2+pieWidth);
+            make.bottom.mas_equalTo(-margin);
+        }];
         
-        self.contentView.height = CGRectGetMaxY(lbl.frame);
+//        self.contentView.height = CGRectGetMaxY(lbl.frame);
+        [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_greaterThanOrEqualTo(lbl.mas_height);
+        }];
 #if 0
         [self.contentView addSubview:self.chartView];
         self.chartView.y = CGRectGetMaxY(lbl.frame)+margin-20;
@@ -226,9 +274,9 @@
     return dict;
 }
 
--(UILabel *)createLabelWithFrame:(CGRect)frame
+-(UILabel *)createLabel
 {
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:frame];
+    UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     

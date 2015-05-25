@@ -15,12 +15,17 @@
 #import "CWWindMapController.h"
 #import "MapAnimController.h"
 #import "OtherMapController.h"
+#import "TyphoonMapViewController.h"
+
+#import "OtherMapController.h"
 
 @interface MasterViewController ()
 
 @property NSDictionary *datas;
 @property NSArray *dataSections;
 @property (nonatomic,strong) MKMapView *mapView;
+@property (strong, nonatomic) UIViewController *detailViewController;
+
 @end
 
 @implementation MasterViewController
@@ -75,6 +80,40 @@
     [self.mapView removeOverlays:self.mapView.overlays];
     [self.mapView removeAnnotations:self.mapView.annotations];
     self.mapView.delegate = nil;
+    [self.mapView removeFromSuperview];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    UIViewController *vc = self.detailViewController;
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    }
+    else
+    {
+        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        vc.navigationItem.leftItemsSupplementBackButton = YES;
+    }
+}
+
+-(void)clickRightButton
+{
+    UIViewController *vc = self.detailViewController;
+    BOOL showFull = [vc.navigationItem.leftBarButtonItem.title isEqualToString:@"全屏"];
+    
+    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        if (showFull) {
+            self.splitViewController.preferredPrimaryColumnWidthFraction = 0;
+        }
+        else
+        {
+            self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
+        }
+    } completion:^(BOOL finished) {
+        [vc.navigationItem.leftBarButtonItem setTitle:showFull?@"分屏":@"全屏"];
+    }];
 }
 
 #pragma mark - Segues
@@ -118,6 +157,15 @@
     return cell;
 }
 
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[tableView indexPathForSelectedRow] isEqual:indexPath]) {
+        return nil;
+    }
+    
+    return indexPath;
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *key = [self.dataSections objectAtIndex:indexPath.section];
@@ -143,49 +191,88 @@
     else if ([text isEqualToString:@"全国雷达"]) {
         MapAnimController *next = [MapAnimController new];
         next.type = 0;
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
         
         vc = next;
     }
     else if ([text isEqualToString:@"全国云图"]) {
         MapAnimController *next = [MapAnimController new];
         next.type = 1;
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
         
         vc = next;
     }
     else if ([text isEqualToString:@"等风来"]) {
         CWWindMapController *next = [CWWindMapController new];
+        next.title = text;
+//        [self clearMapView];
+//        next.mapView = self.mapView;
         
         vc = next;
     }
     else if ([text isEqualToString:@"实景天气"]) {
         CWEyeMapController *next = [CWEyeMapController new];
         next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"台风路径"])
+    {
+        TyphoonMapViewController *viewController = [[TyphoonMapViewController alloc] initWithNibName:@"TyphoonMapView" bundle:nil];
+        [viewController setRequestType:@""];
+        viewController.title = text;
+        
+//        [viewController setRequestParams:data[@"l3"]];
+        vc = viewController;
+
+    }
+    else if ([text isEqualToString:@"全国温度预报"])
+    {
+        OtherMapController *next = [OtherMapController new];
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
+        next.isShowTemp = YES;
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"天气统计"])
+    {
+        OtherMapController *next = [OtherMapController new];
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
         
         vc = next;
     }
     
     if (vc) {
-        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        vc.navigationItem.leftItemsSupplementBackButton = YES;
         
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         [self showDetailViewController:nav sender:nil];
+        self.detailViewController = vc;
+        
+        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+        }
+        else
+        {
+            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            vc.navigationItem.leftItemsSupplementBackButton = YES;
+        }
     }
     
 }
 
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [self.objects removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//    }
-//}
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
+}
 
 @end

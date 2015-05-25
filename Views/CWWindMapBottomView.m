@@ -15,7 +15,7 @@
 @property (nonatomic,strong) CWChartView *chartView;
 @property (nonatomic,strong) UIImageView *addrIcon;
 @property (nonatomic,strong) UILabel *addrLabel;
-@property (nonatomic) CGFloat initY;
+@property (nonatomic,strong) UIButton *deleteButton;
 
 @end
 
@@ -30,6 +30,7 @@
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, frame.size.width, 25)];
         titleLabel.text = @"未来24小时风速预报";
+        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UIColor whiteColor];
         [self addSubview:titleLabel];
@@ -46,6 +47,7 @@
         [self addSubview:self.addrLabel];
         
         self.chartView = [[CWChartView alloc] initWithFrame:CGRectMake(10, 65, frame.size.width-20, frame.size.height-65)];
+        self.chartView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         self.chartView.isShowQuadCurve = YES;
 //        self.chartView.isXYLine = YES;
         self.chartView.leftMarginModify = 15.0;
@@ -68,13 +70,22 @@
         
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(frame.size.width-60, 0, 60, 35)];
 //        [button setTitle:@"关闭" forState:UIControlStateNormal];
+        button.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
         [button setTitle:@"×" forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:40];
         [button addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
+        self.deleteButton = button;
     }
     
     return self;
+}
+
+-(void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    self.deleteButton.frame = CGRectMake(frame.size.width-60, 0, 60, 35);
 }
 
 -(void)setupWithData:(NSDictionary *)data

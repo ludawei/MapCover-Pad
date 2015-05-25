@@ -14,10 +14,11 @@
 #import "MKMapView+ZoomLevel.h"
 #import "MBProgressHUD.h"
 
+#import "Masonry.h"
+
 @interface CWEyeMapController ()<MKMapViewDelegate>
 
 @property (nonatomic,strong) UIView *backView;
-@property (nonatomic,strong) MKMapView *mapView;
 //@property (nonatomic,strong) UIWebView *webView;
 
 @end
@@ -29,9 +30,12 @@
     // Do any additional setup after loading the view.
 //    self.navigationItem.title = @"天气网眼";
     
-    self.backView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.backView = [[UIView alloc] init];
     self.backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.backView];
+    [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
     
     [self initMapView];
     
@@ -40,12 +44,16 @@
 
 -(void)initMapView
 {
-    self.mapView = [[MKMapView alloc] init];
-    self.mapView.frame = self.backView.bounds;
+//    self.mapView = [[MKMapView alloc] init];
+//    self.mapView.frame = self.backView.bounds;
     self.mapView.delegate = self;
     //    self.mapView.showsUserLocation = YES;
     [self.backView addSubview:self.mapView];
     [self.backView sendSubviewToBack:self.mapView];
+    
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.backView);
+    }];
 }
 
 -(void)addAnnotationWithServerDatas:(NSArray *)datas

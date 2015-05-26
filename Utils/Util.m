@@ -124,20 +124,9 @@
 
 + (NSString *)parseWindForce:(NSString *)code
 {
-    // {\"0\":\"微风\",\"1\":\"3-4级\",\"2\":\"4-5级\",\"3\":\"5-6级\",\"4\":\"6-7级\",\"5\":\"7-8级\",\"6\":\"8-9级\",\"7\":\"9-10级\",\"8\":\"10-11级\",\"9\":\"11-12级\"}
-    
     switch (code.intValue)
     {
         case 0:   return @"微风";
-            //        case 1:   return @"3-4级";
-            //        case 2:   return @"4-5级";
-            //        case 3:   return @"5-6级";
-            //        case 4:   return @"6-7级";
-            //        case 5:   return @"7-8级";
-            //        case 6:   return @"8-9级";
-            //        case 7:   return @"9-10级";
-            //        case 8:   return @"10-11级";
-            //        case 9:   return @"11-12级";
             
         default:
             break;
@@ -172,8 +161,11 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(NS
 
 +(UIColor *)colorFromRGBString:(NSString *)rbgString
 {
+    if ([rbgString hasPrefix:@"rgba"]) {
+        return [UIColor clearColor];
+    }
     unsigned long rgbValue = strtoul([[rbgString stringByReplacingOccurrencesOfString:@"#" withString:@"0x"] UTF8String], 0, 16);
     
-    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0];
+    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0.7];
 }
 @end

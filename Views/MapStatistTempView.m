@@ -243,7 +243,7 @@
     
     NSMutableArray *arrayValuey = [[NSMutableArray alloc] init];
     NSMutableArray *arrayLabely = [[NSMutableArray alloc] init];
-    for (NSInteger i=(int)(min/10)*10; i<=(int)(max/10)*10; i=i+10) {
+    for (NSInteger i=(int)(min/10)*10; i<=(int)ceil(max/10)*10; i=i+10) {
         [arrayLabely addObject:[NSString stringWithFormat:@"%ld°", i]];
         [arrayValuey addObject:[NSString stringWithFormat:@"%ld", i]];
     }

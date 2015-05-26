@@ -12,6 +12,7 @@
 #import "CWMyOverlayRenderer.h"
 #import "CWMyPolyLineRenderer.h"
 #import "Util.h"
+#import "CustomAnnotationView.h"
 
 @interface DetailViewController ()<MKMapViewDelegate>
 
@@ -117,32 +118,44 @@
         
         
         [self.mapView addOverlay:line];
+        
+#if 0       // 不显示标注
+        NSDictionary *anniInfo = [area objectForKey:@"symbols"];
+        for (NSDictionary *anni in [anniInfo objectForKey:@"items"]) {
+            
+            MKPointAnnotation *ann = [[MKPointAnnotation alloc] init];
+            ann.coordinate = CLLocationCoordinate2DMake([[anni objectForKey:@"y"] doubleValue], [[anni objectForKey:@"x"] doubleValue]);
+            ann.title = [anniInfo objectForKey:@"text"];
+            
+            [self.mapView addAnnotation:ann];
+        }
+#endif
     }
 }
 
--(void)addLinesToMap
-{
-    //    NSArray *areas = [self.data objectForKey:@"lines"];
-    /********* 目前没有，暂时不处理 *********/
-    
-    //    for (NSDictionary *area in areas) {
-    //        NSArray *items = [area objectForKey:@"items"];
-    //
-    //        CLLocationCoordinate2D * points = (CLLocationCoordinate2D *)malloc(sizeof(CLLocationCoordinate2D) * items.count);
-    //
-    //        for (NSInteger i=0; i<items.count; i++) {
-    //            NSDictionary *point = [items objectAtIndex:i];
-    //
-    //            points[i] = CLLocationCoordinate2DMake([[point objectForKey:@"y"] doubleValue], [[point objectForKey:@"x"] doubleValue]);
-    //        }
-    //
-    //        MKPolygon *line = [MKPolygon polygonWithCoordinates:points count:items.count];
-    //        line.subtitle = [self colorStringFromDataInfoWithCode:[area objectForKey:@"code"] text:[[area objectForKey:@"symbols"] objectForKey:@"text"]];
-    //        free(points);
-    //
-    //        [self.mapView addOverlay:line];
-    //    }
-}
+//-(void)addLinesToMap
+//{
+//    NSArray *areas = [self.data objectForKey:@"lines"];
+//    /********* 目前没有，暂时不处理 *********/
+//    
+//    for (NSDictionary *area in areas) {
+//        NSArray *items = [area objectForKey:@"items"];
+//
+//        CLLocationCoordinate2D * points = (CLLocationCoordinate2D *)malloc(sizeof(CLLocationCoordinate2D) * items.count);
+//
+//        for (NSInteger i=0; i<items.count; i++) {
+//            NSDictionary *point = [items objectAtIndex:i];
+//
+//            points[i] = CLLocationCoordinate2DMake([[point objectForKey:@"y"] doubleValue], [[point objectForKey:@"x"] doubleValue]);
+//        }
+//
+//        MKPolygon *line = [MKPolygon polygonWithCoordinates:points count:items.count];
+////        line.subtitle = [self colorStringFromDataInfoWithCode:[area objectForKey:@"code"] text:[[area objectForKey:@"symbols"] objectForKey:@"text"]];
+//        free(points);
+//
+//        [self.mapView addOverlay:line];
+//    }
+//}
 
 -(void)addLine_symbolsToMap
 {
@@ -215,7 +228,7 @@
         
         [self addLine_symbolsToMap];
         
-        //    [self addSymbolsToMap];
+//        [self addSymbolsToMap];
     }
     
     if (self.areas) {
@@ -304,14 +317,14 @@
     
     if ([overlay isKindOfClass:[MKPolygon class]]) {
         CWMyOverlayRenderer *routineView = [[CWMyOverlayRenderer alloc] initWithPolygon:overlay];
-        routineView.fillColor = [[Util colorFromRGBString:[overlay title]] colorWithAlphaComponent:0.7];
+        routineView.fillColor = [Util colorFromRGBString:[overlay title]];
         
         renderer = routineView;
     }
     
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         CWMyPolyLineRenderer * routineView = [[CWMyPolyLineRenderer alloc] initWithPolyline:overlay];
-        routineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];//[[self colorFromRGBString:[overlay subtitle]] colorWithAlphaComponent:0.7];
+        routineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];//[[Util colorFromRGBString:[overlay subtitle]] colorWithAlphaComponent:0.7];
         routineView.lineWidth = 1.5;
         renderer = routineView;
     }
@@ -323,21 +336,20 @@
 {
     if ([annotation isKindOfClass:[MKPointAnnotation class]])
     {
-        static NSString *annIdentifier = @"annIdentifier";
+        static NSString *annIdentifier = @"annIdentifier-detail";
         
-        MKAnnotationView *poiAnnotationView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:annIdentifier];
+        CustomAnnotationView *poiAnnotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:annIdentifier];
         if (poiAnnotationView == nil)
         {
-            poiAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+            poiAnnotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation
                                                              reuseIdentifier:annIdentifier];
         }
         
         poiAnnotationView.canShowCallout = YES;
-        poiAnnotationView.image = [UIImage imageNamed:@"map_anni_point"];
-        //        poiAnnotationView.centerOffset = CGPointMake(0, -(poiAnnotationView.image.size.height/2));
-        //
-        //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-        //        [poiAnnotationView addGestureRecognizer:tap];
+        if ([poiAnnotationView isKindOfClass:[CustomAnnotationView class]]) {
+            poiAnnotationView.image = [UIImage imageNamed:@"circle39"];
+            [poiAnnotationView setLabelText:[annotation title]];
+        }
         
         return poiAnnotationView;
     }

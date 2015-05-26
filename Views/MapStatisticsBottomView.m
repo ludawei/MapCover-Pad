@@ -25,6 +25,8 @@
 @property (nonatomic,strong) NSDateFormatter *dateFormatter;
 @property (nonatomic,strong) UIActivityIndicatorView *actView;
 
+@property (nonatomic,strong) UIView *fatherView;
+
 @property (nonatomic,strong) CWChartView *chartView;
 
 @end
@@ -36,11 +38,11 @@
     if (self = [super initWithFrame:frame]) {
         
         
-        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height-BOTTOM_HEIGHT, frame.size.width, BOTTOM_HEIGHT)];
+        self.contentView = [[UIView alloc] init];
         self.contentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
         [self addSubview:self.contentView];
         [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.and.bottom.and.width.mas_equalTo(self);
+            make.left.and.bottom.and.right.mas_equalTo(self);
             make.height.mas_greaterThanOrEqualTo(BOTTOM_HEIGHT);
         }];
         
@@ -76,6 +78,13 @@
     return self;
 }
 
+-(void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    
+    self.fatherView = newSuperview;
+}
+
 -(void)showWithStationId:(NSString *)stationid
 {
     self.stationId = [[stationid componentsSeparatedByString:@"-"] firstObject];
@@ -89,7 +98,7 @@
     
     
     [UIView animateWithDuration:0.4f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self setNeedsLayout];
+        [self.fatherView layoutIfNeeded];
     } completion:^(BOOL finished) {
         NSString *url = [Util requestEncodeWithString:[NSString stringWithFormat:@"http://scapi.weather.com.cn/weather/historycount?stationid=%@&areaid=%@&", statId, areaId]
                                                 appId:@"f63d329270a44900"
@@ -112,7 +121,7 @@
         make.top.mas_equalTo(self.height);
     }];
     [UIView animateWithDuration:0.4f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self setNeedsLayout];
+        [self.fatherView layoutIfNeeded];
     } completion:^(BOOL finished) {
         [self clearViews];
         self.hidden = YES;

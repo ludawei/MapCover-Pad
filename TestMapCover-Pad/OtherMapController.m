@@ -56,6 +56,14 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
+    
+    if (self.isShowTemp) {
+        self.statisticsTempView.hidden = YES;
+    }
+    else
+    {
+        self.statisticsView.hidden = YES;
+    }
 }
 
 -(void)initMapView
@@ -70,8 +78,6 @@
     }];
     
     [self.backView sendSubviewToBack:self.mapView];
-    
-    
 }
 
 -(NSArray *)annotationsWithServerDatas:(NSString *)level
@@ -141,7 +147,7 @@
         _statisticsView = [MapStatisticsBottomView new];
         [self.backView addSubview:_statisticsView];
         [_statisticsView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.and.bottom.mas_equalTo(self.view);
+            make.left.width.and.height.mas_equalTo(self.backView);
             make.top.mas_equalTo(self.backView.mas_bottom);
         }];
     }
@@ -155,7 +161,7 @@
         _statisticsTempView = [MapStatistTempView new];
         [self.backView addSubview:_statisticsTempView];
         [_statisticsTempView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.and.bottom.mas_equalTo(self.view);
+            make.left.width.and.height.mas_equalTo(self.backView);
             make.top.mas_equalTo(self.backView.mas_bottom);
         }];
     }

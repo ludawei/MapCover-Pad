@@ -13,7 +13,9 @@
 #import "TyphoonSpotAnnotationView.h"
 #import "WCMydTaskControl.h"
 
-@interface TyphoonMapViewController : UIViewController <MKMapViewDelegate, MydDisplayDelegate, NSXMLParserDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+#import "BaseViewController.h"
+
+@interface TyphoonMapViewController : BaseViewController <MKMapViewDelegate, MydDisplayDelegate, NSXMLParserDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     NSString * _toolBarTitleString;
     NSString * _requestType;

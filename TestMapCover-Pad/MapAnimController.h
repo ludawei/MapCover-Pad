@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BaseViewController.h"
 
-@interface MapAnimController : UIViewController
+@interface MapAnimController : BaseViewController
 
 @property (nonatomic) NSInteger type;
 @property (nonatomic) CLLocationCoordinate2D coor;

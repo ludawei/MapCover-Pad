@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BaseViewController.h"
 
-@interface CWWindMapController : UIViewController
+@interface CWWindMapController : BaseViewController
 
 @property (nonatomic,strong) MKMapView *mapView;
 

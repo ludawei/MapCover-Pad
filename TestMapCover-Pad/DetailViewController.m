@@ -104,16 +104,16 @@
         free(points);
         
         if ([area objectForKey:@"c"]) {
-            line.title = [area objectForKey:@"color"];
+            line.title = [area objectForKey:@"c"];
             line.subtitle = [area objectForKey:@"is_stripe"];
         }
-        else
-        {
-            NSDictionary *data = [self dataFromDataInfoWithCode:[area objectForKey:@"code"] text:[[area objectForKey:@"symbols"] objectForKey:@"text"]];
-            
-            line.title = [data objectForKey:@"color"];
-            line.subtitle = [data objectForKey:@"is_stripe"];
-        }
+//        else
+//        {
+//            NSDictionary *data = [self dataFromDataInfoWithCode:[area objectForKey:@"code"] text:[[area objectForKey:@"symbols"] objectForKey:@"text"]];
+//            
+//            line.title = [data objectForKey:@"color"];
+//            line.subtitle = [data objectForKey:@"is_stripe"];
+//        }
         
         
         [self.mapView addOverlay:line];
@@ -256,17 +256,17 @@
     return finalData;
 }
 
--(void)initDataInfo:(NSString *)name
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
-    NSData *jsonData = [NSData dataWithContentsOfFile:path];
-    
-    self.dataInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-}
+//-(void)initDataInfo:(NSString *)name
+//{
+//    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+//    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+//    
+//    self.dataInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+//}
 
 -(void)initData:(NSString *)name
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:nil];
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfFile:path];
     
     id data = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
@@ -277,7 +277,7 @@
     else
     {
         self.data = data;
-        [self initDataInfo:name];
+//        [self initDataInfo:name];
     }
 }
 

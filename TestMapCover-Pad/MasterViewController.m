@@ -83,38 +83,43 @@
     [self.mapView removeFromSuperview];
 }
 
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    UIViewController *vc = self.detailViewController;
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
-    }
-    else
-    {
-        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        vc.navigationItem.leftItemsSupplementBackButton = YES;
-    }
-}
-
--(void)clickRightButton
-{
-    UIViewController *vc = self.detailViewController;
-    BOOL showFull = [vc.navigationItem.leftBarButtonItem.title isEqualToString:@"全屏"];
-    
-    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        if (showFull) {
-            self.splitViewController.preferredPrimaryColumnWidthFraction = 0;
-        }
-        else
-        {
-            self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
-        }
-    } completion:^(BOOL finished) {
-        [vc.navigationItem.leftBarButtonItem setTitle:showFull?@"分屏":@"全屏"];
-    }];
-}
+//-(void)viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    
+//    UIViewController *vc = self.detailViewController;
+//#if 1
+//    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+//#else
+//        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+//#endif
+//    {
+//        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+//    }
+//    else
+//    {
+//        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+//        vc.navigationItem.leftItemsSupplementBackButton = YES;
+//    }
+//}
+//
+//-(void)clickRightButton
+//{
+//    UIViewController *vc = self.detailViewController;
+//    BOOL showFull = [vc.navigationItem.leftBarButtonItem.title isEqualToString:@"全屏"];
+//    
+//    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        if (showFull) {
+//            self.splitViewController.preferredPrimaryColumnWidthFraction = 0;
+//        }
+//        else
+//        {
+//            self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
+//        }
+//    } completion:^(BOOL finished) {
+//        [vc.navigationItem.leftBarButtonItem setTitle:showFull?@"分屏":@"全屏"];
+//    }];
+//}
 
 #pragma mark - Segues
 
@@ -258,21 +263,26 @@
         [self showDetailViewController:nav sender:nil];
         self.detailViewController = vc;
         
-        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
-        }
-        else
-        {
-            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-            vc.navigationItem.leftItemsSupplementBackButton = YES;
-        }
+//#if 1
+//        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+//#else
+//        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+//#endif
+//        {
+//            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+//        }
+//        else
+//        {
+//            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+//            vc.navigationItem.leftItemsSupplementBackButton = YES;
+//        }
     }
     
 }
 
--(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
-}
+//-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    self.splitViewController.preferredPrimaryColumnWidthFraction = UISplitViewControllerAutomaticDimension;
+//}
 
 @end

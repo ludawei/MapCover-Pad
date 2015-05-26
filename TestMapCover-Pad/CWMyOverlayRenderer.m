@@ -27,7 +27,7 @@
 
 -(void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)context
 {
-    if ([[self.polygon subtitle] isEqualToString:@"1"])
+    if ([[self.polygon subtitle] boolValue])
     {
         MKMapRect theMapRect    = [self.overlay boundingMapRect];
         CGRect theRect           = [self rectForMapRect:theMapRect];

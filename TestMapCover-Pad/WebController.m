@@ -157,15 +157,6 @@
     // Dispose of any resources that can be recreated.
     
     [self.webView stopLoading];
-//    self.webView.delegate=nil;
-//    [self.webView removeFromSuperview];
-//    self.webView = nil;
-//    [self showTipView];
-    
-    
-//    [self.navigationController popViewControllerAnimated:YES];
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.info objectForKey:@"l2"]]];
-//    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -205,15 +196,6 @@
         [self.view addSubview:label];
         tipLabel = label;
     }
-}
-
--(void)clickButton
-{
-    [self.navigationController popViewControllerAnimated:YES];
-
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.info objectForKey:@"l2"]]];
-//    });
 }
 
 #pragma mark - NJKWebViewProgressDelegate

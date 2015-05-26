@@ -138,7 +138,7 @@
     
     descriptionLabel.text = titleText;
     
-    descriptionLabel.font = [UIFont systemFontOfSize:10];
+    descriptionLabel.font = [UIFont systemFontOfSize:self.width/5];
 //    CGSize labelSize = [descriptionLabel.text sizeWithAttributes:@{NSFontAttributeName:descriptionLabel.font}];
 //    descriptionLabel.frame = CGRectMake(descriptionLabel.frame.origin.x, descriptionLabel.frame.origin.y,
 //                                        descriptionLabel.frame.size.width, labelSize.height);

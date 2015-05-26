@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BaseViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : BaseViewController
 
 @property (strong, nonatomic) id detailItem;
 @property (nonatomic,strong) MKMapView *mapView;

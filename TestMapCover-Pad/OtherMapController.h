@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BaseViewController.h"
 
-@interface OtherMapController : UIViewController
+@interface OtherMapController : BaseViewController
 
 @property (nonatomic,strong) MKMapView *mapView;
 @property (nonatomic) BOOL isShowTemp;

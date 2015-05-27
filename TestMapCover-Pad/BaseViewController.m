@@ -19,14 +19,28 @@
     // Do any additional setup after loading the view.
     
     UIViewController *vc = self;
-    if (!self.splitViewController.collapsed)
-    {
-        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+        {
+            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+        }
+        else
+        {
+            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            vc.navigationItem.leftItemsSupplementBackButton = YES;
+        }
     }
     else
     {
-        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        vc.navigationItem.leftItemsSupplementBackButton = YES;
+        if (!self.splitViewController.collapsed)
+        {
+            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+        }
+        else
+        {
+            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            vc.navigationItem.leftItemsSupplementBackButton = YES;
+        }
     }
 }
 
@@ -40,14 +54,28 @@
     [super viewDidLayoutSubviews];
     
     UIViewController *vc = self;
-    if (!self.splitViewController.collapsed)
-    {
-        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+        {
+            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+        }
+        else
+        {
+            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            vc.navigationItem.leftItemsSupplementBackButton = YES;
+        }
     }
     else
     {
-        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        vc.navigationItem.leftItemsSupplementBackButton = YES;
+        if (!self.splitViewController.collapsed)
+        {
+            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+        }
+        else
+        {
+            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            vc.navigationItem.leftItemsSupplementBackButton = YES;
+        }
     }
 }
 

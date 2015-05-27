@@ -99,6 +99,13 @@
     }
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.typhoonLabel.y = [UIApplication sharedApplication].statusBarFrame.size.height+self.navigationController.navigationBar.height;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

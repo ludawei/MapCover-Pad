@@ -130,6 +130,10 @@
 
 -(void)setupViewsWitnData:(NSDictionary *)data
 {
+    if (self.hidden) {
+        return;
+    }
+    
     self.actView.hidden = YES;
     [self.actView removeFromSuperview];
     

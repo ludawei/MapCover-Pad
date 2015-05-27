@@ -58,7 +58,7 @@
     [self.view addSubview:self.backView];
     [self.backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.topLayoutGuide);
+        make.top.mas_equalTo(self.navigationController.navigationBar.height+[UIApplication sharedApplication].statusBarFrame.size.height);
     }];
     
     self.mapImagesManager = [[MapImagesManager alloc] init];
@@ -94,6 +94,15 @@
     }
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self.backView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.navigationController.navigationBar.height+[UIApplication sharedApplication].statusBarFrame.size.height);
+    }];
+}
+
 - (void)initTopViews
 {
     CGFloat height = 50;
@@ -101,7 +110,7 @@
     [self.backView addSubview:topView];
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.width.mas_equalTo(self.backView);
-        make.top.mas_equalTo(64);
+        make.top.mas_equalTo(0);
         make.height.mas_equalTo(height);
     }];
     

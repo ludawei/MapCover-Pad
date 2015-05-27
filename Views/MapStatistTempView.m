@@ -127,6 +127,10 @@
 
 -(void)setupViewsWitnData:(NSDictionary *)data
 {
+    if (self.hidden) {
+        return;
+    }
+    
     UILabel *titleLabel = [self createLabel];
     titleLabel.text = [NSString stringWithFormat:@"%@ %@", self.addr, self.stationId];
     [self.contentView addSubview:titleLabel];

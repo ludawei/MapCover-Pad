@@ -52,6 +52,19 @@
     [self initData];
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightBarButton)];
+}
+
+-(void)clickRightBarButton
+{
+    if (self.mapView.mapType == MKMapTypeStandard) {
+        self.mapView.mapType = MKMapTypeHybrid;
+    }
+    else
+    {
+        self.mapView.mapType = MKMapTypeStandard;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

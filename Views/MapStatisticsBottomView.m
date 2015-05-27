@@ -130,6 +130,9 @@
 
 -(void)setupViewsWitnData:(NSDictionary *)data
 {
+    self.actView.hidden = YES;
+    [self.actView removeFromSuperview];
+    
     UILabel *titleLabel = [self createLabel];
     titleLabel.text = [NSString stringWithFormat:@"%@ %@", self.addr, self.stationId];
     [self.contentView addSubview:titleLabel];
@@ -241,8 +244,6 @@
         [self.chartView setNeedsDisplay];
 #endif
     }
-    
-    self.actView.hidden = YES;
 }
 
 -(NSDictionary *)chartDataWithDatas:(NSArray *)array

@@ -194,6 +194,7 @@
     }
     
     self.actView.hidden = YES;
+    [self.actView removeFromSuperview];
 }
 
 -(NSDictionary *)chartDataWithDatas:(NSArray *)array withTime:(NSString *)time

@@ -19,19 +19,15 @@
     // Do any additional setup after loading the view.
     
     UIViewController *vc = self;
-#if 1
-    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
-#else
-        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-#endif
-        {
-            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
-        }
-        else
-        {
-            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-            vc.navigationItem.leftItemsSupplementBackButton = YES;
-        }
+    if (!self.splitViewController.collapsed)
+    {
+        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    }
+    else
+    {
+        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        vc.navigationItem.leftItemsSupplementBackButton = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,19 +40,15 @@
     [super viewDidLayoutSubviews];
     
     UIViewController *vc = self;
-#if 1
-    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
-#else
-        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-#endif
-        {
-            vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
-        }
-        else
-        {
-            vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-            vc.navigationItem.leftItemsSupplementBackButton = YES;
-        }
+    if (!self.splitViewController.collapsed)
+    {
+        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全屏" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    }
+    else
+    {
+        vc.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        vc.navigationItem.leftItemsSupplementBackButton = YES;
+    }
 }
 
 -(void)clickRightButton

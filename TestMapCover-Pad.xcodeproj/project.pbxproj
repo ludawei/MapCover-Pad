@@ -9,7 +9,19 @@
 /* Begin PBXBuildFile section */
 		EEDB363F1B25727B00E6F850 /* TSTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB363E1B25727B00E6F850 /* TSTileOverlay.m */; };
 		EEDB36421B25818A00E6F850 /* TSTileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36411B25818A00E6F850 /* TSTileOverlayView.m */; };
-		EEDB364A1B26F1BC00E6F850 /* 15060820.018.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36491B26F1BC00E6F850 /* 15060820.018.png */; };
+		EEDB36591B27D6C000E6F850 /* 15060820.018.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB364C1B27D6C000E6F850 /* 15060820.018.png */; };
+		EEDB365A1B27D6C000E6F850 /* 15032008.006.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB364E1B27D6C000E6F850 /* 15032008.006.png */; };
+		EEDB365B1B27D6C000E6F850 /* 15032008.006_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB364F1B27D6C000E6F850 /* 15032008.006_range.json */; };
+		EEDB365C1B27D6C000E6F850 /* 14122008.000.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36511B27D6C000E6F850 /* 14122008.000.png */; };
+		EEDB365D1B27D6C000E6F850 /* 14122008.000_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36521B27D6C000E6F850 /* 14122008.000_range.json */; };
+		EEDB365E1B27D6C000E6F850 /* 14122008.0001.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36541B27D6C000E6F850 /* 14122008.0001.png */; };
+		EEDB365F1B27D6C000E6F850 /* 14122008.0001_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36551B27D6C000E6F850 /* 14122008.0001_range.json */; };
+		EEDB36601B27D6C000E6F850 /* 14122208.000.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36571B27D6C000E6F850 /* 14122208.000.png */; };
+		EEDB36611B27D6C000E6F850 /* 14122208.000_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36581B27D6C000E6F850 /* 14122208.000_range.json */; };
+		EEDB366B1B27D6EE00E6F850 /* MyVector.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36641B27D6EE00E6F850 /* MyVector.m */; };
+		EEDB366C1B27D6EE00E6F850 /* PLBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36661B27D6EE00E6F850 /* PLBaseObject.m */; };
+		EEDB366D1B27D6EE00E6F850 /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36681B27D6EE00E6F850 /* WeatherData.m */; };
+		EEDB366E1B27D6EE00E6F850 /* WindParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB366A1B27D6EE00E6F850 /* WindParticle.m */; };
 		EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FB91B0DEFCE0070A30F /* main.m */; };
 		EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */; };
 		EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBF1B0DEFCE0070A30F /* MasterViewController.m */; };
@@ -30,14 +42,6 @@
 		EEEF50211B0DF13B0070A30F /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50171B0DF13B0070A30F /* View+MASAdditions.m */; };
 		EEEF50271B0DF1D70070A30F /* CWMyOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50241B0DF1D70070A30F /* CWMyOverlayRenderer.m */; };
 		EEEF50281B0DF1D70070A30F /* CWMyPolyLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF50261B0DF1D70070A30F /* CWMyPolyLineRenderer.m */; };
-		EEEF54231B0F2CDA0070A30F /* 15032008.006.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF54181B0F2CDA0070A30F /* 15032008.006.png */; };
-		EEEF54241B0F2CDA0070A30F /* 15032008.006_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF54191B0F2CDA0070A30F /* 15032008.006_range.json */; };
-		EEEF54251B0F2CDA0070A30F /* 14122008.000.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF541B1B0F2CDA0070A30F /* 14122008.000.png */; };
-		EEEF54261B0F2CDA0070A30F /* 14122008.000_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF541C1B0F2CDA0070A30F /* 14122008.000_range.json */; };
-		EEEF54271B0F2CDA0070A30F /* 14122008.0001.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF541E1B0F2CDA0070A30F /* 14122008.0001.png */; };
-		EEEF54281B0F2CDA0070A30F /* 14122008.0001_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF541F1B0F2CDA0070A30F /* 14122008.0001_range.json */; };
-		EEEF54291B0F2CDA0070A30F /* 14122208.000.png in Resources */ = {isa = PBXBuildFile; fileRef = EEEF54211B0F2CDA0070A30F /* 14122208.000.png */; };
-		EEEF542A1B0F2CDA0070A30F /* 14122208.000_range.json in Resources */ = {isa = PBXBuildFile; fileRef = EEEF54221B0F2CDA0070A30F /* 14122208.000_range.json */; };
 		EEEF542D1B0F2E0A0070A30F /* MyOverlayImageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF542C1B0F2E0A0070A30F /* MyOverlayImageRenderer.m */; };
 		EEEF54301B0F2FBE0070A30F /* DetailViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF542F1B0F2FBE0070A30F /* DetailViewController1.m */; };
 		EEEF54381B0F335F0070A30F /* CWWindMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF54351B0F335F0070A30F /* CWWindMapController.m */; };
@@ -110,10 +114,6 @@
 		EEEF55881B0F353D0070A30F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF55861B0F353D0070A30F /* libssl.a */; };
 		EEEF558B1B0F36D70070A30F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF558A1B0F36D70070A30F /* Foundation.framework */; };
 		EEEF558D1B0F36E90070A30F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF558C1B0F36E90070A30F /* libz.dylib */; };
-		EEEF55971B0F38190070A30F /* MyVector.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55901B0F38190070A30F /* MyVector.m */; };
-		EEEF55981B0F38190070A30F /* PLBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55921B0F38190070A30F /* PLBaseObject.m */; };
-		EEEF55991B0F38190070A30F /* WeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55941B0F38190070A30F /* WeatherData.m */; };
-		EEEF559A1B0F38190070A30F /* WindParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55961B0F38190070A30F /* WindParticle.m */; };
 		EEEF559D1B0F38370070A30F /* MBProgressHUD+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF559C1B0F38370070A30F /* MBProgressHUD+Extra.m */; };
 		EEEF55A11B0F38450070A30F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55A01B0F38450070A30F /* MBProgressHUD.m */; };
 		EEEF55A41B0F38730070A30F /* CWUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55A31B0F38730070A30F /* CWUserManager.m */; };
@@ -271,7 +271,23 @@
 		EEDB363E1B25727B00E6F850 /* TSTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTileOverlay.m; sourceTree = "<group>"; };
 		EEDB36401B25818A00E6F850 /* TSTileOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTileOverlayView.h; sourceTree = "<group>"; };
 		EEDB36411B25818A00E6F850 /* TSTileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTileOverlayView.m; sourceTree = "<group>"; };
-		EEDB36491B26F1BC00E6F850 /* 15060820.018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15060820.018.png; sourceTree = "<group>"; };
+		EEDB364C1B27D6C000E6F850 /* 15060820.018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15060820.018.png; sourceTree = "<group>"; };
+		EEDB364E1B27D6C000E6F850 /* 15032008.006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15032008.006.png; sourceTree = "<group>"; };
+		EEDB364F1B27D6C000E6F850 /* 15032008.006_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 15032008.006_range.json; sourceTree = "<group>"; };
+		EEDB36511B27D6C000E6F850 /* 14122008.000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14122008.000.png; sourceTree = "<group>"; };
+		EEDB36521B27D6C000E6F850 /* 14122008.000_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 14122008.000_range.json; sourceTree = "<group>"; };
+		EEDB36541B27D6C000E6F850 /* 14122008.0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14122008.0001.png; sourceTree = "<group>"; };
+		EEDB36551B27D6C000E6F850 /* 14122008.0001_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 14122008.0001_range.json; sourceTree = "<group>"; };
+		EEDB36571B27D6C000E6F850 /* 14122208.000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14122208.000.png; sourceTree = "<group>"; };
+		EEDB36581B27D6C000E6F850 /* 14122208.000_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 14122208.000_range.json; sourceTree = "<group>"; };
+		EEDB36631B27D6EE00E6F850 /* MyVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVector.h; sourceTree = "<group>"; };
+		EEDB36641B27D6EE00E6F850 /* MyVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVector.m; sourceTree = "<group>"; };
+		EEDB36651B27D6EE00E6F850 /* PLBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBaseObject.h; sourceTree = "<group>"; };
+		EEDB36661B27D6EE00E6F850 /* PLBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBaseObject.m; sourceTree = "<group>"; };
+		EEDB36671B27D6EE00E6F850 /* WeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherData.h; sourceTree = "<group>"; };
+		EEDB36681B27D6EE00E6F850 /* WeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherData.m; sourceTree = "<group>"; };
+		EEDB36691B27D6EE00E6F850 /* WindParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindParticle.h; sourceTree = "<group>"; };
+		EEDB366A1B27D6EE00E6F850 /* WindParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindParticle.m; sourceTree = "<group>"; };
 		EEEF4FB41B0DEFCE0070A30F /* TestMapCover-Pad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestMapCover-Pad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEF4FB81B0DEFCE0070A30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEEF4FB91B0DEFCE0070A30F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -315,14 +331,6 @@
 		EEEF50241B0DF1D70070A30F /* CWMyOverlayRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMyOverlayRenderer.m; sourceTree = "<group>"; };
 		EEEF50251B0DF1D70070A30F /* CWMyPolyLineRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMyPolyLineRenderer.h; sourceTree = "<group>"; };
 		EEEF50261B0DF1D70070A30F /* CWMyPolyLineRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMyPolyLineRenderer.m; sourceTree = "<group>"; };
-		EEEF54181B0F2CDA0070A30F /* 15032008.006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15032008.006.png; sourceTree = "<group>"; };
-		EEEF54191B0F2CDA0070A30F /* 15032008.006_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 15032008.006_range.json; sourceTree = "<group>"; };
-		EEEF541B1B0F2CDA0070A30F /* 14122008.000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14122008.000.png; sourceTree = "<group>"; };
-		EEEF541C1B0F2CDA0070A30F /* 14122008.000_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 14122008.000_range.json; sourceTree = "<group>"; };
-		EEEF541E1B0F2CDA0070A30F /* 14122008.0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14122008.0001.png; sourceTree = "<group>"; };
-		EEEF541F1B0F2CDA0070A30F /* 14122008.0001_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 14122008.0001_range.json; sourceTree = "<group>"; };
-		EEEF54211B0F2CDA0070A30F /* 14122208.000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14122208.000.png; sourceTree = "<group>"; };
-		EEEF54221B0F2CDA0070A30F /* 14122208.000_range.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 14122208.000_range.json; sourceTree = "<group>"; };
 		EEEF542B1B0F2E0A0070A30F /* MyOverlayImageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOverlayImageRenderer.h; sourceTree = "<group>"; };
 		EEEF542C1B0F2E0A0070A30F /* MyOverlayImageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOverlayImageRenderer.m; sourceTree = "<group>"; };
 		EEEF542E1B0F2FBE0070A30F /* DetailViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController1.h; sourceTree = "<group>"; };
@@ -540,14 +548,6 @@
 		EEEF55891B0F36480070A30F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		EEEF558A1B0F36D70070A30F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EEEF558C1B0F36E90070A30F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		EEEF558F1B0F38190070A30F /* MyVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVector.h; sourceTree = "<group>"; };
-		EEEF55901B0F38190070A30F /* MyVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVector.m; sourceTree = "<group>"; };
-		EEEF55911B0F38190070A30F /* PLBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLBaseObject.h; sourceTree = "<group>"; };
-		EEEF55921B0F38190070A30F /* PLBaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLBaseObject.m; sourceTree = "<group>"; };
-		EEEF55931B0F38190070A30F /* WeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherData.h; sourceTree = "<group>"; };
-		EEEF55941B0F38190070A30F /* WeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherData.m; sourceTree = "<group>"; };
-		EEEF55951B0F38190070A30F /* WindParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindParticle.h; sourceTree = "<group>"; };
-		EEEF55961B0F38190070A30F /* WindParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindParticle.m; sourceTree = "<group>"; };
 		EEEF559B1B0F38370070A30F /* MBProgressHUD+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extra.h"; sourceTree = "<group>"; };
 		EEEF559C1B0F38370070A30F /* MBProgressHUD+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extra.m"; sourceTree = "<group>"; };
 		EEEF559F1B0F38450070A30F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -771,15 +771,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EEDB364B1B27D6C000E6F850 /* 全球预报要素图像 */ = {
+			isa = PBXGroup;
+			children = (
+				EEDB364C1B27D6C000E6F850 /* 15060820.018.png */,
+				EEDB364D1B27D6C000E6F850 /* 气压 */,
+				EEDB36501B27D6C000E6F850 /* 温度 */,
+				EEDB36531B27D6C000E6F850 /* 湿度 */,
+				EEDB36561B27D6C000E6F850 /* 风速 */,
+			);
+			path = "全球预报要素图像";
+			sourceTree = "<group>";
+		};
+		EEDB364D1B27D6C000E6F850 /* 气压 */ = {
+			isa = PBXGroup;
+			children = (
+				EEDB364E1B27D6C000E6F850 /* 15032008.006.png */,
+				EEDB364F1B27D6C000E6F850 /* 15032008.006_range.json */,
+			);
+			path = "气压";
+			sourceTree = "<group>";
+		};
+		EEDB36501B27D6C000E6F850 /* 温度 */ = {
+			isa = PBXGroup;
+			children = (
+				EEDB36511B27D6C000E6F850 /* 14122008.000.png */,
+				EEDB36521B27D6C000E6F850 /* 14122008.000_range.json */,
+			);
+			path = "温度";
+			sourceTree = "<group>";
+		};
+		EEDB36531B27D6C000E6F850 /* 湿度 */ = {
+			isa = PBXGroup;
+			children = (
+				EEDB36541B27D6C000E6F850 /* 14122008.0001.png */,
+				EEDB36551B27D6C000E6F850 /* 14122008.0001_range.json */,
+			);
+			path = "湿度";
+			sourceTree = "<group>";
+		};
+		EEDB36561B27D6C000E6F850 /* 风速 */ = {
+			isa = PBXGroup;
+			children = (
+				EEDB36571B27D6C000E6F850 /* 14122208.000.png */,
+				EEDB36581B27D6C000E6F850 /* 14122208.000_range.json */,
+			);
+			path = "风速";
+			sourceTree = "<group>";
+		};
+		EEDB36621B27D6EE00E6F850 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EEDB36631B27D6EE00E6F850 /* MyVector.h */,
+				EEDB36641B27D6EE00E6F850 /* MyVector.m */,
+				EEDB36651B27D6EE00E6F850 /* PLBaseObject.h */,
+				EEDB36661B27D6EE00E6F850 /* PLBaseObject.m */,
+				EEDB36671B27D6EE00E6F850 /* WeatherData.h */,
+				EEDB36681B27D6EE00E6F850 /* WeatherData.m */,
+				EEDB36691B27D6EE00E6F850 /* WindParticle.h */,
+				EEDB366A1B27D6EE00E6F850 /* WindParticle.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EEEF4FAB1B0DEFCE0070A30F = {
 			isa = PBXGroup;
 			children = (
+				EEDB36621B27D6EE00E6F850 /* Models */,
+				EEDB364B1B27D6C000E6F850 /* 全球预报要素图像 */,
 				EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */,
 				EEEF55DD1B12BAD10070A30F /* Wisp */,
 				EEEF55AF1B0F3A690070A30F /* SDWebImage */,
 				EEEF55A81B0F39D70070A30F /* NJKWebViewProgress */,
 				EEEF559E1B0F38450070A30F /* MBProgressHUD */,
-				EEEF558E1B0F38190070A30F /* Models */,
 				EEEF558C1B0F36E90070A30F /* libz.dylib */,
 				EEEF558A1B0F36D70070A30F /* Foundation.framework */,
 				EEEF55371B0F353D0070A30F /* openssl_lib */,
@@ -788,7 +852,6 @@
 				EEEF54941B0F34C40070A30F /* AFNetworking */,
 				EEEF54841B0F34590070A30F /* Managers */,
 				EEEF54401B0F33940070A30F /* Views */,
-				EEEF54161B0F2CDA0070A30F /* 全球预报要素图像 */,
 				EEEF50011B0DF13B0070A30F /* Masonry */,
 				EEEF4FFF1B0DF03C0070A30F /* MapDatas.plist */,
 				EEEF56B91B1330770070A30F /* 图例 */,
@@ -935,55 +998,6 @@
 				EEEF542C1B0F2E0A0070A30F /* MyOverlayImageRenderer.m */,
 			);
 			name = MapExt;
-			sourceTree = "<group>";
-		};
-		EEEF54161B0F2CDA0070A30F /* 全球预报要素图像 */ = {
-			isa = PBXGroup;
-			children = (
-				EEDB36491B26F1BC00E6F850 /* 15060820.018.png */,
-				EEEF54171B0F2CDA0070A30F /* 气压 */,
-				EEEF541A1B0F2CDA0070A30F /* 温度 */,
-				EEEF541D1B0F2CDA0070A30F /* 湿度 */,
-				EEEF54201B0F2CDA0070A30F /* 风速 */,
-			);
-			name = "全球预报要素图像";
-			path = "../TestMapCover/全球预报要素图像";
-			sourceTree = "<group>";
-		};
-		EEEF54171B0F2CDA0070A30F /* 气压 */ = {
-			isa = PBXGroup;
-			children = (
-				EEEF54181B0F2CDA0070A30F /* 15032008.006.png */,
-				EEEF54191B0F2CDA0070A30F /* 15032008.006_range.json */,
-			);
-			path = "气压";
-			sourceTree = "<group>";
-		};
-		EEEF541A1B0F2CDA0070A30F /* 温度 */ = {
-			isa = PBXGroup;
-			children = (
-				EEEF541B1B0F2CDA0070A30F /* 14122008.000.png */,
-				EEEF541C1B0F2CDA0070A30F /* 14122008.000_range.json */,
-			);
-			path = "温度";
-			sourceTree = "<group>";
-		};
-		EEEF541D1B0F2CDA0070A30F /* 湿度 */ = {
-			isa = PBXGroup;
-			children = (
-				EEEF541E1B0F2CDA0070A30F /* 14122008.0001.png */,
-				EEEF541F1B0F2CDA0070A30F /* 14122008.0001_range.json */,
-			);
-			path = "湿度";
-			sourceTree = "<group>";
-		};
-		EEEF54201B0F2CDA0070A30F /* 风速 */ = {
-			isa = PBXGroup;
-			children = (
-				EEEF54211B0F2CDA0070A30F /* 14122208.000.png */,
-				EEEF54221B0F2CDA0070A30F /* 14122208.000_range.json */,
-			);
-			path = "风速";
 			sourceTree = "<group>";
 		};
 		EEEF54401B0F33940070A30F /* Views */ = {
@@ -1282,22 +1296,6 @@
 				EEEF55841B0F353D0070A30F /* x509v3.h */,
 			);
 			path = openssl;
-			sourceTree = "<group>";
-		};
-		EEEF558E1B0F38190070A30F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EEEF558F1B0F38190070A30F /* MyVector.h */,
-				EEEF55901B0F38190070A30F /* MyVector.m */,
-				EEEF55911B0F38190070A30F /* PLBaseObject.h */,
-				EEEF55921B0F38190070A30F /* PLBaseObject.m */,
-				EEEF55931B0F38190070A30F /* WeatherData.h */,
-				EEEF55941B0F38190070A30F /* WeatherData.m */,
-				EEEF55951B0F38190070A30F /* WindParticle.h */,
-				EEEF55961B0F38190070A30F /* WindParticle.m */,
-			);
-			name = Models;
-			path = ../../projects/chinaweathernews/chinaweathernews/Models;
 			sourceTree = "<group>";
 		};
 		EEEF559E1B0F38450070A30F /* MBProgressHUD */ = {
@@ -1642,7 +1640,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEDB364A1B26F1BC00E6F850 /* 15060820.018.png in Resources */,
 				EEEF56D51B1330770070A30F /* 全国高温区域预报.png in Resources */,
 				EEEF568D1B12BAD10070A30F /* templates_dsjcbg.png in Resources */,
 				EEEF56941B12BAD10070A30F /* templates_dsqxfw.png in Resources */,
@@ -1651,11 +1648,11 @@
 				EEEF56CE1B1330770070A30F /* 全国强对流落区预报.png in Resources */,
 				EEEF571A1B13FFDD0070A30F /* 逐小时极大风速.json in Resources */,
 				EEEF570D1B1339220070A30F /* 全国空气污染气象预报.json in Resources */,
-				EEEF54241B0F2CDA0070A30F /* 15032008.006_range.json in Resources */,
 				EEEF56A71B12BAD10070A30F /* arrow_right_24.png in Resources */,
 				EEEF568A1B12BAD10070A30F /* templates_dsgyct.png in Resources */,
 				EEEF56AE1B12BAD10070A30F /* map_orange@2x.png in Resources */,
 				EEEF50001B0DF03C0070A30F /* MapDatas.plist in Resources */,
+				EEDB365B1B27D6C000E6F850 /* 15032008.006_range.json in Resources */,
 				EEEF569C1B12BAD10070A30F /* templates_ImgPlay.css in Resources */,
 				EEEF570E1B1339220070A30F /* 全国霾区预报.json in Resources */,
 				EEEF56961B12BAD10070A30F /* templates_dsrdqx.png in Resources */,
@@ -1666,15 +1663,16 @@
 				EEEF56B21B12BAD10070A30F /* red_dot.png in Resources */,
 				EEEF56D11B1330770070A30F /* 渍涝气象风险预报.png in Resources */,
 				EEEF56CB1B1330770070A30F /* 全国地质灾害气象预报.png in Resources */,
+				EEDB365C1B27D6C000E6F850 /* 14122008.000.png in Resources */,
 				EEEF56641B12BAD10070A30F /* CityMapView.xib in Resources */,
 				EEEF56951B12BAD10070A30F /* templates_dsqxjd.png in Resources */,
+				EEDB365F1B27D6C000E6F850 /* 14122008.0001_range.json in Resources */,
 				EEEF4FCB1B0DEFCE0070A30F /* LaunchScreen.xib in Resources */,
 				EEEF570F1B1339220070A30F /* 全国强对流落区预报.json in Resources */,
 				EEEF56891B12BAD10070A30F /* templates_dsContent.js in Resources */,
 				EEEF570A1B1339220070A30F /* 全国地质灾害气象预报.json in Resources */,
-				EEEF54251B0F2CDA0070A30F /* 14122008.000.png in Resources */,
 				EEEF56D41B1330770070A30F /* 逐小时极大风速.png in Resources */,
-				EEEF54261B0F2CDA0070A30F /* 14122008.000_range.json in Resources */,
+				EEDB365E1B27D6C000E6F850 /* 14122008.0001.png in Resources */,
 				EEEF56B11B12BAD10070A30F /* purple_dot.png in Resources */,
 				EEEF568E1B12BAD10070A30F /* templates_dsjhhq.jpg in Resources */,
 				EEEF57081B1339220070A30F /* 全国大风降温预报.json in Resources */,
@@ -1687,6 +1685,7 @@
 				EEEF56A21B12BAD10070A30F /* templates_Public.js in Resources */,
 				EEEF56921B12BAD10070A30F /* templates_dsMetroList.html in Resources */,
 				EEEF569B1B12BAD10070A30F /* templates_Flot.js in Resources */,
+				EEDB365D1B27D6C000E6F850 /* 14122008.000_range.json in Resources */,
 				EEEF56A91B12BAD10070A30F /* map_blue.png in Resources */,
 				EEEF56AD1B12BAD10070A30F /* map_orange.png in Resources */,
 				EEEF56901B12BAD10070A30F /* templates_dsJSAlarmbg.png in Resources */,
@@ -1694,15 +1693,16 @@
 				EEEF56D21B1330770070A30F /* 全国烟花爆竹燃放气象指数预报.png in Resources */,
 				EEEF57131B1339220070A30F /* 全国最高气温预报.json in Resources */,
 				EEEF565E1B12BAD10070A30F /* CustomMapView.xib in Resources */,
+				EEDB36601B27D6C000E6F850 /* 14122208.000.png in Resources */,
 				EEEF56C81B1330770070A30F /* 24小时变温实况.png in Resources */,
 				EEEF56A81B12BAD10070A30F /* green_dot.png in Resources */,
 				EEEF57121B1339220070A30F /* 全国烟花爆竹燃放气象指数预报.json in Resources */,
-				EEEF54271B0F2CDA0070A30F /* 14122008.0001.png in Resources */,
 				EEEF56D31B1330770070A30F /* 全国空气污染气象预报.png in Resources */,
 				EEEF56C91B1330770070A30F /* 全国降水量预报.png in Resources */,
 				EEEF570B1B1339220070A30F /* 全国高温区域预报.json in Resources */,
 				EEEF56A41B12BAD10070A30F /* templates_WeatherFlot.js in Resources */,
 				EEEF568C1B12BAD10070A30F /* templates_dsIndex_new.gif in Resources */,
+				EEDB36591B27D6C000E6F850 /* 15060820.018.png in Resources */,
 				EEEF56A51B12BAD10070A30F /* templates_WeatherFlot_main.html in Resources */,
 				EEEF56851B12BAD10070A30F /* templates_Climate.css in Resources */,
 				EEEF569E1B12BAD10070A30F /* templates_ImgPlay_main.html in Resources */,
@@ -1716,22 +1716,20 @@
 				EEEF56B31B12BAD10070A30F /* yellow_dot.png in Resources */,
 				EEEF56D01B1330770070A30F /* 全国沙尘落区预报.png in Resources */,
 				EEEF56D91B1332680070A30F /* 全国霾区预报.png in Resources */,
+				EEDB365A1B27D6C000E6F850 /* 15032008.006.png in Resources */,
 				EEEF56CD1B1330770070A30F /* 全国大风降温预报.png in Resources */,
 				EEEF56CF1B1330770070A30F /* 全国强降雪落区预报.png in Resources */,
 				EEEF569A1B12BAD10070A30F /* templates_dsyoujiao.png in Resources */,
-				EEEF542A1B0F2CDA0070A30F /* 14122208.000_range.json in Resources */,
-				EEEF54281B0F2CDA0070A30F /* 14122008.0001_range.json in Resources */,
 				EEEF569F1B12BAD10070A30F /* templates_NewsList.css in Resources */,
 				EEEF56AB1B12BAD10070A30F /* map_green.png in Resources */,
 				EEEF568B1B12BAD10070A30F /* templates_dsIndex_main.html in Resources */,
-				EEEF54291B0F2CDA0070A30F /* 14122208.000.png in Resources */,
+				EEDB36611B27D6C000E6F850 /* 14122208.000_range.json in Resources */,
 				EEEF56AA1B12BAD10070A30F /* map_blue@2x.png in Resources */,
 				EEEF4FC81B0DEFCE0070A30F /* Images.xcassets in Resources */,
 				EEEF57151B1339220070A30F /* 渍涝气象风险预报.json in Resources */,
 				EEEF56A01B12BAD10070A30F /* templates_NewsList.js in Resources */,
 				EEEF56AC1B12BAD10070A30F /* map_green@2x.png in Resources */,
 				EEEF56A11B12BAD10070A30F /* templates_NewsList_main.html in Resources */,
-				EEEF54231B0F2CDA0070A30F /* 15032008.006.png in Resources */,
 				EEEF570C1B1339220070A30F /* 全国降水量预报.json in Resources */,
 				EEEF56D71B13324D0070A30F /* 全国最高气温预报.png in Resources */,
 				EEEF57091B1339220070A30F /* 全国大雾落区预报.json in Resources */,
@@ -1760,7 +1758,6 @@
 				EEEF55D71B0F3A690070A30F /* UIImage+MultiFormat.m in Sources */,
 				EEEF55361B0F35250070A30F /* Util.m in Sources */,
 				EEEF55D51B0F3A690070A30F /* UIButton+WebCache.m in Sources */,
-				EEEF55991B0F38190070A30F /* WeatherData.m in Sources */,
 				EEEF54CA1B0F34C40070A30F /* UIAlertView+AFNetworking.m in Sources */,
 				EEEF567B1B12BAD10070A30F /* MImage.m in Sources */,
 				EEEF55061B0F34EC0070A30F /* CWEncode.m in Sources */,
@@ -1793,6 +1790,7 @@
 				EEEF56721B12BAD10070A30F /* CWWispControllerManager.m in Sources */,
 				EEEF54701B0F33940070A30F /* CWChartPlot.m in Sources */,
 				EEEF54C41B0F34C40070A30F /* AFURLResponseSerialization.m in Sources */,
+				EEDB366D1B27D6EE00E6F850 /* WeatherData.m in Sources */,
 				EEEF54CC1B0F34C40070A30F /* UIImageView+AFNetworking.m in Sources */,
 				EEEF566B1B12BAD10070A30F /* RadarPolygonView.m in Sources */,
 				EEEF55D41B0F3A690070A30F /* SDWebImagePrefetcher.m in Sources */,
@@ -1801,9 +1799,9 @@
 				EEEF56651B12BAD10070A30F /* CityMapViewController.m in Sources */,
 				EEEF552A1B0F35250070A30F /* AlertViewBlocks.m in Sources */,
 				EEEF559D1B0F38370070A30F /* MBProgressHUD+Extra.m in Sources */,
-				EEEF559A1B0F38190070A30F /* WindParticle.m in Sources */,
 				EEEF54301B0F2FBE0070A30F /* DetailViewController1.m in Sources */,
 				EEEF55D81B0F3A690070A30F /* UIImageView+HighlightedWebCache.m in Sources */,
+				EEDB366E1B27D6EE00E6F850 /* WindParticle.m in Sources */,
 				EEDB36421B25818A00E6F850 /* TSTileOverlayView.m in Sources */,
 				EEEF56671B12BAD10070A30F /* WeatherAnnotation.m in Sources */,
 				EEEF56711B12BAD10070A30F /* WCMydTaskControl.m in Sources */,
@@ -1829,8 +1827,8 @@
 				EEEF501A1B0DF13B0070A30F /* MASConstraint.m in Sources */,
 				EEEF54F91B0F34EC0070A30F /* CWHttpCmdHotCitys.m in Sources */,
 				EEEF550A1B0F34EC0070A30F /* ZipStr.m in Sources */,
+				EEDB366C1B27D6EE00E6F850 /* PLBaseObject.m in Sources */,
 				EEEF56B81B1312090070A30F /* MapStatistTempView.m in Sources */,
-				EEEF55971B0F38190070A30F /* MyVector.m in Sources */,
 				EEEF501C1B0DF13B0070A30F /* MASLayoutConstraint.m in Sources */,
 				EEEF54C21B0F34C40070A30F /* AFURLConnectionOperation.m in Sources */,
 				EEEF54741B0F33940070A30F /* CustomAnnotationView.m in Sources */,
@@ -1860,7 +1858,6 @@
 				EEEF54CF1B0F34C40070A30F /* UIWebView+AFNetworking.m in Sources */,
 				EEEF566D1B12BAD10070A30F /* TyphoonMapViewController.m in Sources */,
 				EEEF546F1B0F33940070A30F /* CWChartAxis.m in Sources */,
-				EEEF55981B0F38190070A30F /* PLBaseObject.m in Sources */,
 				EEEF56801B12BAD10070A30F /* MPointText.m in Sources */,
 				EEEF55A41B0F38730070A30F /* CWUserManager.m in Sources */,
 				EEEF50271B0DF1D70070A30F /* CWMyOverlayRenderer.m in Sources */,
@@ -1891,6 +1888,7 @@
 				EEEF54CE1B0F34C40070A30F /* UIRefreshControl+AFNetworking.m in Sources */,
 				EEEF567A1B12BAD10070A30F /* MHeader.m in Sources */,
 				EEEF56611B12BAD10070A30F /* CustomWebViewController.m in Sources */,
+				EEDB366B1B27D6EE00E6F850 /* MyVector.m in Sources */,
 				EEEF57181B13FDA60070A30F /* BaseViewController.m in Sources */,
 				EEEF56731B12BAD10070A30F /* AsyncTask.m in Sources */,
 				EEEF54CB1B0F34C40070A30F /* UIButton+AFNetworking.m in Sources */,

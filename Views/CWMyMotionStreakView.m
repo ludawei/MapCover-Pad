@@ -8,7 +8,7 @@
 
 #import "CWMyMotionStreakView.h"
 
-#define LIMIT 15
+#define LIMIT 20
 
 @interface CWMyMotionStreakView ()
 

@@ -16,11 +16,20 @@
     CGRect theRect       =  [self rectForMapRect:theMapRect];
     
     UIGraphicsPushContext(context);
-    
+
+#if 0
     UIImage *image = self.image;
     if (image) {
         [image drawInRect:theRect blendMode:kCGBlendModeCopy alpha:self.alpha];
     }
+#else
+    CGImageRef imageReference = self.image.CGImage;
+    
+    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextSetAlpha(context, self.alpha);
+    CGContextTranslateCTM(context, 0.0, -theRect.size.height);
+    CGContextDrawImage(context, theRect, imageReference);
+#endif
     
     UIGraphicsPopContext();
 }

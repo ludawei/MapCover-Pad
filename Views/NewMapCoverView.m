@@ -24,8 +24,8 @@
 //#define PARTICLE_LIMIT      500
 #define PARTICLE_SHOW_LIMIT 400
 
-#define REFRESH_TIMEVAL_1   0.04f
-#define REFRESH_TIMEVAL_2   0.065f
+//#define REFRESH_TIMEVAL_1   0.04f
+//#define REFRESH_TIMEVAL_2   0.065f
 
 //#define USE_TIMER 1
 
@@ -312,7 +312,16 @@
     x = (1-a)*self.bounds.size.width;
     y = (1-b)*self.bounds.size.height;
 #endif
-    return CGPointMake(x, y);
+    CGPoint p = CGPointMake(x, y);
+    
+    CGVector vp = [self vecorWithPoint:[self mapPointFromViewPoint:p]];
+    CGFloat temp = sqrt(vp.dx*vp.dx + vp.dy*vp.dy);
+//    NSLog(@"%f", temp);
+    if (temp < 6.0) {
+        p = [self randomParticleCenter];
+    }
+    
+    return p;
 }
 
 // 产生一个随机的生命周期
@@ -456,7 +465,7 @@
     
     mapRadio = self.mapView.zoomLevel/self.mapView.maxZoomLevel;
     
-    self.partLimit = PARTICLE_SHOW_LIMIT - 100 * (1 - self.mapView.zoomLevel/self.mapView.maxZoomLevel);
+    self.partLimit = PARTICLE_SHOW_LIMIT - 100 * (1 - mapRadio);
 //    self.imgView.alpha = 0.85+((self.mapView.maxZoomLevel-self.mapView.zoomLevel)/self.mapView.maxZoomLevel)*0.13;
 }
 

@@ -10,6 +10,8 @@
 #import "PLHttpManager.h"
 #import "CWDataManager.h"
 #import "MapImagesManager.h"
+#import "TSTileOverlay.h"
+#import "TSTileOverlayView.h"
 
 #import "CWUserManager.h"
 
@@ -25,8 +27,10 @@
 #define MK_CHINA_CENTER_REGION MKCoordinateRegionMake(CLLocationCoordinate2DMake(33.2, 105.0), MKCoordinateSpanMake(42, 64))
 
 @interface MapAnimController ()<MKMapViewDelegate>
-
-@property (nonatomic,strong) UIView *backView;
+{
+    BOOL bottomHidden;
+}
+@property (nonatomic,strong) UIView *backView,*bottomView;
 
 @property (nonatomic,strong) NSDictionary *allImages;
 @property (nonatomic,strong) NSArray *allUrls;
@@ -39,6 +43,8 @@
 @property (nonatomic,strong) UISlider *progressView;
 @property (nonatomic,strong) UILabel *timeLabel;
 @property (nonatomic,strong) MapImagesManager *mapImagesManager;
+
+@property (nonatomic,strong) TSTileOverlay *mapTileOverlay;
 
 @end
 
@@ -63,8 +69,29 @@
     
     self.mapImagesManager = [[MapImagesManager alloc] init];
     
-    [self initTopViews];
     [self initBottomViews];
+    [self initTopViews];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightnavButton)];
+}
+
+-(void)clickRightnavButton
+{
+    if (self.mapTileOverlay) {
+        [self.mapView removeOverlay:self.mapTileOverlay];
+        self.mapTileOverlay = nil;
+    }
+    else
+    {
+        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.3a721e27/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+        
+        TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
+        overlay.canReplaceMapContent = YES;
+        //    overlay.boundingMapRect = MKMapRectMake(116.460000-8.213470/2, 39.920000+11.198849/2, 8.213470, 11.198849);
+        self.mapTileOverlay = overlay;
+        
+        [self.mapView insertOverlay:overlay atIndex:0];
+    }
 }
 
 -(void)initMapView
@@ -98,19 +125,64 @@
 {
     [super viewDidLayoutSubviews];
     
+    CGFloat navHeight = 0;
+    CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if (!self.navigationController.navigationBarHidden) {
+        navHeight = self.navigationController.navigationBar.height;
+    }
+    
     [self.backView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.navigationController.navigationBar.height+[UIApplication sharedApplication].statusBarFrame.size.height);
+        make.top.mas_equalTo(navHeight+statusHeight);
+    }];
+}
+
+-(void)showHideNav
+{
+    if (self.navigationController.navigationBarHidden) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
+}
+
+-(void)showHideBottomView
+{
+    CGFloat offset = self.bottomView.height;
+    if (bottomHidden) {
+        offset = 0;
+    }
+    
+    [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.backView).offset(offset);
+    }];
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        bottomHidden = !bottomHidden;
     }];
 }
 
 - (void)initTopViews
 {
+    UIButton *logo = [UIButton new];
+    [self.backView addSubview:logo];
+    [logo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(self.backView);
+    }];
+    [logo setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
+    [logo addTarget:self action:@selector(showHideNav) forControlEvents:UIControlEventTouchUpInside];
+    
     CGFloat height = 50;
     UIView *topView = [[UIView alloc] init];
     [self.backView addSubview:topView];
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.width.mas_equalTo(self.backView);
-        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(self.playButton.mas_top);
         make.height.mas_equalTo(height);
     }];
     
@@ -122,18 +194,21 @@
     
     if (self.type == 0) {
         UIImage *indexImage = [UIImage imageNamed:@"tl_2"];
-        UIImageView *imgView = [[UIImageView alloc] initWithImage:indexImage];
-//        imgView.frame = CGRectMake(topView.width-indexImage.size.width-10, (height-indexImage.size.height)/2.0, indexImage.size.width, indexImage.size.height);
+        UIButton *imgView = [UIButton new];//[[UIImageView alloc] initWithImage:indexImage];
         [topView addSubview:imgView];
+        
+        [imgView setImage:indexImage forState:UIControlStateNormal];
         [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-10);
             make.centerY.mas_equalTo(topView.mas_centerY);
             make.size.mas_equalTo(indexImage.size);
         }];
         
-        backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
+        [imgView addTarget:self action:@selector(showHideBottomView) forControlEvents:UIControlEventTouchUpInside];
         
-        [self showRainInfo:topView];
+//        backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
+        
+//        [self showRainInfo:topView];
     }
 }
 
@@ -220,6 +295,17 @@
     self.mapView = nil;
 }
 
+-(void)removeMapOverlayWithoutTileOverlay
+{
+    for (id overlay in self.mapView.overlays) {
+        if ([overlay isKindOfClass:[MKTileOverlay class]]) {
+            continue;
+        }
+        
+        [self.mapView removeOverlay:overlay];
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -229,7 +315,15 @@
     [self.mapView setRegion:MK_CHINA_CENTER_REGION];
     
     if (self.type == 0) {
-        self.mapView.mapType = MKMapTypeStandard;
+        self.mapView.mapType = MKMapTypeHybrid;
+        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.3a721e27/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+        
+        TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
+        overlay.canReplaceMapContent = YES;
+        //    overlay.boundingMapRect = MKMapRectMake(116.460000-8.213470/2, 39.920000+11.198849/2, 8.213470, 11.198849);
+        self.mapTileOverlay = overlay;
+        
+        [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
         
         [self requestImage:MapImageTypeRain];
     }
@@ -273,6 +367,12 @@
         }
         
         return self.groundOverlayView;
+    }
+    
+    if ([overlay isKindOfClass:[TSTileOverlay class]]) {
+        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+        renderer.alpha = 1.0;
+        return renderer;
     }
     
     return nil;
@@ -334,7 +434,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 if (image) {
-                    [weakSlef.mapView removeOverlays:self.mapView.overlays];
+//                    [weakSlef.mapView removeOverlays:self.mapView.overlays];
+                    [weakSlef removeMapOverlayWithoutTileOverlay];
                     
                     MyOverlay *groundOverlay = [[MyOverlay alloc] initWithRegion:MK_CHINA_CENTER_REGION];
                     
@@ -498,6 +599,8 @@
         make.height.mas_equalTo(height);
     }];
     
+    self.bottomView = bottomView;
+    
     UIView *backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
     [bottomView addSubview:backView];
@@ -517,7 +620,7 @@
     }];
     
     self.progressView = [[UISlider alloc] init];
-    self.progressView.userInteractionEnabled = NO;
+    self.progressView.userInteractionEnabled = YES;
 //    self.progressView.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame)+10, 5, bottomView.width-(CGRectGetMaxX(self.playButton.frame)+10) - 60, height-10);
     self.progressView.backgroundColor = [UIColor clearColor];
     self.progressView.minimumValue = 0;
@@ -527,6 +630,7 @@
     // [oneProgressView setProgress:0.8 animated:YES]; // 设置初始值，可以看到动画效果
 //    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault]; // 设置显示的样式
     [self.progressView setThumbImage:[UIImage imageNamed:@"thumb"] forState:UIControlStateNormal];
+    [self.progressView addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventValueChanged];
     [bottomView addSubview:self.progressView];
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(70);
@@ -547,6 +651,26 @@
         make.bottom.mas_equalTo(-5);
         make.width.mas_equalTo(60);
     }];
+}
+
+-(void)changeProgress:(id)sender
+{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.playButton.selected = NO;
+    }
+    
+    self.currentPlayIndex = self.progressView.value*(self.allImages.count)/self.progressView.maximumValue;
+    NSString *imageUrl = [self.allImages objectForKey:@(self.allImages.count-self.currentPlayIndex-1)];
+    UIImage *curImage = [self.mapImagesManager imageFromDiskForUrl:imageUrl];
+    if (curImage) {
+        [self changeImageAnim:curImage];
+    }
+    else
+    {
+        LOG(@"Image file 不存在~~%@", imageUrl);
+    }
 }
 
 -(void)clickPlay

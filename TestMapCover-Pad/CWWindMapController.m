@@ -17,6 +17,8 @@
 
 #import "CWUserManager.h"
 #import "MKMapView+ZoomLevel.h"
+#import "MyOverlay.h"
+#import "MyOverlayImageRenderer.h"
 
 @interface CWWindMapController ()<MKMapViewDelegate, UIGestureRecognizerDelegate>
 {
@@ -144,6 +146,9 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((0.5) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         hadShow = YES;
     });
+    
+    MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(90, -180) southWest:CLLocationCoordinate2DMake(-90, 180)];
+    [self.mapView addOverlay:over];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -459,6 +464,19 @@
     }
 }
 
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    MKOverlayRenderer *renderer = nil;
+    if ([overlay isKindOfClass:[MyOverlay class]]) {
+        MyOverlayImageRenderer *routineView = [[MyOverlayImageRenderer alloc] initWithOverlay:overlay];
+        routineView.image = [UIImage imageNamed:@"15060820.018"];
+        
+        renderer = routineView;
+    }
+    
+    return renderer;
+}
+
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MKPointAnnotation class]])
@@ -502,12 +520,13 @@
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [self.mainView restart];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.mainView restart];
+    });
     
     if (hadShow) {
         [self.bottomView hide];
     }
-
 }
 
 -(void)willEnterForeground

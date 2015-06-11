@@ -20,6 +20,8 @@
 #import "MyOverlay.h"
 #import "MyOverlayImageRenderer.h"
 
+#import "TSTileOverlay.h"
+
 @interface CWWindMapController ()<MKMapViewDelegate, UIGestureRecognizerDelegate>
 {
     BOOL hadShow;
@@ -61,7 +63,7 @@
         [hud hide:YES];
         
         if (object && [object isKindOfClass:[NSDictionary class]]) {
-            [self showMainViewWithData:object partNum:400];
+            [self showMainViewWithData:object partNum:1000];
         }
         
     }];
@@ -147,6 +149,14 @@
         hadShow = YES;
     });
     
+//    static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.3a721e27/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+//    
+//    TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
+//    overlay.canReplaceMapContent = YES;
+//    //    overlay.boundingMapRect = MKMapRectMake(116.460000-8.213470/2, 39.920000+11.198849/2, 8.213470, 11.198849);
+//    
+//    [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
+    
     MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(90, -180) southWest:CLLocationCoordinate2DMake(-90, 180)];
     [self.mapView addOverlay:over];
 }
@@ -172,6 +182,8 @@
     self.mainView.motionView = motionView;
     
     [self.view addSubview:self.mainView];
+    
+    [self.view bringSubviewToFront:self.bottomView];
     
     [self setupMapViewAnnitions];
 }
@@ -235,6 +247,7 @@
         }];
         _bottomView.hidden = YES;
     }
+    
     return _bottomView;
 }
 
@@ -469,9 +482,16 @@
     MKOverlayRenderer *renderer = nil;
     if ([overlay isKindOfClass:[MyOverlay class]]) {
         MyOverlayImageRenderer *routineView = [[MyOverlayImageRenderer alloc] initWithOverlay:overlay];
-        routineView.image = [UIImage imageNamed:@"15060820.018"];
+        routineView.image = [UIImage imageNamed:@"15061108.006"];
+        routineView.alpha = 0.7;
         
         renderer = routineView;
+    }
+    
+    if ([overlay isKindOfClass:[TSTileOverlay class]]) {
+        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+        renderer.alpha = 1.0;
+        return renderer;
     }
     
     return renderer;

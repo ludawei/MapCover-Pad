@@ -22,7 +22,7 @@
 
 #define ARC4RANDOM_MAX      0x100000000
 //#define PARTICLE_LIMIT      500
-#define PARTICLE_SHOW_LIMIT 400
+#define PARTICLE_SHOW_LIMIT 3000
 
 //#define REFRESH_TIMEVAL_1   0.04f
 //#define REFRESH_TIMEVAL_2   0.065f
@@ -54,6 +54,16 @@
 @end
 
 @implementation NewMapCoverView
+
+-(void)setNeedsDisplay
+{
+    [super setNeedsDisplay];
+    
+    if (self.particleType == 2)
+    {
+        [self.motionView addLayer:self.layer];
+    }
+}
 
 -(void)removeFromSuperview
 {
@@ -146,18 +156,6 @@
     
     CGContextClearRect(context, self.bounds);
     
-    if (self.particleType == 2)
-    {
-        @autoreleasepool {
-//            UIImage *image = [self viewShot];
-//            if (image) {
-//                self.imgView.image = image;
-//                image = nil;
-//            }
-            [self.motionView addLayer:self.layer];
-        }
-    }
-    
     NSInteger showCount = 0;
     for (int i=0; i<self.partNum; i++) {
         
@@ -192,7 +190,8 @@
     }
     CGContextSetAlpha(context, alpha);
     
-    UIColor *partcicleColor = [UIColor colorWithHue:1.0-(float)particle.colorHue/255.0f saturation:0.7f brightness:1.0f alpha:0.8f];
+//    [self colorWithLength:particle.length];//
+    UIColor *partcicleColor = [self colorWithLength:particle.length];//[UIColor colorWithHue:1.0-(float)particle.colorHue/255.0f saturation:0.7f brightness:0.7f alpha:0.8f];
     
     if (self.particleType == 1) {
         CGContextTranslateCTM(context, point.x, point.y);       // 移动原点
@@ -209,7 +208,7 @@
         if (particle.oldCenter.x != -1) {
             CGContextSetStrokeColorWithColor(context, [partcicleColor CGColor]);
             
-            CGContextSetLineWidth(context, 2);
+            CGContextSetLineWidth(context, 1.4);
             
             CGPoint newPoint = CGPointMake(particle.center.x, particle.center.y);
             CGContextMoveToPoint(context, newPoint.x, newPoint.y);
@@ -317,7 +316,13 @@
     CGVector vp = [self vecorWithPoint:[self mapPointFromViewPoint:p]];
     CGFloat temp = sqrt(vp.dx*vp.dx + vp.dy*vp.dy);
 //    NSLog(@"%f", temp);
-    if (temp < 6.0) {
+    
+    CGFloat vRadio = 5.0;
+    if (self.particleType == 2) {
+        vRadio = 2.0;
+    }
+    
+    if (temp < vRadio) {
         p = [self randomParticleCenter];
     }
     
@@ -327,7 +332,7 @@
 // 产生一个随机的生命周期
 -(NSInteger)randomAge
 {
-    return 50+arc4random_uniform(150);
+    return 5+arc4random_uniform(50);
 }
 
 
@@ -413,17 +418,25 @@
             return;
         }
         
+        CGFloat vRadio = 1.5;
+        if (self.particleType == 2) {
+            vRadio = 3.0;
+        }
+        
         // 经度自下向上，画布自上向下，故取反
-        CGPoint center = CGPointMake(particle.center.x+particle.xv*mapRadio, particle.center.y+(-particle.yv)*mapRadio);
+        CGPoint center = CGPointMake(particle.center.x+particle.xv*mapRadio* vRadio, particle.center.y+(-particle.yv)*mapRadio * vRadio);
         CGRect disRect = self.bounds;
-        CGRect disMapRect = CGRectMake(self.x0, self.y0, self.x1-self.x0, self.y1-self.y0);
         
         // 卫星地图，只显示有卫星的区域
-        disMapRect.origin.y = -60;
-        disMapRect.size.height = 139;
+        CGFloat minDisMapY = -66;
+        CGFloat maxDisMapY = 80;
         
         CGPoint mapPoint = [self mapPointFromViewPoint:center];
-        if (!CGRectContainsPoint(disRect, center) || !CGRectContainsPoint(disMapRect, mapPoint)) {
+
+        if (mapPoint.x <= self.x0) {
+            mapPoint.x = self.x1-self.x0 + mapPoint.x;
+        }
+        if (!CGRectContainsPoint(disRect, center) || mapPoint.y < minDisMapY || mapPoint.y > maxDisMapY) {
             center = [self randomParticleCenter];
             CGVector vect = [self vecorWithPoint:[self mapPointFromViewPoint:center]];
             [particle resetWithCenter:center age:[self randomAge] xv:vect.dx yv:vect.dy];
@@ -465,7 +478,7 @@
     
     mapRadio = self.mapView.zoomLevel/self.mapView.maxZoomLevel;
     
-    self.partLimit = PARTICLE_SHOW_LIMIT - 100 * (1 - mapRadio);
+    self.partLimit = PARTICLE_SHOW_LIMIT - 100 * (1 - self.mapView.zoomLevel/self.mapView.maxZoomLevel);
 //    self.imgView.alpha = 0.85+((self.mapView.maxZoomLevel-self.mapView.zoomLevel)/self.mapView.maxZoomLevel)*0.13;
 }
 
@@ -481,4 +494,64 @@
     return point;
 }
 
+-(UIColor *)colorWithLength:(CGFloat)length
+{
+    if (length < 8.49) {
+        UIColor *color1 = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.0f];
+        UIColor *color2 = [UIColor colorWithRed:152/255.0 green:219/255.0 blue:248/255.0 alpha:1.0f];
+        
+        return [self colorWithLength:length color1:color1 color2:color2 len1:0 len2:8.49];
+    }
+    else if (length < 15.79)
+    {
+        UIColor *color1 = [UIColor colorWithRed:152/255.0 green:219/255.0 blue:248/255.0 alpha:1.0f];
+        UIColor *color2 = [UIColor colorWithRed:0 green:137/255.0 blue:209/255.0 alpha:1.0f];
+        
+        return [self colorWithLength:length color1:color1 color2:color2 len1:8.49 len2:15.79];
+    }
+    else if (length < 30)
+    {
+        UIColor *color1 = [UIColor colorWithRed:0 green:137/255.0 blue:209/255.0 alpha:1.0f];
+        UIColor *color2 = [UIColor colorWithRed:254/255.0 green:0 blue:3/255.0 alpha:1.0f];
+        
+        return [self colorWithLength:length color1:color1 color2:color2 len1:15.79 len2:30];
+    }
+    else if (length < 70)
+    {
+        UIColor *color1 = [UIColor colorWithRed:254/255.0 green:0 blue:3/255.0 alpha:1.0f];
+        UIColor *color2 = [UIColor colorWithRed:209/255.0 green:103/255.0 blue:211/255.0 alpha:1.0f];
+        
+        return [self colorWithLength:length color1:color1 color2:color2 len1:30 len2:70];
+    }
+    else if (length < 90)
+    {
+        UIColor *color1 = [UIColor colorWithRed:209/255.0 green:103/255.0 blue:211/255.0 alpha:1.0f];
+        UIColor *color2 = [UIColor colorWithRed:238/255.0 green:200/255.0 blue:239/255.0 alpha:1.0f];
+        
+        return [self colorWithLength:length color1:color1 color2:color2 len1:70 len2:90];
+    }
+    else if (length < 100)
+    {
+        UIColor *color1 = [UIColor colorWithRed:238/255.0 green:200/255.0 blue:239/255.0 alpha:1.0f];
+        UIColor *color2 = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0f];
+        
+        return [self colorWithLength:length color1:color1 color2:color2 len1:90 len2:100];
+    }
+    
+    return nil;
+}
+
+-(UIColor *)colorWithLength:(CGFloat)length color1:(UIColor *)color1 color2:(UIColor *)color2 len1:(CGFloat)len1 len2:(CGFloat)len2
+{
+    CGFloat r1,g1,b1,a1, r2,g2,b2,a2;
+    [color1 getRed:&r1 green:&g1 blue:&b1 alpha:&a1];
+    [color2 getRed:&r2 green:&g2 blue:&b2 alpha:&a2];
+    
+    CGFloat r = r1 + ((r2 - r1)*(length - len1)/(len2 - len1));
+    CGFloat g = g1 + ((g2 - g1)*(length - len1)/(len2 - len1));
+    CGFloat b = b1 + ((b2 - b1)*(length - len1)/(len2 - len1));
+    CGFloat a = a1 + ((a2 - a1)*(length - len1)/(len2 - len1));
+    
+    return [UIColor colorWithRed:r green:g blue:b alpha:a];
+}
 @end

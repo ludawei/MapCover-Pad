@@ -10,7 +10,7 @@
 
 @interface WindParticle ()
 
-@property (nonatomic) CGFloat vScale;       // 速度比例
+//@property (nonatomic) CGFloat vScale;       // 速度比例
 @property (nonatomic) CGFloat initAge;
 
 @end
@@ -24,7 +24,6 @@
 {
     if (self = [super init]) {
         
-        self.vScale = 0.6f;//10.0;
         self.oldCenter = CGPointMake(-1, -1);
     }
     
@@ -33,8 +32,8 @@
 
 -(void)setVelocityWithX:(CGFloat)x y:(CGFloat)y
 {
-    self.xv = x/self.vScale;
-    self.yv = y/self.vScale;
+    self.xv = x;
+    self.yv = y;
     
     CGFloat s = sqrt(x*x + y*y)/self.maxLength;
     CGFloat t = floor(290*(1 - s)) - 45;
@@ -65,7 +64,7 @@
 
 -(BOOL)isShow
 {
-//    if (self.length <= 2.0) {
+//    if (self.length <= 1.0) {
 //        return NO;
 //    }
     

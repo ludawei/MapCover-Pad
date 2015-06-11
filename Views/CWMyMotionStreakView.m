@@ -8,7 +8,7 @@
 
 #import "CWMyMotionStreakView.h"
 
-#define LIMIT 20
+#define LIMIT 15
 
 @interface CWMyMotionStreakView ()
 
@@ -48,8 +48,23 @@
     
     for (NSInteger i=self.imgLayers.count-1; i>=0; i--) {
         CALayer *layer = [self.imgLayers objectAtIndex:i];
-        layer.opacity = layer.opacity - 1.0/LIMIT;
+        layer.opacity = MAX(layer.opacity - 1.0/LIMIT, 0);
     }
+}
+
+-(void)setHidden:(BOOL)hidden
+{
+    if (hidden) {
+        [self.imgLayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            CALayer *layer = (CALayer *)obj;
+            [layer removeFromSuperlayer];
+            [self.imgLayers removeObjectAtIndex:idx];
+        }];
+        
+        [self setNeedsDisplay];
+    }
+    
+    [super setHidden:hidden];
 }
 
 @end

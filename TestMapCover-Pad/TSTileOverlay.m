@@ -51,7 +51,8 @@
         self.operationQueue = [NSOperationQueue mainQueue];
     }
     
-    NSString *cacheKey = [self imagePathForUrl:[[self URLForTilePath:path] description]];
+    NSString *url = [[self URLForTilePath:path] description];
+    NSString *cacheKey = [self imagePathForUrl:url];
     UIImage *image = [self imageFromDiskForUrl:cacheKey];
     NSData *cachedData = UIImagePNGRepresentation(image);//[self.cache objectForKey:[self URLForTilePath:path]];
     if (cachedData) {
@@ -59,7 +60,7 @@
     } else {
         NSURLRequest *request = [NSURLRequest requestWithURL:[self URLForTilePath:path]];
         [NSURLConnection sendAsynchronousRequest:request queue:self.operationQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            [self.cache setObject:data forKey:[self URLForTilePath:path]];
+//            [self.cache setObject:data forKey:url];
             
 //            [data writeToFile:[self imagePathForUrl:[[self URLForTilePath:path] description]] atomically:YES];
             [self storeImage:data withUrl:cacheKey];

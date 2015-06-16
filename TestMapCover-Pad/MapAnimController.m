@@ -356,13 +356,26 @@
 
     NSArray *datas = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     NSMutableArray *annos = [NSMutableArray arrayWithCapacity:datas.count];
+    
+    NSInteger level = 1;
+    if (self.mapView.zoomLevel >= 3.5) {
+        level = 2;
+    }
+    
+    if (self.mapView.zoomLevel >= 5.5)
+    {
+        level = 3;
+    }
+    
     for (NSInteger i=0; i<datas.count; i++) {
         NSDictionary *dict = [datas objectAtIndex:i];
         
         MKPointAnnotation *anno = [[MKPointAnnotation alloc] init];
         anno.coordinate = CLLocationCoordinate2DMake([[dict[@"cp"] lastObject] floatValue], [[dict[@"cp"] firstObject] floatValue]);
         anno.title      = dict[@"name"];
-        [annos addObject:anno];
+        if ([dict[@"level"] integerValue] <= level) {
+            [annos addObject:anno];
+        }
     }
     
     [self.mapView removeAnnotations:self.mapView.annotations];
@@ -547,7 +560,7 @@
     }];
 }
 
--(void)startAnimationWithIndex:(int)index
+-(void)startAnimationWithIndex:(NSInteger)index
 {
     if (self.timer) {
         [self.timer invalidate];

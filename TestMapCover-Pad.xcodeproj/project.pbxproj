@@ -23,6 +23,8 @@
 		EEDB366E1B27D6EE00E6F850 /* WindParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB366A1B27D6EE00E6F850 /* WindParticle.m */; };
 		EEDB36751B29653B00E6F850 /* DrawPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36741B29653B00E6F850 /* DrawPathView.m */; };
 		EEDB367B1B2973C000E6F850 /* 15061108.006.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB367A1B2973C000E6F850 /* 15061108.006.png */; };
+		EEDB367F1B2ED6C800E6F850 /* china_cities.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB367E1B2ED6C800E6F850 /* china_cities.json */; };
+		EEDB36821B2ED79500E6F850 /* CustomAnnoView1.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36811B2ED79500E6F850 /* CustomAnnoView1.m */; };
 		EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FB91B0DEFCE0070A30F /* main.m */; };
 		EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */; };
 		EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBF1B0DEFCE0070A30F /* MasterViewController.m */; };
@@ -291,6 +293,9 @@
 		EEDB36731B29653B00E6F850 /* DrawPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPathView.h; sourceTree = "<group>"; };
 		EEDB36741B29653B00E6F850 /* DrawPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPathView.m; sourceTree = "<group>"; };
 		EEDB367A1B2973C000E6F850 /* 15061108.006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15061108.006.png; sourceTree = "<group>"; };
+		EEDB367E1B2ED6C800E6F850 /* china_cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = china_cities.json; sourceTree = "<group>"; };
+		EEDB36801B2ED79500E6F850 /* CustomAnnoView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnoView1.h; sourceTree = "<group>"; };
+		EEDB36811B2ED79500E6F850 /* CustomAnnoView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnoView1.m; sourceTree = "<group>"; };
 		EEEF4FB41B0DEFCE0070A30F /* TestMapCover-Pad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestMapCover-Pad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEF4FB81B0DEFCE0070A30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEEF4FB91B0DEFCE0070A30F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -840,6 +845,7 @@
 		EEEF4FAB1B0DEFCE0070A30F = {
 			isa = PBXGroup;
 			children = (
+				EEDB367E1B2ED6C800E6F850 /* china_cities.json */,
 				EEDB36621B27D6EE00E6F850 /* Models */,
 				EEDB364B1B27D6C000E6F850 /* 全球预报要素图像 */,
 				EEEF56B41B12BAE70070A30F /* libstdc++.6.0.9.dylib */,
@@ -1023,6 +1029,8 @@
 				EEEF56B71B1312090070A30F /* MapStatistTempView.m */,
 				EEDB36731B29653B00E6F850 /* DrawPathView.h */,
 				EEDB36741B29653B00E6F850 /* DrawPathView.m */,
+				EEDB36801B2ED79500E6F850 /* CustomAnnoView1.h */,
+				EEDB36811B2ED79500E6F850 /* CustomAnnoView1.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1658,6 +1666,7 @@
 				EEEF56AE1B12BAD10070A30F /* map_orange@2x.png in Resources */,
 				EEEF50001B0DF03C0070A30F /* MapDatas.plist in Resources */,
 				EEDB365B1B27D6C000E6F850 /* 15032008.006_range.json in Resources */,
+				EEDB367F1B2ED6C800E6F850 /* china_cities.json in Resources */,
 				EEEF569C1B12BAD10070A30F /* templates_ImgPlay.css in Resources */,
 				EEEF570E1B1339220070A30F /* 全国霾区预报.json in Resources */,
 				EEEF56961B12BAD10070A30F /* templates_dsrdqx.png in Resources */,
@@ -1804,6 +1813,7 @@
 				EEEF56651B12BAD10070A30F /* CityMapViewController.m in Sources */,
 				EEEF552A1B0F35250070A30F /* AlertViewBlocks.m in Sources */,
 				EEEF559D1B0F38370070A30F /* MBProgressHUD+Extra.m in Sources */,
+				EEDB36821B2ED79500E6F850 /* CustomAnnoView1.m in Sources */,
 				EEEF54301B0F2FBE0070A30F /* DetailViewController1.m in Sources */,
 				EEEF55D81B0F3A690070A30F /* UIImageView+HighlightedWebCache.m in Sources */,
 				EEDB366E1B27D6EE00E6F850 /* WindParticle.m in Sources */,

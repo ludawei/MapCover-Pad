@@ -22,6 +22,32 @@
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     splitViewController.delegate = self;
+    
+    
+    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"china_1" ofType:@"json"];
+//    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+//    
+//    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+//    
+//    NSArray *dataArr = [data objectForKey:@"features"];
+//    NSMutableArray *mutableArray = [NSMutableArray array];
+//    for(NSInteger i=0; i<dataArr.count; i++)
+//    {
+//        NSMutableDictionary *md = [NSMutableDictionary dictionaryWithDictionary:[dataArr objectAtIndex:i]];
+//        NSArray *cp = [[md objectForKey:@"properties"] objectForKey:@"cp"];
+//        NSString *name = [[md objectForKey:@"properties"] objectForKey:@"name"];
+//        
+//        [mutableArray addObject:@{@"name": name, @"cp": cp}];
+//    }
+//    
+//    NSData *jsData = [NSJSONSerialization dataWithJSONObject:mutableArray options:0 error:nil];
+//    NSString *jsStr = [[NSString alloc] initWithData:jsData encoding:NSUTF8StringEncoding];
+//    
+//    NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"temp.json"];
+//    
+//    [jsStr writeToFile:tmp atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
     return YES;
 }
 

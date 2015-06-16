@@ -379,6 +379,9 @@
 
 -(NSDictionary *)formatWindSpeedDatas:(NSDictionary *)data
 {
+    if (!data || data.count == 0) {
+        return nil;
+    }
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

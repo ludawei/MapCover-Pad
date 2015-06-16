@@ -278,7 +278,7 @@
 //    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:UITrackingRunLoopMode];
 #else
     self.timer = [CADisplayLink displayLinkWithTarget:self selector:@selector(timeFired)];
-    self.timer.frameInterval = 3;
+//    self.timer.frameInterval = 4;
     [self.timer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [self.timer addToRunLoop:[NSRunLoop mainRunLoop] forMode:UITrackingRunLoopMode];
 #endif
@@ -332,7 +332,7 @@
 // 产生一个随机的生命周期
 -(NSInteger)randomAge
 {
-    return 5+arc4random_uniform(50);
+    return 50+arc4random_uniform(150);
 }
 
 
@@ -420,7 +420,7 @@
         
         CGFloat vRadio = 1.5;
         if (self.particleType == 2) {
-            vRadio = 3.0;
+            vRadio = 2.5;
         }
         
         // 经度自下向上，画布自上向下，故取反
@@ -460,20 +460,24 @@
 
 -(void)restart
 {
-#ifdef USE_TIMER
-    [self.timer setFireDate:[NSDate distantPast]];
-#else
-    self.timer.paused = NO;
-#endif
     self.hidden = NO;
     if (self.particleType == 1) {
         self.motionView.hidden = YES;
+        self.timer.frameInterval = 3;
     }
     else
     {
         [self setNeedsDisplay];
         self.motionView.hidden = NO;
+        self.timer.frameInterval = 5;
     }
+    
+#ifdef USE_TIMER
+    [self.timer setFireDate:[NSDate distantPast]];
+#else
+    self.timer.paused = NO;
+#endif
+    
 //    self.imgView.image = nil;
     
     mapRadio = self.mapView.zoomLevel/self.mapView.maxZoomLevel;

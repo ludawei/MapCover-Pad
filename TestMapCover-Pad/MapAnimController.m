@@ -18,6 +18,8 @@
 #import "MyOverlay.h"
 #import "MyOverlayImageRenderer.h"
 #import "Masonry.h"
+#import "CustomAnnoView1.h"
+#import "MKMapView+ZoomLevel.h"
 
 #define MAP_CHINA_CENTER_LAT 33.2f
 #define MAP_CHINA_CENTER_LON 105.0f
@@ -35,13 +37,13 @@
 @property (nonatomic,strong) NSDictionary *allImages;
 @property (nonatomic,strong) NSArray *allUrls;
 @property (nonatomic,strong) NSTimer *timer;
-@property (nonatomic) int currentPlayIndex;
+@property (nonatomic) NSInteger currentPlayIndex;
 
 @property (nonatomic,strong) MyOverlayImageRenderer *groundOverlayView;
 
 @property (nonatomic,strong) UIButton *playButton;
 @property (nonatomic,strong) UISlider *progressView;
-@property (nonatomic,strong) UILabel *timeLabel;
+@property (nonatomic,strong) UILabel *timeLabel,*dateLbl;;
 @property (nonatomic,strong) MapImagesManager *mapImagesManager;
 
 @property (nonatomic,strong) TSTileOverlay *mapTileOverlay;
@@ -83,7 +85,7 @@
     }
     else
     {
-        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.3a721e27/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.mf5d5c59/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
         
         TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
         overlay.canReplaceMapContent = YES;
@@ -126,13 +128,26 @@
     [super viewDidLayoutSubviews];
     
     CGFloat navHeight = 0;
+    CGFloat multi = 1;
+    
     CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     if (!self.navigationController.navigationBarHidden) {
         navHeight = self.navigationController.navigationBar.height;
     }
     
+    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        multi = 0.7;
+    }
+    
     [self.backView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(navHeight+statusHeight);
+    }];
+    
+    [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.backView);
+        make.centerX.mas_equalTo(self.backView.mas_centerX);
+        make.width.mas_equalTo(self.backView).multipliedBy(multi);
+        make.height.mas_equalTo(75);
     }];
 }
 
@@ -169,20 +184,19 @@
 
 - (void)initTopViews
 {
-    UIButton *logo = [UIButton new];
-    [self.backView addSubview:logo];
-    [logo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.mas_equalTo(self.backView);
-    }];
-    [logo setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
-    [logo addTarget:self action:@selector(showHideNav) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *logo = [UIButton new];
+//    [self.backView addSubview:logo];
+//    [logo mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.mas_equalTo(self.backView);
+//    }];
+//    [logo setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
+//    [logo addTarget:self action:@selector(showHideNav) forControlEvents:UIControlEventTouchUpInside];
     
     CGFloat height = 50;
     UIView *topView = [[UIView alloc] init];
     [self.backView addSubview:topView];
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.width.mas_equalTo(self.backView);
-        make.bottom.mas_equalTo(self.playButton.mas_top);
+        make.left.bottom.and.width.mas_equalTo(self.backView);
         make.height.mas_equalTo(height);
     }];
     
@@ -193,18 +207,18 @@
     }];
     
     if (self.type == 0) {
-        UIImage *indexImage = [UIImage imageNamed:@"tl_2"];
+        UIImage *indexImage = [UIImage imageNamed:@"Legend"];
         UIButton *imgView = [UIButton new];//[[UIImageView alloc] initWithImage:indexImage];
         [topView addSubview:imgView];
         
         [imgView setImage:indexImage forState:UIControlStateNormal];
         [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(-10);
+            make.right.mas_equalTo(0);
             make.centerY.mas_equalTo(topView.mas_centerY);
             make.size.mas_equalTo(indexImage.size);
         }];
         
-        [imgView addTarget:self action:@selector(showHideBottomView) forControlEvents:UIControlEventTouchUpInside];
+        [imgView addTarget:self action:@selector(showHideNav) forControlEvents:UIControlEventTouchUpInside];
         
 //        backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
         
@@ -316,7 +330,7 @@
     
     if (self.type == 0) {
         self.mapView.mapType = MKMapTypeHybrid;
-        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.3a721e27/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.mf5d5c59/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
         
         TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
         overlay.canReplaceMapContent = YES;
@@ -333,6 +347,26 @@
         
         [self requestImage:MapImageTypeCloud];
     }
+}
+
+-(void)addAnnotations
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"china_cities" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:path];
+
+    NSArray *datas = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSMutableArray *annos = [NSMutableArray arrayWithCapacity:datas.count];
+    for (NSInteger i=0; i<datas.count; i++) {
+        NSDictionary *dict = [datas objectAtIndex:i];
+        
+        MKPointAnnotation *anno = [[MKPointAnnotation alloc] init];
+        anno.coordinate = CLLocationCoordinate2DMake([[dict[@"cp"] lastObject] floatValue], [[dict[@"cp"] firstObject] floatValue]);
+        anno.title      = dict[@"name"];
+        [annos addObject:anno];
+    }
+    
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    [self.mapView addAnnotations:annos];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -384,21 +418,36 @@
     {
         static NSString *navigationCellIdentifier = @"pointIdentifier";
         
-        MKAnnotationView *poiAnnotationView = (MKAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:navigationCellIdentifier];
-        if (poiAnnotationView == nil)
+        CustomAnnoView1 *poiAnnotationView = (CustomAnnoView1*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:navigationCellIdentifier];
+        if (!poiAnnotationView)
         {
-            poiAnnotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                             reuseIdentifier:navigationCellIdentifier];
+            poiAnnotationView = [[CustomAnnoView1 alloc] initWithAnnotation:annotation
+                                                                 reuseIdentifier:navigationCellIdentifier];
         }
         
-//        poiAnnotationView.canShowCallout = NO;
-        poiAnnotationView.image = [UIImage imageNamed:@"map_anni"];
-        poiAnnotationView.centerOffset = CGPointMake(0, -20);
+        poiAnnotationView.canShowCallout = NO;
+#if 1
+        if ([poiAnnotationView isKindOfClass:[CustomAnnoView1 class]]) {
+            
+            CGFloat textSize = 6 + (16 - 6) * mapView.zoomLevel/mapView.maxZoomLevel;
+            
+            CGFloat fontSize = MIN(16, textSize);
+            
+            [poiAnnotationView setLabelText:[annotation title] withTextSize:fontSize];
+        }
+#else
+        poiAnnotationView.image = [UIImage imageNamed:@"tongji"];
+#endif
         
         return poiAnnotationView;
     }
     
     return nil;
+}
+
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    [self addAnnotations];
 }
 
 #pragma mark -- self methods
@@ -562,6 +611,7 @@
         
         NSString *timeTxt = [[self.allUrls objectAtIndex:self.allUrls.count-self.currentPlayIndex-1] objectForKey:@"l1"];
         [self setTimeLabelText:timeTxt];
+        [self setDateLabelText:timeTxt];
         
         //    LOG(@"%d, %ld", self.currentPlayIndex, self.allImages.count);
 //        self.progressView.progress = 1.0*(self.currentPlayIndex+1)/self.allImages.count;
@@ -589,34 +639,116 @@
     dateFormatter = nil;
 }
 
+-(void)setDateLabelText:(NSString *)text
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    if (self.type == 0)
+    {
+        NSDate* expirationDate = [NSDate dateWithTimeIntervalSince1970:[text integerValue]];
+        [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+        self.dateLbl.text = [dateFormatter stringFromDate:expirationDate];
+    }
+    else
+    {
+        [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+        NSDate* expirationDate = [dateFormatter dateFromString: text];
+        [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+        self.dateLbl.text = [dateFormatter stringFromDate:expirationDate];
+    }
+    dateFormatter = nil;
+}
+
 -(void)initBottomViews
 {
-    CGFloat height = 60;
+    CGFloat height = 75;
     UIView *bottomView = [[UIView alloc] init];
     [self.backView addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.bottom.and.width.mas_equalTo(self.backView);
+        make.top.mas_equalTo(self.backView);
+        make.centerX.mas_equalTo(self.backView.mas_centerX);
+        make.width.mas_equalTo(self.backView).multipliedBy(0.7);
         make.height.mas_equalTo(height);
     }];
     
     self.bottomView = bottomView;
     
     UIView *backView = [[UIView alloc] init];
-    backView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
+    backView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.1];
     [bottomView addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(bottomView);
     }];
     
+    UILabel *titleLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:30]];
+    titleLbl.textColor = UIColorFromRGB(0x929292);
+    titleLbl.text = @"全国雷达拼图";
+    [bottomView addSubview:titleLbl];
+    [titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(bottomView);
+        make.centerX.mas_equalTo(bottomView.mas_centerX);
+    }];
+    
+    UILabel *dateLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:16]];
+    dateLbl.textColor = UIColorFromRGB(0xa2a2a0);
+    dateLbl.textAlignment = NSTextAlignmentRight;
+    [bottomView addSubview:dateLbl];
+    [dateLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(bottomView).offset(10);
+        make.left.mas_equalTo(titleLbl.mas_right).offset(5);
+        make.right.mas_equalTo(-5);
+    }];
+    
+    self.dateLbl = dateLbl;
+    
+    self.timeLabel = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:16]];
+    self.timeLabel.textColor = UIColorFromRGB(0xa2a2a0);
+    self.timeLabel.textAlignment = NSTextAlignmentRight;
+    [bottomView addSubview:self.timeLabel];
+    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(dateLbl.mas_bottom);
+        make.left.mas_equalTo(titleLbl.mas_right).offset(5);
+        make.right.mas_equalTo(-5);
+    }];
+
+    
+    UIView *bView = [UIView new];
+    bView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.3];
+    [bottomView addSubview:bView];
+    [bView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(titleLbl.mas_bottom);
+        make.bottom.mas_equalTo(bottomView.mas_bottom);
+        make.left.and.right.mas_equalTo(bottomView);
+    }];
+    
+    CGFloat buttonWidth = 40;
+    UIButton *nextButton = [[UIButton alloc] init];
+    [nextButton setImage:[UIImage imageNamed:@"Future"] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(clickNext) forControlEvents:UIControlEventTouchUpInside];
+    [bView addSubview:nextButton];
+    [nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.and.top.and.bottom.mas_equalTo(bView);
+        make.width.mas_equalTo(buttonWidth);
+    }];
+    
     self.playButton = [[UIButton alloc] init];
-    self.playButton.backgroundColor = [UIColor colorWithRed:0.153 green:0.525 blue:0.808 alpha:1];
-    [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    [self.playButton setImage:[UIImage imageNamed:@"Broadcast"] forState:UIControlStateNormal];
     [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
     [self.playButton addTarget:self action:@selector(clickPlay) forControlEvents:UIControlEventTouchUpInside];
-    [bottomView addSubview:self.playButton];
+    [bView addSubview:self.playButton];
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.top.and.bottom.mas_equalTo(bottomView);
-        make.width.mas_equalTo(height);
+        make.right.mas_equalTo(nextButton.mas_left);
+        make.top.and.bottom.mas_equalTo(bView);
+        make.width.mas_equalTo(buttonWidth);
+    }];
+    
+    UIButton *lastButton = [[UIButton alloc] init];
+    [lastButton setImage:[UIImage imageNamed:@"Past"] forState:UIControlStateNormal];
+    [lastButton addTarget:self action:@selector(clickLast) forControlEvents:UIControlEventTouchUpInside];
+    [bView addSubview:lastButton];
+    [lastButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.playButton.mas_left);
+        make.top.and.bottom.mas_equalTo(bView);
+        make.width.mas_equalTo(buttonWidth);
     }];
     
     self.progressView = [[UISlider alloc] init];
@@ -625,32 +757,29 @@
     self.progressView.backgroundColor = [UIColor clearColor];
     self.progressView.minimumValue = 0;
     self.progressView.maximumValue = 90;
-    self.progressView.minimumTrackTintColor = [UIColor colorWithRed:0.118 green:0.663 blue:0.988 alpha:1]; // 设置已过进度部分的颜色
-    self.progressView.maximumTrackTintColor = [UIColor colorWithRed:0.776 green:0.776 blue:0.800 alpha:1]; // 设置未过进度部分的颜色
+    self.progressView.minimumTrackTintColor = UIColorFromRGB(0x2593c8); // 设置已过进度部分的颜色
+    self.progressView.maximumTrackTintColor = UIColorFromRGB(0xa8a8a8); // 设置未过进度部分的颜色
     // [oneProgressView setProgress:0.8 animated:YES]; // 设置初始值，可以看到动画效果
 //    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault]; // 设置显示的样式
     [self.progressView setThumbImage:[UIImage imageNamed:@"thumb"] forState:UIControlStateNormal];
     [self.progressView addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventValueChanged];
-    [bottomView addSubview:self.progressView];
+    [bView addSubview:self.progressView];
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(70);
+        make.left.mas_equalTo(5);
         make.top.mas_equalTo(5);
-        make.right.mas_equalTo(-60);
+        make.right.mas_equalTo(lastButton.mas_left);
         make.bottom.mas_equalTo(-5);
     }];
+}
+
+-(UILabel *)createLabelWithFont:(UIFont *)font
+{
+    UILabel *lbl = [UILabel new];
+    lbl.font = font;
+    lbl.adjustsFontSizeToFitWidth = YES;
+    lbl.minimumScaleFactor = 0.5;
     
-    self.timeLabel = [[UILabel alloc] init];
-    self.timeLabel.textColor = [UIColor whiteColor];//[UIColor colorWithRed:0.118 green:0.663 blue:0.988 alpha:1];
-    self.timeLabel.textAlignment = NSTextAlignmentCenter;
-//    self.timeLabel.text = @"tttttt";
-    self.timeLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
-    [bottomView addSubview:self.timeLabel];
-    [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(5);
-        make.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(-5);
-        make.width.mas_equalTo(60);
-    }];
+    return lbl;
 }
 
 -(void)changeProgress:(id)sender
@@ -689,6 +818,46 @@
         {
             [self requestImageList:MapImageTypeCloud];
         }
+    }
+}
+
+-(void)clickLast
+{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.playButton.selected = NO;
+    }
+    
+    self.currentPlayIndex = MAX(0, self.currentPlayIndex - 1);
+    NSString *imageUrl = [self.allImages objectForKey:@(self.allImages.count-self.currentPlayIndex-1)];
+    UIImage *curImage = [self.mapImagesManager imageFromDiskForUrl:imageUrl];
+    if (curImage) {
+        [self changeImageAnim:curImage];
+    }
+    else
+    {
+        LOG(@"Image file 不存在~~%@", imageUrl);
+    }
+}
+
+-(void)clickNext
+{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.playButton.selected = NO;
+    }
+    
+    self.currentPlayIndex = MIN(self.allImages.count-1, self.currentPlayIndex + 1);
+    NSString *imageUrl = [self.allImages objectForKey:@(self.allImages.count-self.currentPlayIndex-1)];
+    UIImage *curImage = [self.mapImagesManager imageFromDiskForUrl:imageUrl];
+    if (curImage) {
+        [self changeImageAnim:curImage];
+    }
+    else
+    {
+        LOG(@"Image file 不存在~~%@", imageUrl);
     }
 }
 

@@ -36,9 +36,9 @@
 //    {
 //        NSMutableDictionary *md = [NSMutableDictionary dictionaryWithDictionary:[dataArr objectAtIndex:i]];
 //        NSArray *cp = [[md objectForKey:@"properties"] objectForKey:@"cp"];
-//        NSString *name = [[md objectForKey:@"properties"] objectForKey:@"name"];
+//        NSString *name = [[md objectForKey:@"properties"] objectForKey:@"cname"];
 //        
-//        [mutableArray addObject:@{@"name": name, @"cp": cp}];
+//        [mutableArray addObject:@{@"name":name, @"level":@"2", @"cp": cp}];
 //    }
 //    
 //    NSData *jsData = [NSJSONSerialization dataWithJSONObject:mutableArray options:0 error:nil];

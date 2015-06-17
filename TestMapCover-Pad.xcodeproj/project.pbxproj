@@ -25,6 +25,7 @@
 		EEDB367B1B2973C000E6F850 /* 15061108.006.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB367A1B2973C000E6F850 /* 15061108.006.png */; };
 		EEDB367F1B2ED6C800E6F850 /* china_cities.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB367E1B2ED6C800E6F850 /* china_cities.json */; };
 		EEDB36821B2ED79500E6F850 /* CustomAnnoView1.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36811B2ED79500E6F850 /* CustomAnnoView1.m */; };
+		EEDB36841B311DC800E6F850 /* china_1.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDB36831B311DC800E6F850 /* china_1.json */; };
 		EEEF4FBA1B0DEFCE0070A30F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FB91B0DEFCE0070A30F /* main.m */; };
 		EEEF4FBD1B0DEFCE0070A30F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBC1B0DEFCE0070A30F /* AppDelegate.m */; };
 		EEEF4FC01B0DEFCE0070A30F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF4FBF1B0DEFCE0070A30F /* MasterViewController.m */; };
@@ -296,6 +297,7 @@
 		EEDB367E1B2ED6C800E6F850 /* china_cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = china_cities.json; sourceTree = "<group>"; };
 		EEDB36801B2ED79500E6F850 /* CustomAnnoView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnoView1.h; sourceTree = "<group>"; };
 		EEDB36811B2ED79500E6F850 /* CustomAnnoView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnoView1.m; sourceTree = "<group>"; };
+		EEDB36831B311DC800E6F850 /* china_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = china_1.json; sourceTree = "<group>"; };
 		EEEF4FB41B0DEFCE0070A30F /* TestMapCover-Pad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestMapCover-Pad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEF4FB81B0DEFCE0070A30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEEF4FB91B0DEFCE0070A30F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 		EEEF4FAB1B0DEFCE0070A30F = {
 			isa = PBXGroup;
 			children = (
+				EEDB36831B311DC800E6F850 /* china_1.json */,
 				EEDB367E1B2ED6C800E6F850 /* china_cities.json */,
 				EEDB36621B27D6EE00E6F850 /* Models */,
 				EEDB364B1B27D6C000E6F850 /* 全球预报要素图像 */,
@@ -1710,6 +1713,7 @@
 				EEDB36601B27D6C000E6F850 /* 14122208.000.png in Resources */,
 				EEEF56C81B1330770070A30F /* 24小时变温实况.png in Resources */,
 				EEEF56A81B12BAD10070A30F /* green_dot.png in Resources */,
+				EEDB36841B311DC800E6F850 /* china_1.json in Resources */,
 				EEEF57121B1339220070A30F /* 全国烟花爆竹燃放气象指数预报.json in Resources */,
 				EEEF56D31B1330770070A30F /* 全国空气污染气象预报.png in Resources */,
 				EEEF56C91B1330770070A30F /* 全国降水量预报.png in Resources */,

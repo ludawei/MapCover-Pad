@@ -27,6 +27,7 @@
 #define MAP_CHINA_LON_DELTA 64.0f
 
 #define MK_CHINA_CENTER_REGION MKCoordinateRegionMake(CLLocationCoordinate2DMake(33.2, 105.0), MKCoordinateSpanMake(42, 64))
+#define MAPBOX_URL @"http://api.tiles.mapbox.com/v4/ludawei.mfj7bi1j/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
 
 @interface MapAnimController ()<MKMapViewDelegate>
 {
@@ -85,7 +86,7 @@
     }
     else
     {
-        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.mf5d5c59/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+        static NSString * const template = MAPBOX_URL;
         
         TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
         overlay.canReplaceMapContent = YES;
@@ -192,7 +193,8 @@
 //    [logo setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
 //    [logo addTarget:self action:@selector(showHideNav) forControlEvents:UIControlEventTouchUpInside];
     
-    CGFloat height = 50;
+    UIImage *indexImage = [UIImage imageNamed:@"Legend"];
+    CGFloat height = indexImage.size.height;
     UIView *topView = [[UIView alloc] init];
     [self.backView addSubview:topView];
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -207,9 +209,9 @@
     }];
     
     if (self.type == 0) {
-        UIImage *indexImage = [UIImage imageNamed:@"Legend"];
+        
         UIButton *imgView = [UIButton new];//[[UIImageView alloc] initWithImage:indexImage];
-        [topView addSubview:imgView];
+        [self.backView addSubview:imgView];
         
         [imgView setImage:indexImage forState:UIControlStateNormal];
         [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -330,7 +332,7 @@
     
     if (self.type == 0) {
         self.mapView.mapType = MKMapTypeHybrid;
-        static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.mf5d5c59/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+        static NSString * const template = MAPBOX_URL;
         
         TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
         overlay.canReplaceMapContent = YES;
@@ -362,9 +364,18 @@
         level = 2;
     }
     
-    if (self.mapView.zoomLevel >= 5.5)
-    {
+    if (self.mapView.zoomLevel >= 4.1) {
         level = 3;
+    }
+    
+    if (self.mapView.zoomLevel >= 5.0)
+    {
+        level = 4;
+    }
+    
+    if (self.mapView.zoomLevel >= 6.0)
+    {
+        level = 5;
     }
     
     for (NSInteger i=0; i<datas.count; i++) {
@@ -442,11 +453,7 @@
 #if 1
         if ([poiAnnotationView isKindOfClass:[CustomAnnoView1 class]]) {
             
-            CGFloat textSize = 6 + (16 - 6) * mapView.zoomLevel/mapView.maxZoomLevel;
-            
-            CGFloat fontSize = MIN(16, textSize);
-            
-            [poiAnnotationView setLabelText:[annotation title] withTextSize:fontSize];
+            [poiAnnotationView setLabelText:[annotation title] withTextSize:16];
         }
 #else
         poiAnnotationView.image = [UIImage imageNamed:@"tongji"];
@@ -460,6 +467,7 @@
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
+    NSLog(@"%f", mapView.zoomLevel);
     [self addAnnotations];
 }
 
@@ -686,13 +694,13 @@
     self.bottomView = bottomView;
     
     UIView *backView = [[UIView alloc] init];
-    backView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.1];
+    backView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.3];
     [bottomView addSubview:backView];
     [backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(bottomView);
     }];
     
-    UILabel *titleLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:30]];
+    UILabel *titleLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:30]];
     titleLbl.textColor = UIColorFromRGB(0x929292);
     titleLbl.text = @"全国雷达拼图";
     [bottomView addSubview:titleLbl];
@@ -701,7 +709,7 @@
         make.centerX.mas_equalTo(bottomView.mas_centerX);
     }];
     
-    UILabel *dateLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:16]];
+    UILabel *dateLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:18]];
     dateLbl.textColor = UIColorFromRGB(0xa2a2a0);
     dateLbl.textAlignment = NSTextAlignmentRight;
     [bottomView addSubview:dateLbl];
@@ -713,7 +721,7 @@
     
     self.dateLbl = dateLbl;
     
-    self.timeLabel = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:16]];
+    self.timeLabel = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica" size:18]];
     self.timeLabel.textColor = UIColorFromRGB(0xa2a2a0);
     self.timeLabel.textAlignment = NSTextAlignmentRight;
     [bottomView addSubview:self.timeLabel];
@@ -725,7 +733,7 @@
 
     
     UIView *bView = [UIView new];
-    bView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.3];
+    bView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.1];
     [bottomView addSubview:bView];
     [bView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(titleLbl.mas_bottom);
@@ -774,7 +782,7 @@
     self.progressView.maximumTrackTintColor = UIColorFromRGB(0xa8a8a8); // 设置未过进度部分的颜色
     // [oneProgressView setProgress:0.8 animated:YES]; // 设置初始值，可以看到动画效果
 //    [self.progressView setProgressViewStyle:UIProgressViewStyleDefault]; // 设置显示的样式
-    [self.progressView setThumbImage:[UIImage imageNamed:@"thumb"] forState:UIControlStateNormal];
+    [self.progressView setThumbImage:[UIImage imageNamed:@"Slider"] forState:UIControlStateNormal];
     [self.progressView addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventValueChanged];
     [bView addSubview:self.progressView];
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {

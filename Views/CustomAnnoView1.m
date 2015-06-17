@@ -29,14 +29,14 @@
 - (void)setUpLabel
 {
     _countLabel = [[UILabel alloc] initWithFrame:self.bounds];
-    _countLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    _countLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _countLabel.textAlignment = NSTextAlignmentCenter;
     _countLabel.backgroundColor = [UIColor clearColor];
     _countLabel.textColor = [UIColor grayColor];
 //    _countLabel.adjustsFontSizeToFitWidth = YES;
-    _countLabel.minimumScaleFactor = 2;
+//    _countLabel.minimumScaleFactor = 2;
 //    _countLabel.numberOfLines = 0;
-    _countLabel.font = [UIFont boldSystemFontOfSize:10];
+//    _countLabel.font = [UIFont boldSystemFontOfSize:10];
 //    _countLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     
     [self addSubview:_countLabel];
@@ -47,6 +47,8 @@
     self.countLabel.font = [UIFont systemFontOfSize:size];
     self.countLabel.text = text;
     [self.countLabel sizeToFit];
+    
+    self.frame = self.countLabel.frame;
 }
 
 @end

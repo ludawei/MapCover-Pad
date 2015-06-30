@@ -14,6 +14,7 @@
 #import "CWWindMapBottomView.h"
 #import "NSDate+Utilities.h"
 #import "MBProgressHUD+Extra.h"
+#import "SDWebImageDownloader.h"
 
 #import "CWUserManager.h"
 #import "MKMapView+ZoomLevel.h"
@@ -34,6 +35,7 @@
 @property (nonatomic,strong) UIView *indexView;
 
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+@property (nonatomic,strong) UIImage *mapImage;
 
 @end
 
@@ -157,8 +159,8 @@
 //    
 //    [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
     
-    MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(90, -180) southWest:CLLocationCoordinate2DMake(-90, 180)];
-    [self.mapView addOverlay:over];
+//    MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(90, -180) southWest:CLLocationCoordinate2DMake(-90, 180)];
+//    [self.mapView addOverlay:over];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -186,6 +188,19 @@
     [self.view bringSubviewToFront:self.bottomView];
     
     [self setupMapViewAnnitions];
+    
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:[data objectForKey:@"url"]] options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+        
+        if (!image) {
+            return ;
+        }
+        
+        self.mapImage = image;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(85.0511, -180) southWest:CLLocationCoordinate2DMake(-85.0511, 180)];
+            [self.mapView addOverlay:over];
+        });
+    }];
 }
 
 -(UILabel *)createLabelWithFrame:(CGRect)frame
@@ -485,7 +500,7 @@
     MKOverlayRenderer *renderer = nil;
     if ([overlay isKindOfClass:[MyOverlay class]]) {
         MyOverlayImageRenderer *routineView = [[MyOverlayImageRenderer alloc] initWithOverlay:overlay];
-        routineView.image = [UIImage imageNamed:@"15061108.006"];
+        routineView.image = self.mapImage;//[UIImage imageNamed:@"15061108.006"];
         routineView.alpha = 0.7;
         
         renderer = routineView;

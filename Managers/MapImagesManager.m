@@ -18,6 +18,8 @@
 #import "SDImageCache.h"
 #import "SDWebImageDownloader.h"
 
+#define REQUEST_TIMETMP 10//10*60
+
 @interface MapImagesManager ()
 
 @property (nonatomic,strong) AFHTTPRequestOperationManager *client;
@@ -81,7 +83,7 @@
         path = @"http://scapi.weather.com.cn/product/list/cloudnew_20.html";
         lastTime = [[CWDataManager sharedInstance].mapCloudData objectForKey:@"time"];
     }
-    if (!lastTime || nowTime - [lastTime doubleValue] >= 10*60) {
+    if (!lastTime || nowTime - [lastTime doubleValue] >= REQUEST_TIMETMP) {
         // 获取降雨图
         [self.client GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             id json = responseObject;//[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
@@ -188,6 +190,7 @@
         self.hud = nil;
     }
     self.hud = [MBProgressHUD showHUDInView:self.hudView andText:nil];
+
     
     __block int failCount = 0;
     
@@ -216,7 +219,9 @@
             CGFloat radio = 1.0*(failCount+allImages.count)/imageUrls.count;
             self.hud.mode = MBProgressHUDModeDeterminate;
             self.hud.progress = radio;
-            self.hud.labelText = [NSString stringWithFormat:@"%.f%%", 100.0*radio];
+            if (radio < 1.0) {
+                self.hud.labelText = [NSString stringWithFormat:@"%.f%%", 100.0*radio];
+            }
             if (failCount+allImages.count == imageUrls.count) {
                 // 下载完成
                 if (self.hud)

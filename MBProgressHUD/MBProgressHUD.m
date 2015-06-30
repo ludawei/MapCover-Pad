@@ -522,10 +522,16 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	[super layoutSubviews];
 	
 	// Entirely cover the parent view
-	UIView *parent = self.superview;
-	if (parent) {
-		self.frame = parent.bounds;
-	}
+    @try {
+        UIView *parent = self.superview;
+        if (parent) {
+            self.frame = parent.bounds;
+        }
+    }
+    @catch (NSException *exception) {
+        
+    }
+	
 	CGRect bounds = self.bounds;
 	
 	// Determine the total widt and height needed

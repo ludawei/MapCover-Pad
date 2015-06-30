@@ -44,7 +44,7 @@
 
 -(void)setLabelText:(NSString *)text withTextSize:(CGFloat)size
 {
-    self.countLabel.font = [UIFont systemFontOfSize:size];
+    self.countLabel.font = [UIFont boldSystemFontOfSize:size];
     self.countLabel.text = text;
     [self.countLabel sizeToFit];
     

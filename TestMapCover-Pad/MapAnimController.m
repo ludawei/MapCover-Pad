@@ -27,7 +27,7 @@
 #define MAP_CHINA_LON_DELTA 64.0f
 
 #define MK_CHINA_CENTER_REGION MKCoordinateRegionMake(CLLocationCoordinate2DMake(33.2, 105.0), MKCoordinateSpanMake(42, 64))
-#define MAPBOX_URL @"http://api.tiles.mapbox.com/v4/ludawei.mfj7bi1j/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+#define MAPBOX_URL @"http://api.tiles.mapbox.com/v4/ludawei.mj8ienmm/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
 
 @interface MapAnimController ()<MKMapViewDelegate>
 {
@@ -349,6 +349,8 @@
         
         [self requestImage:MapImageTypeCloud];
     }
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 -(void)addAnnotations
@@ -403,6 +405,8 @@
     }
     
     [self clearMapView];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -421,7 +425,7 @@
         }
         else
         {
-            [self.groundOverlayView setAlpha:0.6];
+            [self.groundOverlayView setAlpha:1.0];
         }
         
         return self.groundOverlayView;
@@ -435,6 +439,7 @@
     
     return nil;
 }
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -468,7 +473,9 @@
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     NSLog(@"%f", mapView.zoomLevel);
-    [self addAnnotations];
+    if (self.type == 0) {
+        [self addAnnotations];
+    }
 }
 
 #pragma mark -- self methods
@@ -601,7 +608,7 @@
         
         self.currentPlayIndex++;
         
-        if (self.currentPlayIndex == self.allImages.count-1) {
+        if (self.currentPlayIndex > self.allImages.count-1) {
             [self.timer invalidate];
             [self repeatAnimation];
         }
@@ -777,7 +784,7 @@
 //    self.progressView.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame)+10, 5, bottomView.width-(CGRectGetMaxX(self.playButton.frame)+10) - 60, height-10);
     self.progressView.backgroundColor = [UIColor clearColor];
     self.progressView.minimumValue = 0;
-    self.progressView.maximumValue = 90;
+    self.progressView.maximumValue = 95;
     self.progressView.minimumTrackTintColor = UIColorFromRGB(0x2593c8); // 设置已过进度部分的颜色
     self.progressView.maximumTrackTintColor = UIColorFromRGB(0xa8a8a8); // 设置未过进度部分的颜色
     // [oneProgressView setProgress:0.8 animated:YES]; // 设置初始值，可以看到动画效果

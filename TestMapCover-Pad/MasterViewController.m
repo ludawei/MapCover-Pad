@@ -54,6 +54,35 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightBarButton)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNoti:) name:@"changeItem" object:nil];
+}
+
+-(void)receiveNoti:(NSNotification *)noti
+{
+    NSDictionary *userInfo = noti.userInfo;
+    NSIndexPath *indexPath = [userInfo objectForKey:@"indexPath"];
+    
+    if (!indexPath) {
+        return;
+    }
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
+    NSString *key = [self.dataSections objectAtIndex:indexPath.section];
+    NSString *text = [[self.datas objectForKey:key] objectAtIndex:indexPath.row];
+    UIViewController *vc = nil;
+    if ([text isEqualToString:@"等风来"]) {
+        CWWindMapController *next = [CWWindMapController new];
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
+//
+        vc = next;
+    }
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self showDetailViewController:nav sender:nil];
+    self.detailViewController = vc;
 }
 
 -(void)clickRightBarButton
@@ -90,6 +119,7 @@
 
 -(void)clearMapView
 {
+    self.mapView.alpha = 1.0;
     [self.mapView removeOverlays:self.mapView.overlays];
     [self.mapView removeAnnotations:self.mapView.annotations];
     self.mapView.delegate = nil;
@@ -227,8 +257,8 @@
     else if ([text isEqualToString:@"等风来"]) {
         CWWindMapController *next = [CWWindMapController new];
         next.title = text;
-//        [self clearMapView];
-//        next.mapView = self.mapView;
+        [self clearMapView];
+        next.mapView = self.mapView;
         
         vc = next;
     }

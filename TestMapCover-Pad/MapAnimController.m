@@ -21,6 +21,8 @@
 #import "CustomAnnoView1.h"
 #import "MKMapView+ZoomLevel.h"
 
+//#define USE_CUSTOM_MAP 1
+
 #define MAP_CHINA_CENTER_LAT 33.2f
 #define MAP_CHINA_CENTER_LON 105.0f
 #define MAP_CHINA_LAT_DELTA 42.0f
@@ -332,6 +334,8 @@
     
     if (self.type == 0) {
         self.mapView.mapType = MKMapTypeHybrid;
+        
+#ifdef USE_CUSTOM_MAP
         static NSString * const template = MAPBOX_URL;
         
         TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
@@ -340,6 +344,7 @@
         self.mapTileOverlay = overlay;
         
         [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
+#endif
         
         [self requestImage:MapImageTypeRain];
     }
@@ -473,9 +478,11 @@
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     NSLog(@"%f", mapView.zoomLevel);
+#ifdef USE_CUSTOM_MAP
     if (self.type == 0) {
         [self addAnnotations];
     }
+#endif
 }
 
 #pragma mark -- self methods
@@ -686,6 +693,11 @@
     dateFormatter = nil;
 }
 
+-(void)tap
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:3 inSection:2]}];
+}
+
 -(void)initBottomViews
 {
     CGFloat height = 75;
@@ -699,6 +711,9 @@
     }];
     
     self.bottomView = bottomView;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    [bottomView addGestureRecognizer:tap];
     
     UIView *backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.3];

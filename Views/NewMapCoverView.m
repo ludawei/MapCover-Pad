@@ -208,7 +208,7 @@
         if (particle.oldCenter.x != -1) {
             CGContextSetStrokeColorWithColor(context, [partcicleColor CGColor]);
             
-            CGContextSetLineWidth(context, 1.4);
+            CGContextSetLineWidth(context, 1.2);
             
             CGPoint newPoint = CGPointMake(particle.center.x, particle.center.y);
             CGContextMoveToPoint(context, newPoint.x, newPoint.y);

@@ -22,6 +22,7 @@
 #import "MyOverlayImageRenderer.h"
 
 #import "TSTileOverlay.h"
+#import "Masonry.h"
 
 @interface CWWindMapController ()<MKMapViewDelegate, UIGestureRecognizerDelegate>
 {
@@ -65,7 +66,7 @@
         [hud hide:YES];
         
         if (object && [object isKindOfClass:[NSDictionary class]]) {
-            [self showMainViewWithData:object partNum:1000];
+            [self showMainViewWithData:object partNum:2000];
         }
         
     }];
@@ -78,6 +79,8 @@
     
     [cmd startRequest];
     
+//    [self initIndexViews];
+    
     // 注册
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -85,32 +88,52 @@
 
 -(void)initIndexViews
 {
-    CGFloat lblWidth = 20.0;
-    UIImage *indexImage = [UIImage imageNamed:@"windMapIndex"];
-    CGFloat radio = indexImage.size.width/(self.view.frame.size.width-lblWidth*2);
+//    CGFloat lblWidth = 20.0;
+//    UIImage *indexImage = [UIImage imageNamed:@"windMapIndex"];
+//    CGFloat radio = indexImage.size.width/(self.view.frame.size.width-lblWidth*2);
+//    
+//    UIView *indexView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-indexImage.size.height/radio, self.view.frame.size.width, indexImage.size.height/radio)];
+//    indexView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth;
+//    indexView.backgroundColor = [UIColor colorWithRed:0.035 green:0.059 blue:0.169 alpha:1];
+//    [self.view addSubview:indexView];
+//    self.indexView = indexView;
+//    
+//    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(lblWidth, 0, self.view.frame.size.width-lblWidth*2, indexImage.size.height/radio)];
+//    iv.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    iv.image = indexImage;
+//    [indexView addSubview:iv];
+//
+//    UILabel *leftTxt = [self createLabelWithFrame:CGRectMake(0, 0, lblWidth, CGRectGetHeight(indexView.frame))];
+//    leftTxt.font = [UIFont boldSystemFontOfSize:16];
+//    leftTxt.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+//    leftTxt.text = @"弱";
+//    [indexView addSubview:leftTxt];
+//    
+//    UILabel *rightTxt = [self createLabelWithFrame:CGRectMake(CGRectGetWidth(indexView.frame)-lblWidth, 0, lblWidth, CGRectGetHeight(indexView.frame))];
+//    rightTxt.font = [UIFont boldSystemFontOfSize:16];
+//    rightTxt.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleLeftMargin;
+//    rightTxt.text = @"强";
+//    [indexView addSubview:rightTxt];
     
-    UIView *indexView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-indexImage.size.height/radio, self.view.frame.size.width, indexImage.size.height/radio)];
-    indexView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth;
-    indexView.backgroundColor = [UIColor colorWithRed:0.035 green:0.059 blue:0.169 alpha:1];
-    [self.view addSubview:indexView];
-    self.indexView = indexView;
-    
-    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(lblWidth, 0, self.view.frame.size.width-lblWidth*2, indexImage.size.height/radio)];
-    iv.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    iv.image = indexImage;
-    [indexView addSubview:iv];
-    
-    UILabel *leftTxt = [self createLabelWithFrame:CGRectMake(0, 0, lblWidth, CGRectGetHeight(indexView.frame))];
-    leftTxt.font = [UIFont boldSystemFontOfSize:16];
-    leftTxt.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
-    leftTxt.text = @"弱";
-    [indexView addSubview:leftTxt];
-    
-    UILabel *rightTxt = [self createLabelWithFrame:CGRectMake(CGRectGetWidth(indexView.frame)-lblWidth, 0, lblWidth, CGRectGetHeight(indexView.frame))];
-    rightTxt.font = [UIFont boldSystemFontOfSize:16];
-    rightTxt.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleLeftMargin;
-    rightTxt.text = @"强";
-    [indexView addSubview:rightTxt];
+    UIImage *indexImage = [UIImage imageNamed:@"wind_Legend"];
+    UIButton *iv = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width-indexImage.size.width, self.view.height-indexImage.size.height, indexImage.size.width, indexImage.size.height)];
+    [iv setImage:indexImage forState:UIControlStateNormal];
+    [iv addTarget:self action:@selector(showHideNav) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:iv];
+    self.indexView = iv;
+}
+
+-(void)showHideNav
+{
+    if (self.navigationController.navigationBarHidden) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
 }
 
 -(void)viewDidLayoutSubviews
@@ -141,6 +164,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -172,7 +204,7 @@
 {
     self.mainView = [[NewMapCoverView alloc] initWithFrame:self.view.bounds];
     self.mainView.mapView = self.mapView;
-    self.mainView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//    self.mainView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mainView.particleType = 2;
     self.mainView.partNum = num;
     [self.mainView setupWithData:data];
@@ -182,25 +214,31 @@
     motionView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:motionView];
     self.mainView.motionView = motionView;
+    [motionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
     
     [self.view addSubview:self.mainView];
+    [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
     
     [self.view bringSubviewToFront:self.bottomView];
     
     [self setupMapViewAnnitions];
     
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:[data objectForKey:@"url"]] options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-        
-        if (!image) {
-            return ;
-        }
-        
-        self.mapImage = image;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(85.0511, -180) southWest:CLLocationCoordinate2DMake(-85.0511, 180)];
-            [self.mapView addOverlay:over];
-        });
-    }];
+//    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:[data objectForKey:@"url"]] options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+//        
+//        if (!image) {
+//            return ;
+//        }
+//        
+//        self.mapImage = image;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            MyOverlay *over = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(85.0511, -180) southWest:CLLocationCoordinate2DMake(-85.0511, 180)];
+//            [self.mapView addOverlay:over];
+//        });
+//    }];
 }
 
 -(UILabel *)createLabelWithFrame:(CGRect)frame
@@ -218,18 +256,26 @@
 
 -(void)initMapView
 {
-    self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//    if (!self.mapView) {
+//        self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+//    }
+//    self.mapView.frame = self.view.bounds;
+//    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     self.mapView.mapType = MKMapTypeHybrid;
-    self.mapView.zoomLevel = 4.0;
+//    self.mapView.zoomLevel = 4.0;
     self.mapView.alpha = 0.6;
-    CLLocationCoordinate2D coord1 = {
-        39.92,116.46
-    };
-    [self.mapView setCenterCoordinate:coord1 animated:YES];
-    //    self.mapView.alpha = 0.5;
     [self.view addSubview:self.mapView];
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
+    
+//    CLLocationCoordinate2D coord1 = {
+//        39.92,116.46
+//    };
+//    [self.mapView setCenterCoordinate:coord1 animated:YES];
+    //    self.mapView.alpha = 0.5;
+    
     
     
 //    UISegmentedControl *buttons = [[UISegmentedControl alloc] initWithItems:@[@"箭头", @"流线"]];
@@ -304,21 +350,21 @@
 //        cityName = [cityInfo objectForKey:@"c7"];
 //    }
     
-    NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
-    NSString *c14 = @"39.9289";
-    
-    CLLocationCoordinate2D coor;
-    if (c13 && c14) {
-        coor = CLLocationCoordinate2DMake([c14 floatValue], [c13 floatValue]);
-    }
-    
-//    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
-    [self.mapView setCenterCoordinate:coor animated:YES];
+//    NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
+//    NSString *c14 = @"39.9289";
+//    
+//    CLLocationCoordinate2D coor;
+//    if (c13 && c14) {
+//        coor = CLLocationCoordinate2DMake([c14 floatValue], [c13 floatValue]);
+//    }
+//    
+////    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+//    [self.mapView setCenterCoordinate:coor animated:YES];
     
     
     [self setupGestures];
     
-    [self showBottomViewWithCoor:coor];
+//    [self showBottomViewWithCoor:coor];
 }
 
 -(void)addAnnition:(CLLocationCoordinate2D)coor title:(NSString *)title

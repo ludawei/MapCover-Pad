@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE0C162D1B50BEBD003D45D0 /* CWMoviePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0C162C1B50BEBD003D45D0 /* CWMoviePlayView.m */; };
+		EE0C16301B50BF21003D45D0 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0C162F1B50BF21003D45D0 /* PlayerView.m */; };
 		EEDB363F1B25727B00E6F850 /* TSTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB363E1B25727B00E6F850 /* TSTileOverlay.m */; };
 		EEDB36421B25818A00E6F850 /* TSTileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36411B25818A00E6F850 /* TSTileOverlayView.m */; };
 		EEDB365A1B27D6C000E6F850 /* 15032008.006.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB364E1B27D6C000E6F850 /* 15032008.006.png */; };
@@ -271,6 +273,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE0C162B1B50BEBD003D45D0 /* CWMoviePlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMoviePlayView.h; sourceTree = "<group>"; };
+		EE0C162C1B50BEBD003D45D0 /* CWMoviePlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMoviePlayView.m; sourceTree = "<group>"; };
+		EE0C162E1B50BF21003D45D0 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		EE0C162F1B50BF21003D45D0 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		EEDB363D1B25727B00E6F850 /* TSTileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTileOverlay.h; sourceTree = "<group>"; };
 		EEDB363E1B25727B00E6F850 /* TSTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTileOverlay.m; sourceTree = "<group>"; };
 		EEDB36401B25818A00E6F850 /* TSTileOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTileOverlayView.h; sourceTree = "<group>"; };
@@ -1015,6 +1021,8 @@
 		EEEF54401B0F33940070A30F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE0C162E1B50BF21003D45D0 /* PlayerView.h */,
+				EE0C162F1B50BF21003D45D0 /* PlayerView.m */,
 				EEEF54431B0F33940070A30F /* ChartView */,
 				EEEF544E1B0F33940070A30F /* CustomAnnotationView.h */,
 				EEEF544F1B0F33940070A30F /* CustomAnnotationView.m */,
@@ -1034,6 +1042,8 @@
 				EEDB36741B29653B00E6F850 /* DrawPathView.m */,
 				EEDB36801B2ED79500E6F850 /* CustomAnnoView1.h */,
 				EEDB36811B2ED79500E6F850 /* CustomAnnoView1.m */,
+				EE0C162B1B50BEBD003D45D0 /* CWMoviePlayView.h */,
+				EE0C162C1B50BEBD003D45D0 /* CWMoviePlayView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1863,8 +1873,10 @@
 				EEEF55021B0F34EC0070A30F /* NavListHttpCmd.m in Sources */,
 				EEEF56811B12BAD10070A30F /* MSolidFillStyle.m in Sources */,
 				EEDB36751B29653B00E6F850 /* DrawPathView.m in Sources */,
+				EE0C16301B50BF21003D45D0 /* PlayerView.m in Sources */,
 				EEEF543E1B0F337D0070A30F /* CWEyeMapController.m in Sources */,
 				EEEF548F1B0F34590070A30F /* CWDataManager.m in Sources */,
+				EE0C162D1B50BEBD003D45D0 /* CWMoviePlayView.m in Sources */,
 				EEEF56751B12BAD10070A30F /* HTTPHandler.m in Sources */,
 				EEEF54781B0F33940070A30F /* CWWindMapBottomView.m in Sources */,
 				EEEF501E1B0DF13B0070A30F /* MASViewConstraint.m in Sources */,

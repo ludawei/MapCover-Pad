@@ -13,12 +13,17 @@
 #import "PLHttpManager.h"
 #import "MKMapView+ZoomLevel.h"
 #import "MBProgressHUD.h"
+#import "CWMoviePlayView.h"
 
 #import "Masonry.h"
 
 @interface CWEyeMapController ()<MKMapViewDelegate>
+{
+    BOOL isLoadedPlayView;
+}
 
 @property (nonatomic,strong) UIView *backView;
+@property (nonatomic,strong) CWMoviePlayView *playView;
 //@property (nonatomic,strong) UIWebView *webView;
 
 @end
@@ -237,15 +242,38 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    [mapView setCenterCoordinate:[view.annotation coordinate]];
     NSString *url = [view.annotation subtitle];
     if (url) {
-        NSDictionary *info = @{@"l2": url};
+//        NSDictionary *info = @{@"l2": url};
         
-        WebController *next = [[WebController alloc] init];
-        next.info = info;
-        next.hideCollButton = YES;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:next];
-        [self.navigationController presentViewController:nav animated:YES completion:nil];
+//        WebController *next = [[WebController alloc] init];
+//        next.info = info;
+//        next.hideCollButton = YES;
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:next];
+//        [self.navigationController presentViewController:nav animated:YES completion:nil];
+  
+        [self.playView removeFromSuperview];
+        self.playView = nil;
+        
+        CGFloat minSize = MIN(SCREEN_SIZE.width, SCREEN_SIZE.height);
+        
+        CGFloat radio = 1.2;
+        CGSize pvsize = CGSizeMake(320*radio * minSize/320, 180*radio * minSize/320);
+        CWMoviePlayView *playView = [[CWMoviePlayView alloc] initWithFrame:CGRectMake(self.view.width-pvsize.width, 0, pvsize.width, pvsize.height) withUrl:[NSURL URLWithString:url]];
+        [self.view addSubview:playView];
+        self.playView = playView;
+        
+        CLLocationCoordinate2D coor = [self.mapView convertPoint:CGPointMake(self.view.width-pvsize.width - 15 , pvsize.height + 10) toCoordinateFromView:self.view];
+        
+        [mapView setCenterCoordinate:CLLocationCoordinate2DMake(2*mapView.centerCoordinate.latitude - coor.latitude, 2*mapView.centerCoordinate.longitude - coor.longitude) animated:YES];
+
+        self.playView.alpha = 0;
+        [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.playView.alpha = 1;
+        } completion:^(BOOL finished) {
+//            self.playView.hidden = NO;
+        }];
     }
 }
 

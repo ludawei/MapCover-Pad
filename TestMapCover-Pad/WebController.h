@@ -12,5 +12,6 @@
 
 @property (nonatomic,strong) NSDictionary *info;
 @property (nonatomic,assign) BOOL hideCollButton;
+@property (nonatomic,assign) BOOL isIdleTimerDisabled;
 
 @end

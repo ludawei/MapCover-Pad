@@ -78,6 +78,11 @@
     [self initTopViews];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightnavButton)];
+    
+    if (self.hideNav) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+    }
 }
 
 -(void)clickRightnavButton
@@ -532,9 +537,14 @@
                         
                         groundOverlay = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake([p3 doubleValue], [p2 doubleValue]) southWest:CLLocationCoordinate2DMake([p1 doubleValue], [p4 doubleValue])];
                     }
+                    else if(type == MapImageTypeCloud)
+                    {
+                        groundOverlay = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(59.97, 50.02) southWest:CLLocationCoordinate2DMake(-4.98, 144.97)];
+                    }
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSlef.mapView addOverlay:groundOverlay];
+                        [weakSlef.mapView setVisibleMapRect:groundOverlay.boundingMapRect animated:YES];
                         
                         [weakSlef changeImageAnim:image];
                     });
@@ -693,13 +703,30 @@
     dateFormatter = nil;
 }
 
--(void)tap
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:3 inSection:2]}];
-}
-
 -(void)initBottomViews
 {
+    UIButton *button = [UIButton new];
+    [button setImage:[UIImage imageNamed:@"next_page"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(clickNextPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.backView addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.backView).offset(10);
+        make.right.mas_equalTo(self.backView).offset(-10);
+    }];
+    [button sizeToFit];
+    
+    if (self.type == 0) {
+        UIButton *leftbutton = [UIButton new];
+        [leftbutton setImage:[UIImage imageNamed:@"last_page"] forState:UIControlStateNormal];
+        [leftbutton addTarget:self action:@selector(clickLastPage) forControlEvents:UIControlEventTouchUpInside];
+        [self.backView addSubview:leftbutton];
+        [leftbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.backView).offset(10);
+            make.left.mas_equalTo(self.backView).offset(10);
+        }];
+        [leftbutton sizeToFit];
+    }
+    
     CGFloat height = 75;
     UIView *bottomView = [[UIView alloc] init];
     [self.backView addSubview:bottomView];
@@ -712,9 +739,6 @@
     
     self.bottomView = bottomView;
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    [bottomView addGestureRecognizer:tap];
-    
     UIView *backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor colorWithRed:45/255.0 green:40/255.0 blue:16/255.0 alpha:0.3];
     [bottomView addSubview:backView];
@@ -722,9 +746,21 @@
         make.edges.mas_equalTo(bottomView);
     }];
     
+    if (self.type == 1) {
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [backView addGestureRecognizer:tap];
+    }
+    
     UILabel *titleLbl = [self createLabelWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:30]];
     titleLbl.textColor = UIColorFromRGB(0x929292);
-    titleLbl.text = @"全国雷达拼图";
+    if (self.type == 0) {
+        titleLbl.text = @"全国雷达拼图";
+    }
+    else
+    {
+        titleLbl.text = @"区域卫星云图";
+    }
+    
     [bottomView addSubview:titleLbl];
     [titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(bottomView);
@@ -845,6 +881,11 @@
     }
 }
 
+-(void)tap
+{
+    [self showHideNav];
+}
+
 -(void)clickPlay
 {
     if (self.timer) {
@@ -904,4 +945,25 @@
     }
 }
 
+-(void)clickNextPage
+{
+    if (self.type == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:3 inSection:2]}];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:1 inSection:2]}];
+    }
+}
+
+-(void)clickLastPage
+{
+    if (self.type == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:0 inSection:2]}];
+    }
+    else
+    {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:0 inSection:2]}];
+    }
+}
 @end

@@ -13,5 +13,6 @@
 @interface CWWindMapController : BaseViewController
 
 @property (nonatomic,strong) MKMapView *mapView;
+@property (nonatomic,assign) BOOL hideNav;
 
 @end

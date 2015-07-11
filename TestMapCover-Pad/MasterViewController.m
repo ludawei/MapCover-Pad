@@ -66,7 +66,7 @@
     if (!indexPath) {
         return;
     }
-    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     
     NSString *key = [self.dataSections objectAtIndex:indexPath.section];
     NSString *text = [[self.datas objectForKey:key] objectAtIndex:indexPath.row];
@@ -74,15 +74,48 @@
     if ([text isEqualToString:@"等风来"]) {
         CWWindMapController *next = [CWWindMapController new];
         next.title = text;
+        next.hideNav = YES;
         [self clearMapView];
         next.mapView = self.mapView;
 //
         vc = next;
     }
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self showDetailViewController:nav sender:nil];
-    self.detailViewController = vc;
+    if ([text isEqualToString:@"全国雷达"]) {
+        MapAnimController *next = [MapAnimController new];
+        next.type = 0;
+        next.hideNav = YES;
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"全国云图"]) {
+        MapAnimController *next = [MapAnimController new];
+        next.type = 1;
+        next.hideNav = YES;
+        next.title = text;
+        [self clearMapView];
+        next.mapView = self.mapView;
+        
+        vc = next;
+    }
+    else if ([text isEqualToString:@"实景天气"]) {
+        CWEyeMapController *next = [CWEyeMapController new];
+        next.title = text;
+        next.hideNav = YES;
+        [self clearMapView];
+        next.mapView = self.mapView;
+        
+        vc = next;
+    }
+    
+    if (vc) {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self showDetailViewController:nav sender:nil];
+        self.detailViewController = vc;
+    }
 }
 
 -(void)clickRightBarButton

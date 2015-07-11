@@ -164,6 +164,8 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController.navigationBar addSubview:_progressView];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -176,6 +178,9 @@
     [_progressView removeFromSuperview];
     _webView.delegate = nil;
     _webView = nil;
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+
 }
 
 -(void)loadUrl

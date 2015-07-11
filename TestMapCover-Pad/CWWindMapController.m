@@ -37,6 +37,7 @@
 
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 @property (nonatomic,strong) UIImage *mapImage;
+@property (nonatomic,strong) UIButton *lastButton,*nextButton;
 
 @end
 
@@ -66,7 +67,7 @@
         [hud hide:YES];
         
         if (object && [object isKindOfClass:[NSDictionary class]]) {
-            [self showMainViewWithData:object partNum:2000];
+            [self showMainViewWithData:object partNum:1000];
         }
         
     }];
@@ -84,6 +85,43 @@
     // 注册
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    if (self.hideNav) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+    }
+    
+    UIButton *button = [UIButton new];
+    [button setImage:[UIImage imageNamed:@"next_page"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(clickNextPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    CGFloat navHeight = 0;
+    CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if (!self.navigationController.navigationBarHidden) {
+        navHeight = self.navigationController.navigationBar.height;
+    }
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(navHeight+statusHeight).offset(10);
+        make.right.mas_equalTo(self.view).offset(-10);
+    }];
+    [button sizeToFit];
+    self.nextButton = button;
+    
+    UIButton *leftButton = [UIButton new];
+    [leftButton setImage:[UIImage imageNamed:@"last_page"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(clickLastPage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leftButton];
+    
+    if (!self.navigationController.navigationBarHidden) {
+        navHeight = self.navigationController.navigationBar.height;
+    }
+    [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(navHeight+statusHeight).offset(10);
+        make.left.mas_equalTo(self.view).offset(10);
+    }];
+    [leftButton sizeToFit];
+    self.lastButton = leftButton;
 }
 
 -(void)initIndexViews
@@ -139,6 +177,17 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    CGFloat navHeight = 0;
+    
+    CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if (!self.navigationController.navigationBarHidden) {
+        navHeight = self.navigationController.navigationBar.height;
+    }
+    
+    [self.nextButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(navHeight+statusHeight).offset(10);
+    }];
     
     if (self.indexView) {
         [self.indexView removeFromSuperview];
@@ -362,7 +411,7 @@
 //    [self.mapView setCenterCoordinate:coor animated:YES];
     
     
-    [self setupGestures];
+//    [self setupGestures];
     
 //    [self showBottomViewWithCoor:coor];
 }
@@ -631,5 +680,15 @@
 -(void)clickDelete
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)clickLastPage
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:1 inSection:2]}];
+}
+
+-(void)clickNextPage
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeItem" object:nil userInfo:@{@"indexPath": [NSIndexPath indexPathForItem:4 inSection:2]}];
 }
 @end

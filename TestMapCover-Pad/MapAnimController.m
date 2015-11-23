@@ -29,7 +29,7 @@
 #define MAP_CHINA_LON_DELTA 64.0f
 
 #define MK_CHINA_CENTER_REGION MKCoordinateRegionMake(CLLocationCoordinate2DMake(33.2, 105.0), MKCoordinateSpanMake(42, 64))
-#define MAPBOX_URL @"http://api.tiles.mapbox.com/v4/ludawei.mj8ienmm/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+#define MAPBOX_URL @"http://api.tiles.mapbox.com/v4/ludawei.mn69agep/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
 
 @interface MapAnimController ()<MKMapViewDelegate>
 {
@@ -414,7 +414,7 @@
         self.timer = nil;
     }
     
-    [self clearMapView];
+//    [self clearMapView];
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }

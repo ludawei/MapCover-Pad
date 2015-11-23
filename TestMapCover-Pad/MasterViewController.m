@@ -38,6 +38,13 @@
     }
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.mapView removeObserver:self forKeyPath:@"mapType"];
+    self.mapView = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -53,9 +60,31 @@
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightBarButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"卫星地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightBarButton)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNoti:) name:@"changeItem" object:nil];
+    
+    [self.mapView addObserver:self forKeyPath:@"mapType" options:NSKeyValueObservingOptionNew context:nil];
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    NSString *key = [self.dataSections objectAtIndex:indexPath.section];
+    NSString *text = [[self.datas objectForKey:key] objectAtIndex:indexPath.row];
+    DetailViewController1 *controller = [DetailViewController1 new];
+    controller.detailItem = text;
+    [self clearMapView];
+    controller.mapView = self.mapView;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self showDetailViewController:nav sender:nil];
+    self.detailViewController = controller;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"mapType"]) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.mapView.mapType == MKMapTypeStandard?@"卫星地图":@"数字地图" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightBarButton)];
+    }
 }
 
 -(void)receiveNoti:(NSNotification *)noti

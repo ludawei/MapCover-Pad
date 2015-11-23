@@ -290,7 +290,6 @@
     else
     {
         self.data = data;
-//        [self initDataInfo:name];
     }
 }
 

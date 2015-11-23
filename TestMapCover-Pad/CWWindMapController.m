@@ -58,7 +58,6 @@
     [hud show:YES];
     
     CWHttpCmdMicapsdata *cmd = [CWHttpCmdMicapsdata cmd];
-    //    cmd.cityIds = @[cityId];
     cmd.vti = @"030";
     cmd.type = @"1000";
     [cmd setSuccess:^(id object) {
@@ -232,7 +231,7 @@
         hadShow = YES;
     });
     
-//    static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.3a721e27/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
+//    static NSString * const template =@"http://api.tiles.mapbox.com/v4/ludawei.mn69agep/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibHVkYXdlaSIsImEiOiJldzV1SVIwIn0.-gaUYss5MkQMyem_IOskdA";
 //    
 //    TSTileOverlay *overlay = [[TSTileOverlay alloc] initWithURLTemplate:template];
 //    overlay.canReplaceMapContent = YES;
@@ -399,21 +398,21 @@
 //        cityName = [cityInfo objectForKey:@"c7"];
 //    }
     
-//    NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
-//    NSString *c14 = @"39.9289";
-//    
-//    CLLocationCoordinate2D coor;
-//    if (c13 && c14) {
-//        coor = CLLocationCoordinate2DMake([c14 floatValue], [c13 floatValue]);
-//    }
-//    
-////    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
-//    [self.mapView setCenterCoordinate:coor animated:YES];
+    NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
+    NSString *c14 = @"39.9289";
+    
+    CLLocationCoordinate2D coor;
+    if (c13 && c14) {
+        coor = CLLocationCoordinate2DMake([c14 floatValue], [c13 floatValue]);
+    }
+    
+//    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+    [self.mapView setCenterCoordinate:coor animated:YES];
     
     
-//    [self setupGestures];
+    [self setupGestures];
     
-//    [self showBottomViewWithCoor:coor];
+    [self showBottomViewWithCoor:coor];
 }
 
 -(void)addAnnition:(CLLocationCoordinate2D)coor title:(NSString *)title

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EE0C162D1B50BEBD003D45D0 /* CWMoviePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0C162C1B50BEBD003D45D0 /* CWMoviePlayView.m */; };
 		EE0C16301B50BF21003D45D0 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0C162F1B50BF21003D45D0 /* PlayerView.m */; };
+		EE3D21631BB8D8500097DD94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3D21611BB8D8500097DD94 /* libcrypto.a */; };
+		EE3D21641BB8D8500097DD94 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3D21621BB8D8500097DD94 /* libssl.a */; };
 		EEDB363F1B25727B00E6F850 /* TSTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB363E1B25727B00E6F850 /* TSTileOverlay.m */; };
 		EEDB36421B25818A00E6F850 /* TSTileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB36411B25818A00E6F850 /* TSTileOverlayView.m */; };
 		EEDB365A1B27D6C000E6F850 /* 15032008.006.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDB364E1B27D6C000E6F850 /* 15032008.006.png */; };
@@ -116,8 +118,6 @@
 		EEEF55341B0F35250070A30F /* UIView+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55251B0F35250070A30F /* UIView+Extra.m */; };
 		EEEF55351B0F35250070A30F /* UIView+ModifyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55271B0F35250070A30F /* UIView+ModifyFrame.m */; };
 		EEEF55361B0F35250070A30F /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF55291B0F35250070A30F /* Util.m */; };
-		EEEF55871B0F353D0070A30F /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF55851B0F353D0070A30F /* libcrypto.a */; };
-		EEEF55881B0F353D0070A30F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF55861B0F353D0070A30F /* libssl.a */; };
 		EEEF558B1B0F36D70070A30F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF558A1B0F36D70070A30F /* Foundation.framework */; };
 		EEEF558D1B0F36E90070A30F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF558C1B0F36E90070A30F /* libz.dylib */; };
 		EEEF559D1B0F38370070A30F /* MBProgressHUD+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEF559C1B0F38370070A30F /* MBProgressHUD+Extra.m */; };
@@ -277,6 +277,8 @@
 		EE0C162C1B50BEBD003D45D0 /* CWMoviePlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMoviePlayView.m; sourceTree = "<group>"; };
 		EE0C162E1B50BF21003D45D0 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		EE0C162F1B50BF21003D45D0 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		EE3D21611BB8D8500097DD94 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		EE3D21621BB8D8500097DD94 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		EEDB363D1B25727B00E6F850 /* TSTileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTileOverlay.h; sourceTree = "<group>"; };
 		EEDB363E1B25727B00E6F850 /* TSTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTileOverlay.m; sourceTree = "<group>"; };
 		EEDB36401B25818A00E6F850 /* TSTileOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTileOverlayView.h; sourceTree = "<group>"; };
@@ -559,8 +561,6 @@
 		EEEF55821B0F353D0070A30F /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509.h; sourceTree = "<group>"; };
 		EEEF55831B0F353D0070A30F /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_vfy.h; sourceTree = "<group>"; };
 		EEEF55841B0F353D0070A30F /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
-		EEEF55851B0F353D0070A30F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		EEEF55861B0F353D0070A30F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		EEEF55891B0F36480070A30F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		EEEF558A1B0F36D70070A30F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EEEF558C1B0F36E90070A30F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -769,11 +769,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE3D21641BB8D8500097DD94 /* libssl.a in Frameworks */,
 				EEEF56B51B12BAE70070A30F /* libstdc++.6.0.9.dylib in Frameworks */,
 				EEEF558D1B0F36E90070A30F /* libz.dylib in Frameworks */,
+				EE3D21631BB8D8500097DD94 /* libcrypto.a in Frameworks */,
 				EEEF558B1B0F36D70070A30F /* Foundation.framework in Frameworks */,
-				EEEF55881B0F353D0070A30F /* libssl.a in Frameworks */,
-				EEEF55871B0F353D0070A30F /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +787,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE3D21601BB8D8500097DD94 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EE3D21611BB8D8500097DD94 /* libcrypto.a */,
+				EE3D21621BB8D8500097DD94 /* libssl.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		EEDB364B1B27D6C000E6F850 /* 全球预报要素图像 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1227,9 +1236,8 @@
 		EEEF55371B0F353D0070A30F /* openssl_lib */ = {
 			isa = PBXGroup;
 			children = (
+				EE3D21601BB8D8500097DD94 /* lib */,
 				EEEF55381B0F353D0070A30F /* include */,
-				EEEF55851B0F353D0070A30F /* libcrypto.a */,
-				EEEF55861B0F353D0070A30F /* libssl.a */,
 			);
 			path = openssl_lib;
 			sourceTree = "<group>";
@@ -2057,8 +2065,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "TestMapCover-Pad/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2070,9 +2078,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/openssl_lib",
+					"$(PROJECT_DIR)/openssl_lib/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a849671e-da26-4e13-9443-9dc13917ae37";
 			};
 			name = Debug;
 		};
@@ -2080,8 +2089,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "TestMapCover-Pad/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2093,9 +2102,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/openssl_lib",
+					"$(PROJECT_DIR)/openssl_lib/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a849671e-da26-4e13-9443-9dc13917ae37";
 			};
 			name = Release;
 		};

@@ -227,9 +227,11 @@
                 // 下载完成
                 if (self.hud)
                 {
-                    [self.hud hide:YES];
-                    [self.hud removeFromSuperview];
-                    self.hud = nil;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.hud hide:YES];
+                        [self.hud removeFromSuperview];
+                        self.hud = nil;
+                    });
                 }
                 
                 block(allImages);

@@ -11,7 +11,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "77F9D683-6CBA-4B8B-AFF6-FB95B0DACFC3",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "EEB4B741A91EE1F9B5CB2AEFFA579BC8DE0A92B2" : "TestMapCover",
-    "5F4B441E9C7265BD4F011826CC4B982536E703F0" : "TestMapCover-Pad",
+    "5F4B441E9C7265BD4F011826CC4B982536E703F0" : "TestMapCover-Pad\/",
     "296C8AFC0D4F404753D37E236E3E40B5A5BACAFC" : "projects\/chinaweathernews"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "TestMapCover-Pad",

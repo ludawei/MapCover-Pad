@@ -1643,6 +1643,9 @@
 				TargetAttributes = {
 					EEEF4FB31B0DEFCE0070A30F = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 36XQGB4H92;
+						DevelopmentTeamName = "Beijing Huafeng Innovation Network Company Limited";
+						ProvisioningStyle = Automatic;
 					};
 					EEEF4FCF1B0DEFCE0070A30F = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -2066,7 +2069,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "TestMapCover-Pad/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2080,8 +2083,10 @@
 					"$(PROJECT_DIR)/openssl_lib",
 					"$(PROJECT_DIR)/openssl_lib/lib",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weather.testMapCover.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a849671e-da26-4e13-9443-9dc13917ae37";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -2090,7 +2095,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "TestMapCover-Pad/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2104,8 +2109,10 @@
 					"$(PROJECT_DIR)/openssl_lib",
 					"$(PROJECT_DIR)/openssl_lib/lib",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weather.testMapCover.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a849671e-da26-4e13-9443-9dc13917ae37";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

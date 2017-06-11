@@ -239,7 +239,7 @@
 {
     NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
     NSString *c14 = @"39.9289";//[CWUserManager sharedInstance].lat;
-    [[PLHttpManager sharedInstance].manager GET:[NSString stringWithFormat:@"http://caiyunapp.com/fcgi-bin/v1/api.py?lonlat=%@,%@&format=json&product=minutes_prec&token=Q2hpbmVzZSBXZWF0aGVyTWFuICsgY2FpeXVuIHdlYXRoZXIgYXBp", c13, c14] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[PLHttpManager sharedInstance].manager GET:[NSString stringWithFormat:@"http://caiyunapp.com/fcgi-bin/v1/api.py?lonlat=%@,%@&format=json&product=minutes_prec&token=HyTVV5YAkoxlQ3Zd", c13, c14] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError* error = nil;
         id json;
         if ([responseObject isKindOfClass:[NSDictionary class]]) {

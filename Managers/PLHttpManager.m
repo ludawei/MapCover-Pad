@@ -9,21 +9,18 @@
 #import "PLHttpManager.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "CWHttpCmdWeather.h"
-#import "CWHttpCmdHotCitys.h"
-#import "CWHttpCmdSearchCity.h"
-#import "CWHttpCmdLogin.h"
 #import "DecStr.h"
 #import "ZipStr.h"
-
-#if 1
-NSString * const pLBaseURLString = @"http://decision.tianqi.cn";
-#else
-NSString * const pLBaseURLString = @"";
-#endif
+#import "CWDataManager.h"
+#import "CWUserManager.h"
+#import "Util.h"
+#import "CWHttpCmdLogin.h"
+#import "CWHttpCmdNewGeoArea.h"
+#import "DeviceUtil.h"
 
 @interface PLHttpManager ()
 
-@property (nonatomic,strong) AFHTTPRequestOperationManager *manager;
+@property (nonatomic,strong) AFHTTPSessionManager *manager;
 
 @end
 
@@ -48,27 +45,24 @@ NSString * const pLBaseURLString = @"";
         return nil;
     }
     
-    _manager = [AFHTTPRequestOperationManager manager];
-    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"application/octet-stream",@"multipart/form-data", @"text/html; charset=ISO-8859-1", @"application/javascript",nil];
+    self.someDatas = [NSMutableDictionary dictionary];
+    
+    _manager = [AFHTTPSessionManager manager];
+    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"application/octet-stream",@"multipart/form-data", @"text/html; charset=ISO-8859-1", @"application/javascript", @"text/plain", nil];
 //    [(AFJSONResponseSerializer *)self.manager.responseSerializer setReadingOptions:NSJSONReadingAllowFragments];
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     return self;
 }
 
--(NSString *)baseUrlString
-{
-    return pLBaseURLString;
-}
-
--(NSString *)finalImagePath:(NSString *)imgUrl
-{
-    return [NSString stringWithFormat:@"%@%@", pLBaseURLString, imgUrl];
-}
-
 -(void)parserRequest:(PLHttpCmd *)cmd
 {
     NSMutableURLRequest *request = [self.manager.requestSerializer requestWithMethod:cmd.method URLString:cmd.path parameters:cmd.queries error:nil];
+    
+    if ([cmd isKindOfClass:[CWHttpCmdNewGeoArea class]])
+    {
+        request.timeoutInterval = 5;
+    }
     
     if(cmd.headers)
     {
@@ -95,113 +89,93 @@ NSString * const pLBaseURLString = @"";
         }
     }
     
-    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        if ([cmd isKindOfClass:[CWHttpCmdWeather class]]) {
-            responseObject = operation.responseData;
-            
-            NSString *multipartLength = [[operation.response allHeaderFields] objectForKey:@"lengthn"];
-            if([responseObject isKindOfClass:[NSData class]] &&
-               multipartLength)
-            {
-                responseObject = [self splitMultiWeather:responseObject andLength:multipartLength];
-            }
+    [[self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            [cmd didSuccess:responseObject];
         }
-        
-        if ([cmd isResponseZipped]) {
-            responseObject = [self decodeResponseZippedData:operation.responseData];
+        else
+        {
+//            if (error.code == NSURLErrorTimedOut) {
+//                //time out error here
+//                if ([cmd isKindOfClass:[CWHttpCmdNewGeoArea class]]) {
+//                    
+//                    NSString *url = [NSString stringWithFormat:@"%@&log=test", [error.userInfo objectForKey:@"NSErrorFailingURLKey"]];
+//                    [[PLHttpManager sharedInstance].manager GET:url parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                        if (responseObject) {
+//                            [cmd didSuccess:responseObject];
+//                        }
+//                        
+//                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                        [cmd didFailed:error];
+//                        LOG(@"%@", operation);
+//                        
+//                    }];
+//                    return;
+//                }
+//            }
+            [cmd didFailed:nil];
         }
+    }] resume];
+}
+
+-(AFHTTPSessionManager *)manager
+{
+    return _manager;
+}
+
+-(void)fetchWeatherWithWarnAreaIds:(NSArray *)cityIds block:(void (^)())block
+{
+    CWHttpCmdWeather *cmd = [CWHttpCmdWeather cmd];
+    cmd.cityIds = cityIds;
+    [cmd setSuccess:^(id object) {
         
-        [cmd didSuccess:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if ([cmd isResponseZipped]) {
-           id responseObject = [self decodeResponseZippedData:operation.responseData];
-            LOG(@"%@",responseObject);
-            if (responseObject) {
-                [cmd didSuccess:responseObject];
-            }
-            else
-            {
-                [cmd didFailed:operation];
+        if (cityIds.count==1) {
+            id value = [object objectForKey:cityIds.firstObject];
+            if (value) {
+                [self.someDatas setObject:value forKey:cityIds.firstObject];
+                block();
             }
         }
         else
         {
-            [cmd didFailed:operation];
+            for (NSString *cityId in cityIds) {
+                id value = [object objectForKey:cityId];
+                if (value) {
+                    [self.someDatas setObject:value forKey:cityId];
+                    block();
+                }
+            }
         }
+        
     }];
-    
-    [self.manager.operationQueue addOperation:operation];
+    [cmd setFail:^(AFHTTPRequestOperation *response) {
+        LOG(@"CWHttpCmdWeather fail %@", response);
+        
+        [self fetchWeatherWithWarnAreaIds:cityIds block:block];
+    }];
+    [cmd startRequest];
 }
 
-
-#pragma mark - 针对多城市数据的分割方法
-
-- (NSArray *)splitMultiWeather:(NSData *)data andLength:(NSString *)length
+-(void)fetchWarningWithWarnAreaId:(NSString *)warnAreaId block:(void (^)())block
 {
-    NSArray *lens;
-    if(!length)
-    {
-        lens = [NSArray arrayWithObject:[NSString stringWithFormat:@"%ld", data.length]];
+    if (warnAreaId && warnAreaId.length > 0) {
+//        NSString *url = [NSString stringWithFormat:@"https://decision.tianqi.cn/alarm12379/grepalarm2.php?areaid=%@", warnAreaId];
+        NSString *url = [NSString stringWithFormat:@"https://decision-admin.tianqi.cn/Home/extra/getwarns?order=1&areaid=%@", warnAreaId];
+        [[PLHttpManager sharedInstance].manager GET:url parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (responseObject) {
+                NSArray *datas = [(NSDictionary *)responseObject objectForKey:@"data"];
+                
+                [self.someDatas setObject:datas forKey:warnAreaId];
+                block();
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            LOG(@"%@", operation);
+            
+            [self fetchWarningWithWarnAreaId:warnAreaId block:block];
+        }];
     }
-    else
-    {
-        lens = [length componentsSeparatedByString:@","];
-    }
-    
-    int offset = 0;
-    NSMutableArray *components = [NSMutableArray arrayWithCapacity:lens.count];
-    for (NSString *lenStr in lens)
-    {
-        int len = [lenStr intValue];
-        if(offset + len > data.length)
-        {
-            // out of range
-            break;
-        }
-        NSData *subdata = [data subdataWithRange:NSMakeRange(offset, len)];
-        offset += len;
-        [components addObject:subdata];
-    }
-    
-    return components;
+
 }
 
-- (id)decodeResponseZippedData:(id)object
-{
-    NSData *rawData = object;
-    
-    id jsonObject = nil;
-    
-    char* decryptStr = (char*) malloc([rawData length] + 1); // need to free
-    memcpy(decryptStr, (const char*) [rawData bytes], [rawData length]);
-    [DecStr decrypt: decryptStr length: (int)[rawData length]];
-    decryptStr[[rawData length]] = '\0';
-    
-#if 0
-    NSData *data = [NSData dataWithBytes:decryptStr length:[rawData length]];
-    jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    
-    free(decryptStr);
-#else
-    char* uncomStr = [ZipStr Uncompress:decryptStr length:(int)[rawData length]]; // need to free
-    if(uncomStr)
-    {
-        NSData *decodedResponseData = [NSData dataWithBytesNoCopy:uncomStr length:strlen(uncomStr)];
-        jsonObject = [NSJSONSerialization JSONObjectWithData:decodedResponseData options:NSJSONReadingMutableContainers error:nil];
-    }
-    else
-    {
-        NSData *decodedResponseData = [NSData dataWithBytesNoCopy:decryptStr length:[rawData length]];
-        jsonObject = [NSJSONSerialization JSONObjectWithData:decodedResponseData options:NSJSONReadingMutableContainers error:nil];
-    }
-#endif
-    
-    return jsonObject;
-}
-
--(AFHTTPRequestOperationManager *)manager
-{
-    return _manager;
-}
 @end

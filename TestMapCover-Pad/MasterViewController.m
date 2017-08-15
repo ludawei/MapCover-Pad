@@ -15,7 +15,7 @@
 #import "CWWindMapController.h"
 #import "MapAnimController.h"
 #import "OtherMapController.h"
-#import "TyphoonMapViewController.h"
+#import "TyphoonController.h"
 
 #import "OtherMapController.h"
 
@@ -334,11 +334,7 @@
     }
     else if ([text isEqualToString:@"台风路径"])
     {
-        TyphoonMapViewController *viewController = [[TyphoonMapViewController alloc] initWithNibName:@"TyphoonMapView" bundle:nil];
-        [viewController setRequestType:@""];
-        viewController.title = text;
-        
-//        [viewController setRequestParams:data[@"l3"]];
+        TyphoonController *viewController = [TyphoonController new];
         vc = viewController;
 
     }

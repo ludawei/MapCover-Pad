@@ -7,7 +7,8 @@
 //
 
 #import "DecStr.h"
-#import "UtilConstants.h"
+
+const NSString* KEY = @"Crackers and the thief will suffer misfortune";
 
 @implementation DecStr
 
@@ -16,7 +17,7 @@
     int pos = 0;
     @try
     {
-        int keylen = [KEY lengthOfBytesUsingEncoding: NSUTF8StringEncoding];
+        int keylen = (int)[KEY lengthOfBytesUsingEncoding: NSUTF8StringEncoding];
         const char* c = [KEY UTF8String];
         for (int i = 0; i < len; i++, pos = (pos + 1) % keylen)
             buffer[i] ^= c[pos];

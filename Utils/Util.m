@@ -7,7 +7,8 @@
 //
 
 #import "Util.h"
-#import "CWEncode.h"
+#include <CommonCrypto/CommonHMAC.h>
+#import "CWDataManager.h"
 
 @implementation Util
 
@@ -122,7 +123,7 @@
     return @"?";
 }
 
-+ (NSString *)parseWindForce:(NSString *)code
++ (NSString *)parseLiveWindForce:(NSString *)code
 {
     switch (code.intValue)
     {
@@ -134,29 +135,95 @@
     return [NSString stringWithFormat:@"%@级", code];
 }
 
++ (NSString *)parseHourWindForce:(NSString *)code
+{
+    NSString *value = @"--";
+    
+    NSArray *flags = @[@0.2, @1.5, @3.3, @5.4, @7.9, @10.7, @13.8, @17.1, @20.7, @24.4, @28.4, @32.6, @99999.0];
+    for (NSInteger i=0; i<flags.count; i++) {
+        if (code.floatValue < [[flags objectAtIndex:i] floatValue]) {
+            if (i==0) {
+                value = @"微风";
+            }
+            else
+            {
+                value = [NSString stringWithFormat:@"%td级", i];
+            }
+            break;
+        }
+    }
+    
+    return value;
+}
+
+
++ (NSString *)parseDayWindForce:(NSString *)code
+{
+    NSDictionary *dict = @{
+                           @"0":@"微风",
+                           @"1":@"3-4级",
+                           @"2":@"4-5级",
+                           @"3":@"5-6级",
+                           @"4":@"6-7级",
+                           @"5":@"7-8级",
+                           @"6":@"8-9级",
+                           @"7":@"9-10级",
+                           @"8":@"10-11级",
+                           @"9":@"11-12级"
+                           };
+    NSString *value = [dict objectForKey:code];
+    if (!value) {
+        value = @"--";
+    }
+    
+    return value;
+}
+
 + (NSString *)requestEncodeWithString:(NSString *)url appId:(NSString *)appId privateKey:(NSString *)priKey
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [CWDataManager sharedInstance].formatter;
     [formatter setDateFormat:@"yyyyMMddHHmm"];
     NSString *now = [formatter stringFromDate:[NSDate date]];
     
     NSString *public_key = [NSString stringWithFormat:@"%@date=%@&appid=%@", url, now, appId];
-    NSString *key = [CWEncode encodeByPublicKey:public_key privateKey:priKey];
-    NSString *finalUrl = [NSString stringWithFormat:@"%@date=%@&appid=%@&key=%@", url, now, [appId substringToIndex:6], [Util AFPercentEscapedQueryStringPairMemberFromString:key encoding:NSUTF8StringEncoding]];
+    NSString *key = [self encodeByPublicKey:public_key privateKey:priKey];
+    
+    key = [self URLEncode:key];
+    NSString *finalUrl = [NSString stringWithFormat:@"%@date=%@&appid=%@&key=%@", url, now, [appId substringToIndex:6], key];
     
     return finalUrl;
 }
 
-+ (NSString *)AFPercentEscapedQueryStringPairMemberFromString:(NSString *)string encoding:(NSStringEncoding)edcoding
++(NSString *)encodeByPublicKey:(NSString *)public_key privateKey:(NSString *)private_key
 {
-    return AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(string, edcoding);
+    const char *cKey  = [private_key cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *cData = [public_key cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    //sha1
+    unsigned char cHMAC[CC_SHA1_DIGEST_LENGTH];
+    CCHmac(kCCHmacAlgSHA1, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    
+    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC
+                                          length:sizeof(cHMAC)];
+    
+    NSString *hash = [HMAC base64EncodedStringWithOptions:0];//将加密结果进行一次BASE64编码。
+    
+    return hash;
 }
 
-static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
-    static NSString * const kAFCharactersToBeEscaped = @":/?&=;+!@#$()',*";
-    static NSString * const kAFCharactersToLeaveUnescaped = @"[].";
-    
-    return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, (__bridge CFStringRef)kAFCharactersToLeaveUnescaped, (__bridge CFStringRef)kAFCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
++ (NSString *)URLDecode:(NSString *)str
+{
+    return [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (NSString *)URLEncode:(NSString *)str
+{
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+                                                                                 NULL,
+                                                                                 (__bridge CFStringRef)str,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                                                 CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
 }
 
 +(UIColor *)colorFromRGBString:(NSString *)rbgString

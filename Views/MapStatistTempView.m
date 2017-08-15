@@ -100,7 +100,7 @@
         NSString *url = [Util requestEncodeWithString:[NSString stringWithFormat:@"http://scapi.weather.com.cn/weather/historycount?stationid=%@&areaid=%@&", statId, areaId]
                                                 appId:@"f63d329270a44900"
                                            privateKey:@"sanx_data_99"];
-        [[PLHttpManager sharedInstance].manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[PLHttpManager sharedInstance].manager GET:url parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             if (responseObject) {
                 [self setupViewsWitnData:(NSDictionary *)responseObject];
@@ -236,7 +236,7 @@
             showHour += 24;
         }
         if (i%2 == 0) {
-            [arrayLabelX addObject:[NSString stringWithFormat:@"%ld时", showHour]];
+            [arrayLabelX addObject:[NSString stringWithFormat:@"%td时", showHour]];
         }
         else
         {
@@ -258,8 +258,8 @@
     NSMutableArray *arrayValuey = [[NSMutableArray alloc] init];
     NSMutableArray *arrayLabely = [[NSMutableArray alloc] init];
     for (NSInteger i=(int)(min/10)*10; i<=(int)ceil(max/10)*10; i=i+10) {
-        [arrayLabely addObject:[NSString stringWithFormat:@"%ld°", i]];
-        [arrayValuey addObject:[NSString stringWithFormat:@"%ld", i]];
+        [arrayLabely addObject:[NSString stringWithFormat:@"%td°", i]];
+        [arrayValuey addObject:[NSString stringWithFormat:@"%td", i]];
     }
     
     [dict setObject:arrayValueX forKey:@"xAxisValue"];

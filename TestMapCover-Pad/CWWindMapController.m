@@ -401,10 +401,7 @@
     NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
     NSString *c14 = @"39.9289";
     
-    CLLocationCoordinate2D coor;
-    if (c13 && c14) {
-        coor = CLLocationCoordinate2DMake([c14 floatValue], [c13 floatValue]);
-    }
+    CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([c14 floatValue], [c13 floatValue]);
     
 //    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
     [self.mapView setCenterCoordinate:coor animated:YES];
@@ -525,7 +522,7 @@
             int hours = key.intValue;
             NSDate *date = [currDate dateByAddingHours:hours];
             
-            NSString *dateStr = [NSString stringWithFormat:@"%ld月%ld\n%ld时", date.month, date.day, date.hour];
+            NSString *dateStr = [NSString stringWithFormat:@"%td月%td\n%td时", date.month, date.day, date.hour];
             NSString *windSpeed = [[data objectForKey:key] objectForKey:@"windspeed"];
             
             maxWindSpeed = MAX(maxWindSpeed, windSpeed.floatValue);

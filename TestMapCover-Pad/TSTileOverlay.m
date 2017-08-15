@@ -7,7 +7,6 @@
 //
 
 #import "TSTileOverlay.h"
-#import "CWEncode.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @interface TSTileOverlay ()
@@ -134,27 +133,4 @@
     return nil;
 }
 
-//- (NSURL *)URLForTilePath:(MKTileOverlayPath)path
-//{
-//    return [NSURL URLWithString:[self finalUrlAtPath:path]];
-//}
-//
-//-(NSString *)finalUrlAtPath:(MKTileOverlayPath)path
-//{
-//    // key
-//    NSString *public_key = [NSString stringWithFormat:@"http://scapi.weather.com.cn/product/worldele/TEMP/test.png?level=%ld&x=%ld&y=%ld&date=201504210533&appid=6f688d62594549a2", path.z, path.x, path.y];
-//    NSString *key = [CWEncode encodeByPublicKey:public_key privateKey:@"chinaweather_data"];
-//    key = AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(key, NSUTF8StringEncoding);
-//    
-//    NSString *url = [NSString stringWithFormat:@"http://scapi.weather.com.cn/product/worldele/TEMP/test.png?level=%ld&x=%ld&y=%ld&date=201504210533&appid=6f688d&key=%@", path.z, path.x, path.y, key];
-//    return url;
-////    return @"http://scapi.weather.com.cn/product/worldele/TEMP/test.png?level=7&x=20&y=40&date=201504210533&appid=6f688d&key=FGm6z%2BLphJ7GgTU5s2NRge%2F5Olc%3D";
-//}
-//
-//static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(NSString *string, NSStringEncoding encoding) {
-//    static NSString * const kAFCharactersToBeEscaped = @":/?&=;+!@#$()',*";
-//    static NSString * const kAFCharactersToLeaveUnescaped = @"[].";
-//    
-//    return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, (__bridge CFStringRef)kAFCharactersToLeaveUnescaped, (__bridge CFStringRef)kAFCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
-//}
 @end

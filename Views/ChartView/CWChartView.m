@@ -2,7 +2,7 @@
 //  CWChartView.m
 //  ChinaWeather
 //
-//  Created by 曹 君平 on 7/16/13.
+//  Created by davlu on 7/16/13.
 //  Copyright (c) 2013 Platomix. All rights reserved.
 //
 
@@ -136,6 +136,16 @@
     CGContextStrokePath(ctx);
 }
 
+//[text drawInRect:textFrame withFont:self.yAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.yAxis.labelAlignment]
+-(void)drawText:(NSString *)text inRect:(CGRect)frame withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreak alignment:(NSTextAlignment)align textColor:(UIColor *)color
+{
+    NSMutableParagraphStyle *parStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    parStyle.lineBreakMode = lineBreak;
+    parStyle.alignment     = align;
+    [text drawInRect:frame withAttributes:@{NSFontAttributeName : font,
+                                                NSParagraphStyleAttributeName: parStyle,
+                                                NSForegroundColorAttributeName: color}];
+}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -209,7 +219,7 @@
         if(self.yAxis.showLabels)
         {
             CGRect textFrame = CGRectMake(0, y - HEIGHT_OF_LABEL / 2, self.leftMargin, HEIGHT_OF_LABEL);
-            [text drawInRect:textFrame withFont:self.yAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.yAxis.labelAlignment];
+            [self drawText:text inRect:textFrame withFont:self.yAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.yAxis.labelAlignment textColor:self.yAxis.labelColor];
         }
 
         [self drawLine:ctx
@@ -227,7 +237,8 @@
         if(self.yAxis.showLabels)
         {
             CGRect textFrame = CGRectMake(0, y - HEIGHT_OF_LABEL / 2, self.leftMargin, HEIGHT_OF_LABEL);
-            [text drawInRect:textFrame withFont:self.yAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.yAxis.labelAlignment];
+//            [text drawInRect:textFrame withFont:self.yAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.yAxis.labelAlignment];
+            [self drawText:text inRect:textFrame withFont:self.yAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.yAxis.labelAlignment textColor:self.yAxis.labelColor];
         }
     }
     
@@ -260,7 +271,7 @@
         if(self.xAxis.showLabels)
         {
             CGRect textFrame = CGRectMake(x + SPACE - WIDTH_OF_LABEL / 2, y, WIDTH_OF_LABEL, HEIGHT_OF_LABEL*[[text componentsSeparatedByString:@"\n"] count]);
-            [text drawInRect:textFrame withFont:self.xAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.xAxis.labelAlignment];
+            [self drawText:text inRect:textFrame withFont:self.xAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.xAxis.labelAlignment textColor:self.xAxis.labelColor];
         }
 
         [self drawLine:ctx
@@ -290,7 +301,7 @@
         int x = self.leftMargin + (value - xAxis.minValue) / (xAxis.maxValue - xAxis.minValue) * (self.chartFrame.size.width - WIDTH_SPACE);
     
         CGRect textFrame = CGRectMake(x - WIDTH_OF_LABEL / 2, y, WIDTH_OF_LABEL, HEIGHT_OF_LABEL);
-        [text drawInRect:textFrame withFont:xAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:self.xAxis.labelAlignment];
+        [self drawText:text inRect:textFrame withFont:xAxis.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:xAxis.labelAlignment textColor:xAxis.labelColor];
     }
 }
 
@@ -361,18 +372,6 @@
 
         CGContextFillEllipseInRect(ctx, circleRect);
            // CGContextFillRect(ctx, circleRect);
-        
-        if(plot.pointLabels && i < plot.pointLabels.count)
-        {
-            NSString *pointLabel = plot.pointLabels[i];
-            CGRect labelFrame = CGRectMake(x - 50 / 2, y - 20, 50, 20); // CWChartPlotPointLabelPositionUp
-            if(plot.pointLabelPosition == CWChartPlotPointLabelPositionDown)
-            {
-                labelFrame.origin.y = y + 5;
-            }
-            
-            [pointLabel drawInRect:labelFrame withFont:plot.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
-        }
         
         lastX = x;
         lastY = y;
@@ -493,7 +492,7 @@ static CGPoint controlPointForPoints(CGPoint p1, CGPoint p2) {
     CGContextSetLineWidth(ctx, plot.width);
     CGFloat x = self.leftMargin + SPACE;
     CGFloat step = (self.chartFrame.size.width - WIDTH_SPACE) / (plot.points.count - 1);
-    CGFloat lastX, lastY;
+    CGFloat lastX = 0.0, lastY = 0.0;
     
     
     for (int i = 0; i < plot.points.count; ++i)
@@ -543,8 +542,7 @@ static CGPoint controlPointForPoints(CGPoint p1, CGPoint p2) {
             {
                 labelFrame.origin.y = y + 5;
             }
-            
-            [pointLabel drawInRect:labelFrame withFont:plot.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+            [self drawText:pointLabel inRect:labelFrame withFont:plot.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter textColor:plot.color];
         }
         
         lastX = x;
@@ -587,7 +585,7 @@ static CGPoint controlPointForPoints(CGPoint p1, CGPoint p2) {
             {
                 labelFrame.origin.y = y + 5;
             }
-            [pointLabel drawInRect:labelFrame withFont:plot.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+            [self drawText:pointLabel inRect:labelFrame withFont:plot.labelFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter textColor:plot.color];
         }
         
         lastX = x;

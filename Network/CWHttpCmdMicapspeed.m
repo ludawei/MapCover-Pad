@@ -7,8 +7,8 @@
 //
 
 #import "CWHttpCmdMicapspeed.h"
-#import "CWEncode.h"
 #import "Util.h"
+#import "CWDataManager.h"
 
 // http://scapi.weather.com.cn/weather/micapswind?lon=121.674889&lat=38.878078&type=1000&date=20141120&appid=6f688d&key=tT%2FsoQNYRSXyxiOZl%2BUIsPMe%2B4M%3D
 @implementation CWHttpCmdMicapspeed
@@ -36,7 +36,7 @@
     if(self.lon)
         [queryJson setValue:self.lon forKey: @"lon"];
     [queryJson setObject:@"1000" forKey:@"type"];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [CWDataManager sharedInstance].formatter;
     [formatter setDateFormat:@"yyyyMMddHHmm"];
     NSString *curTime = [formatter stringFromDate:[NSDate date]];
     
@@ -44,7 +44,7 @@
     [queryJson setObject:@"6f688d62594549a2" forKey:@"appid"];
     
     NSString *public_key = [self getPublicKey:queryJson];
-    NSString *key = [CWEncode encodeByPublicKey:public_key privateKey:@"chinaweather_data"];
+    NSString *key = [Util encodeByPublicKey:public_key privateKey:@"chinaweather_data"];
     
     [queryJson setObject:key forKey:@"key"];
     [queryJson setObject:[queryJson[@"appid"] substringToIndex:6] forKey:@"appid"];
@@ -69,7 +69,7 @@
 {
     NSString *key = [self getPublicKey:dict];
     
-    key = [key stringByAppendingString:[NSString stringWithFormat:@"&key=%@", [Util AFPercentEscapedQueryStringPairMemberFromString:dict[@"key"] encoding:NSUTF8StringEncoding]]];
+    key = [key stringByAppendingString:[NSString stringWithFormat:@"&key=%@", [Util URLEncode:dict[@"key"]]]];
     
     return key;
 }

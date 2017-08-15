@@ -15,4 +15,6 @@
 + (NSString*) base64Encode: (const unsigned char*) bytes length: (int) len;
 +(NSString *)base64EncodeString:(NSString *)string;
 
++ (NSString *)md5EncryptWithString:(NSString *)string;
+
 @end

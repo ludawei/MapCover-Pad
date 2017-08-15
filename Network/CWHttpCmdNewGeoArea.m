@@ -7,8 +7,9 @@
 //
 
 #import "CWHttpCmdNewGeoArea.h"
-#import "CWEncode.h"
+#import "Util.h"
 #import "PLHttpManager.h"
+#import "CWDataManager.h"
 
 @implementation CWHttpCmdNewGeoArea
 
@@ -19,7 +20,7 @@
 
 - (NSString *)path
 {
-    return @"http://geo.weather.com.cn/al1/";
+    return @"http://geoload.tianqi.cn/al1/";
 }
 
 - (NSDictionary *)queries
@@ -29,7 +30,7 @@
         [queryJson setValue:self.longitude forKey: @"lon"];
     if(self.latitude)
         [queryJson setValue:self.latitude forKey: @"lat"];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [CWDataManager sharedInstance].formatter;
     [formatter setDateFormat:@"yyyyMMddHHmm"];
     NSString *curTime = [formatter stringFromDate:[NSDate date]];
     
@@ -38,7 +39,7 @@
     
     // key
     NSString *public_key = [self getPublicKey:queryJson];
-    NSString *key = [CWEncode encodeByPublicKey:public_key privateKey:@"chinaweather_geo_data"];
+    NSString *key = [Util encodeByPublicKey:public_key privateKey:@"chinaweather_geo_data"];
     
     [queryJson setObject:key forKey:@"key"];
     [queryJson setObject:[queryJson[@"appid"] substringToIndex:6] forKey:@"appid"];
@@ -48,7 +49,7 @@
 
 -(NSString *)getPublicKey:(NSDictionary *)dict
 {
-    NSString *key = @"http://geo.weather.com.cn/al1/?";
+    NSString *key = @"http://geoload.tianqi.cn/al1/?";
     
     key = [key stringByAppendingString:[NSString stringWithFormat:@"lon=%@", dict[@"lon"]]];
     key = [key stringByAppendingString:[NSString stringWithFormat:@"&lat=%@", dict[@"lat"]]];
@@ -57,6 +58,5 @@
     
     return key;
 }
-
 
 @end

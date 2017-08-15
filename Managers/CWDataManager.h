@@ -17,6 +17,8 @@
 
 + (CWDataManager *)sharedInstance;
 
+@property (nonatomic,strong) NSDateFormatter *formatter;
+
 // 收藏相关
 -(NSArray *)collectList;
 -(NSDictionary *)collectDict;

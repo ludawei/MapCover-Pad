@@ -15,9 +15,12 @@
 
 + (PLHttpManager *)sharedInstance;
 
-- (NSString *)baseUrlString;
-- (NSString *)finalImagePath:(NSString *)imgUrl;
+@property (nonatomic,strong) NSMutableDictionary *someDatas;
+
+-(void)fetchWeatherWithWarnAreaIds:(NSArray *)cityIds block:(void (^)())block;
+-(void)fetchWarningWithWarnAreaId:(NSString *)cityId block:(void (^)())block;
 
 - (void)parserRequest:(PLHttpCmd *)cmd;
--(AFHTTPRequestOperationManager *)manager;
+-(AFHTTPSessionManager *)manager;
+
 @end

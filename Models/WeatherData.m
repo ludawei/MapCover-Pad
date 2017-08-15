@@ -74,7 +74,7 @@
         
         NSArray *windArray = [[currDict objectForKey:@"l4"] componentsSeparatedByString:@"|"];                       //过去24小时风向
         NSArray *windSpeedArray = [[currDict objectForKey:@"l3"] componentsSeparatedByString:@"|"];
-        self.currWindStatus = [NSString stringWithFormat:@"%@ %@", [Util parseWindDirection:windArray.lastObject], [Util parseWindForce:windSpeedArray.lastObject]];
+        self.currWindStatus = [NSString stringWithFormat:@"%@ %@", [Util parseWindDirection:windArray.lastObject], [Util parseLiveWindForce:windSpeedArray.lastObject]];
         
         NSArray *humidityArray = [[currDict objectForKey:@"l2"] componentsSeparatedByString:@"|"];                   //过去24小时湿度
         self.currHumidity = [NSString stringWithFormat:@"湿度 %.f％",[humidityArray.lastObject floatValue]];

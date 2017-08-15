@@ -45,7 +45,7 @@ static NSString *key_map_cloudImageList = @"map_cloudImageList";
 -(instancetype)init
 {
     if (self = [super init]) {
-        
+        self.formatter = [[NSDateFormatter alloc] init];
     }
     return self;
 }

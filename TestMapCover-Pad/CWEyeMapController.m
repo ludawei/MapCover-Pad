@@ -184,7 +184,7 @@
 //    }
     
     if (self.hideNav) {
-        [[PLHttpManager sharedInstance].manager GET:@"http://decision.tianqi.cn//data/video/videoweather.html" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[PLHttpManager sharedInstance].manager GET:@"http://decision.tianqi.cn//data/video/videoweather.html" parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             if (responseObject) {
                 NSArray *datas = (NSArray *)responseObject;
@@ -279,7 +279,7 @@
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [[PLHttpManager sharedInstance].manager GET:@"http://decision.tianqi.cn//data/video/videoweather.html" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[PLHttpManager sharedInstance].manager GET:@"http://decision.tianqi.cn//data/video/videoweather.html" parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (responseObject) {
             NSArray *datas = (NSArray *)responseObject;

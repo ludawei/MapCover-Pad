@@ -2,7 +2,7 @@
 //  CWChartAxis.m
 //  ChinaWeather
 //
-//  Created by 曹 君平 on 7/17/13.
+//  Created by davlu on 7/17/13.
 //  Copyright (c) 2013 Platomix. All rights reserved.
 //
 
@@ -20,7 +20,7 @@
         // set default
         self.labelColor = [UIColor whiteColor];
         self.labelFont = [UIFont systemFontOfSize:12];
-        self.labelAlignment = UITextAlignmentCenter;
+        self.labelAlignment = NSTextAlignmentCenter;
         self.minValue = UNDEFINED;
         self.maxValue = UNDEFINED;
         self.showLabels = YES;

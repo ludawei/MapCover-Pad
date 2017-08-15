@@ -239,7 +239,7 @@
 {
     NSString *c13 = @"116.3883";//[CWUserManager sharedInstance].lon;
     NSString *c14 = @"39.9289";//[CWUserManager sharedInstance].lat;
-    [[PLHttpManager sharedInstance].manager GET:[NSString stringWithFormat:@"http://caiyunapp.com/fcgi-bin/v1/api.py?lonlat=%@,%@&format=json&product=minutes_prec&token=HyTVV5YAkoxlQ3Zd", c13, c14] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[PLHttpManager sharedInstance].manager GET:[NSString stringWithFormat:@"http://caiyunapp.com/fcgi-bin/v1/api.py?lonlat=%@,%@&format=json&product=minutes_prec&token=HyTVV5YAkoxlQ3Zd", c13, c14] parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError* error = nil;
         id json;
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -519,7 +519,7 @@
         NSString *url = [self.allUrls.firstObject objectForKey:@"l2"];
         
         __weak typeof(self) weakSlef = self;
-        [self.mapImagesManager downloadImageWithUrl:url type:type region:MK_CHINA_CENTER_REGION completed:^(UIImage *image) {
+        [self.mapImagesManager downloadImageWithUrl:url type:type completed:^(UIImage *image) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 if (image) {
@@ -539,7 +539,7 @@
                     }
                     else if(type == MapImageTypeCloud)
                     {
-                        groundOverlay = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(59.97, 50.02) southWest:CLLocationCoordinate2DMake(-4.98, 144.97)];
+                        groundOverlay = [[MyOverlay alloc] initWithNorthEast:CLLocationCoordinate2DMake(56.385845314127209, 62.8820698883665) southWest:CLLocationCoordinate2DMake(-10.787277369124666, 161.69675114151386)];
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -570,7 +570,7 @@
         else
         {
             __weak typeof(self) weakSlef = self;
-            [self.mapImagesManager downloadAllImageWithType:type region:MK_CHINA_CENTER_REGION completed:^(NSDictionary *images) {
+            [self.mapImagesManager downloadAllImageWithType:type completed:^(NSDictionary *images) {
                 
                 if (images) {
                     // 开始动画

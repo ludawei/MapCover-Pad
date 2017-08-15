@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) NSString *username; // 用户名 必填
 @property (nonatomic, strong) NSString *password; // 密码 必填
+@property (nonatomic, copy) NSString *lat;   //
+@property (nonatomic, copy) NSString *lon;
 
 @end

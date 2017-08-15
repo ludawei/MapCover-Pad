@@ -2,7 +2,7 @@
 //  CWChartAxis.h
 //  ChinaWeather
 //
-//  Created by 曹 君平 on 7/17/13.
+//  Created by davlu on 7/17/13.
 //  Copyright (c) 2013 Platomix. All rights reserved.
 //
 
@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, CWChartAxisLineStyle) {
 
 @property (nonatomic, strong) UIColor *labelColor;
 @property (nonatomic, strong) UIFont *labelFont;
-@property (nonatomic, assign) UITextAlignment labelAlignment;
+@property (nonatomic, assign) NSTextAlignment labelAlignment;
 
 @end
 

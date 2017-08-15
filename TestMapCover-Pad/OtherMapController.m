@@ -44,7 +44,7 @@
     
     //    [self initWebView];
     NSString *url = [Util requestEncodeWithString:@"http://scapi.weather.com.cn/weather/stationinfo?" appId:@"f63d329270a44900" privateKey:@"sanx_data_99"];
-    [[PLHttpManager sharedInstance].manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[PLHttpManager sharedInstance].manager GET:url parameters:nil progress:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (responseObject) {
             self.datas = (NSDictionary *)responseObject;

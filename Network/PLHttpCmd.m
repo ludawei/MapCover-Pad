@@ -83,12 +83,6 @@ static NSString *ewr_result = @"result";
     return NO;
 }
 
--(void)saveRetStatus:(id)object
-{
-    self.msg = [[object objectForKey:@"content"] objectForKey:@"resultDesc"];
-    self.ret = [[[object objectForKey:@"content"] objectForKey:@"result"] intValue];
-}
-
 - (void)didSuccess:(id)object
 {
 //    [self saveRetStatus:object];

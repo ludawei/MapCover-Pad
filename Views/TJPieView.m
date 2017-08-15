@@ -8,7 +8,7 @@
 
 #import "TJPieView.h"
 
-@interface TJPieView ()
+@interface TJPieView ()<CAAnimationDelegate>
 
 //@property (nonatomic) CGFloat currentPer;
 @property (nonatomic,strong) NSArray *datas;
@@ -132,7 +132,7 @@
 - (UILabel *)descriptionLabel
 {
     UILabel *descriptionLabel = [[UILabel alloc] init];
-    NSString *days = [NSString stringWithFormat:@"%ld天", [[[self.datas firstObject] objectForKey:@"value"] integerValue]];
+    NSString *days = [NSString stringWithFormat:@"%td天", [[[self.datas firstObject] objectForKey:@"value"] integerValue]];
     
     NSString *titleText = [NSString stringWithFormat:@"%@\n%@", [[self.datas firstObject] objectForKey:@"name"], days];
     
